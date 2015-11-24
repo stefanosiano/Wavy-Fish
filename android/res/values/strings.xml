@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Wavy Fish</string>
+    
+    <string name="ok">OK</string>
+    <string name="notNow">Not now</string>
+    <string name="allow">Allow</string>
+    <!-- PERMISSIONS -->
+    <string name="permissionRequested">Permission needed</string>
+    
+    <string name="shareScoreStoragePermissionRequest">Please allow me to access your storage, so you can share your score with your friends.</string>
+    
+    <string name="goToSettings">Go to app settings</string>
+    <string name="permissionDialogGuide1">Click on Permissions</string>
+    <string name="permissionDialogGuide2">Check the %s permission</string>
+    
+    <string name="cheatDialogTitle">Anti Cheat System</string>
+    <string name="cheatDialogMessage">Sorry, but something strange happened. If you see this message again without any reason, please email me at stefano.siano91@gmail.com</string>
+</resources>

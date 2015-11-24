@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+        android:layout_margin="15dp" >
+
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:id="@+id/image_share_dialog_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:scaleType="fitXY">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/appname_share_dialog_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" >
+    </TextView>
+    
+</LinearLayout>

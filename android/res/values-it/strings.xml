@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="notNow">Non adesso</string>
+    <string name="allow">Permetti</string>
+    <!-- PERMISSIONS -->
+    <string name="permissionRequested">Permesso necessario</string>
+    
+    <string name="shareScoreStoragePermissionRequest">Per favore, lasciami accedere alla tua memoria, così potrai condividere il tuo punteggio con i tuoi amici.</string>
+    
+    <string name="goToSettings">Vai alle impostazioni dell\'app</string>
+    <string name="permissionDialogGuide1">Clicca su Permessi</string>
+    <string name="permissionDialogGuide2">Seleziona il permesso %s</string>
+    
+    <string name="cheatDialogTitle">Anti Cheat System</string>
+    <string name="cheatDialogMessage">Mi dispiace, ma è successo qualcosa di strano. Se vedi nuovamente questo messaggio senza motivo mandami una mail a stefano.siano91@gmail.com</string>
+</resources>

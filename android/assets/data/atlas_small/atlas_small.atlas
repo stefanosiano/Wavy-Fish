@@ -1,0 +1,1080 @@
+
+atlas_small.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+horror/fish
+  rotate: false
+  xy: 5, 5
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 0
+horror/fish
+  rotate: false
+  xy: 63, 5
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 1
+horror/fish
+  rotate: false
+  xy: 121, 5
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 2
+horror/fish
+  rotate: false
+  xy: 258, 16
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 3
+horror/fish
+  rotate: false
+  xy: 316, 16
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 4
+horror/fish
+  rotate: false
+  xy: 374, 16
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 5
+horror/fish
+  rotate: false
+  xy: 450, 196
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 6
+horror/fish
+  rotate: false
+  xy: 450, 154
+  size: 53, 37
+  orig: 53, 37
+  offset: 0, 0
+  index: 7
+horror/flipped_net
+  rotate: false
+  xy: 471, 305
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+horror/flipped_piranha
+  rotate: false
+  xy: 5, 47
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 0
+horror/flipped_piranha
+  rotate: false
+  xy: 258, 178
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 1
+horror/flipped_piranha
+  rotate: false
+  xy: 53, 47
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 2
+horror/flipped_piranha
+  rotate: false
+  xy: 258, 118
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 3
+horror/flipped_piranha
+  rotate: false
+  xy: 306, 178
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 4
+horror/flipped_piranha
+  rotate: false
+  xy: 101, 47
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 5
+horror/flipped_piranha
+  rotate: false
+  xy: 258, 58
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 6
+horror/flipped_piranha
+  rotate: false
+  xy: 306, 118
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 7
+horror/fondale
+  rotate: false
+  xy: 5, 238
+  size: 461, 259
+  orig: 461, 259
+  offset: 0, 0
+  index: -1
+horror/highscore_background
+  rotate: false
+  xy: 5, 107
+  size: 218, 126
+  orig: 218, 126
+  offset: 0, 0
+  index: -1
+horror/net
+  rotate: false
+  xy: 228, 41
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+horror/piranha
+  rotate: false
+  xy: 354, 178
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 0
+horror/piranha
+  rotate: false
+  xy: 149, 47
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 1
+horror/piranha
+  rotate: false
+  xy: 306, 58
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 2
+horror/piranha
+  rotate: false
+  xy: 354, 118
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 3
+horror/piranha
+  rotate: false
+  xy: 402, 178
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 4
+horror/piranha
+  rotate: false
+  xy: 354, 58
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 5
+horror/piranha
+  rotate: false
+  xy: 402, 118
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 6
+horror/piranha
+  rotate: false
+  xy: 402, 58
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: 7
+
+atlas_small2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+menu/alone
+  rotate: false
+  xy: 882, 893
+  size: 121, 121
+  orig: 121, 121
+  offset: 0, 0
+  index: -1
+menu/back
+  rotate: false
+  xy: 846, 488
+  size: 79, 32
+  orig: 79, 32
+  offset: 0, 0
+  index: -1
+menu/black_star
+  rotate: false
+  xy: 10, 220
+  size: 116, 124
+  orig: 116, 124
+  offset: 0, 0
+  index: -1
+menu/button1
+  rotate: false
+  xy: 491, 422
+  size: 258, 70
+  orig: 258, 70
+  offset: 0, 0
+  index: -1
+menu/button2
+  rotate: false
+  xy: 220, 325
+  size: 258, 70
+  orig: 258, 70
+  offset: 0, 0
+  index: -1
+menu/button3
+  rotate: false
+  xy: 491, 343
+  size: 258, 69
+  orig: 258, 69
+  offset: 0, 0
+  index: -1
+menu/button4
+  rotate: false
+  xy: 488, 263
+  size: 258, 70
+  orig: 258, 70
+  offset: 0, 0
+  index: -1
+menu/button5
+  rotate: false
+  xy: 136, 245
+  size: 258, 70
+  orig: 258, 70
+  offset: 0, 0
+  index: -1
+menu/button_disabled
+  rotate: false
+  xy: 136, 165
+  size: 258, 70
+  orig: 258, 70
+  offset: 0, 0
+  index: -1
+menu/cloud_tutor
+  rotate: false
+  xy: 480, 502
+  size: 256, 180
+  orig: 256, 180
+  offset: 0, 0
+  index: -1
+menu/experience_back
+  rotate: false
+  xy: 136, 336
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+menu/experience_border
+  rotate: false
+  xy: 984, 875
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+menu/experience_front
+  rotate: false
+  xy: 404, 226
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+menu/fish_tutor
+  rotate: false
+  xy: 10, 354
+  size: 200, 400
+  orig: 200, 400
+  offset: 0, 0
+  index: -1
+menu/fullscreen
+  rotate: false
+  xy: 182, 10
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/fullscreen_off
+  rotate: false
+  xy: 269, 10
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/life_bar_left
+  rotate: false
+  xy: 404, 268
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+menu/life_bar_mid
+  rotate: false
+  xy: 308, 108
+  size: 94, 47
+  orig: 94, 47
+  offset: 0, 0
+  index: -1
+menu/life_bar_right
+  rotate: false
+  xy: 846, 431
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+menu/logo
+  rotate: false
+  xy: 10, 764
+  size: 450, 250
+  orig: 450, 250
+  offset: 0, 0
+  index: -1
+menu/menu
+  rotate: false
+  xy: 810, 794
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/mode_selected
+  rotate: false
+  xy: 220, 405
+  size: 261, 72
+  orig: 261, 72
+  offset: 0, 0
+  index: -1
+menu/more_lives
+  rotate: false
+  xy: 810, 706
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/music_off
+  rotate: false
+  xy: 897, 805
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/music_on
+  rotate: false
+  xy: 897, 717
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/panel
+  rotate: false
+  xy: 220, 487
+  size: 250, 267
+  orig: 250, 267
+  offset: 0, 0
+  index: -1
+menu/red_border
+  rotate: false
+  xy: 480, 692
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1
+menu/resume
+  rotate: false
+  xy: 746, 604
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/retry
+  rotate: false
+  xy: 746, 516
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/settings
+  rotate: false
+  xy: 759, 428
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/share_score
+  rotate: false
+  xy: 759, 340
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/share_text
+  rotate: false
+  xy: 756, 252
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/speaker_off
+  rotate: false
+  xy: 833, 618
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/speaker_on
+  rotate: false
+  xy: 833, 530
+  size: 77, 78
+  orig: 77, 78
+  offset: 0, 0
+  index: -1
+menu/star
+  rotate: false
+  xy: 10, 86
+  size: 116, 124
+  orig: 116, 124
+  offset: 0, 0
+  index: -1
+menu/swipe_background
+  rotate: false
+  xy: 136, 98
+  size: 162, 57
+  orig: 162, 57
+  offset: 0, 0
+  index: -1
+menu/swipe_background_info
+  rotate: false
+  xy: 10, 19
+  size: 162, 57
+  orig: 162, 57
+  offset: 0, 0
+  index: -1
+menu/wavy_fish
+  rotate: false
+  xy: 470, 882
+  size: 402, 132
+  orig: 402, 132
+  offset: 0, 0
+  index: -1
+
+atlas_small3.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+original/fish
+  rotate: false
+  xy: 5, 66
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 0
+original/fish
+  rotate: false
+  xy: 258, 197
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 1
+original/fish
+  rotate: false
+  xy: 5, 23
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 2
+original/fish
+  rotate: false
+  xy: 65, 66
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 3
+original/fish
+  rotate: false
+  xy: 258, 154
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 4
+original/fish
+  rotate: false
+  xy: 318, 197
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 5
+original/fish
+  rotate: false
+  xy: 65, 23
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 6
+original/fish
+  rotate: false
+  xy: 125, 66
+  size: 55, 38
+  orig: 55, 38
+  offset: 0, 0
+  index: 7
+original/flipped_net
+  rotate: false
+  xy: 471, 307
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+original/flipped_piranha
+  rotate: false
+  xy: 258, 93
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 0
+original/flipped_piranha
+  rotate: false
+  xy: 258, 32
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 1
+original/flipped_piranha
+  rotate: false
+  xy: 318, 136
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 2
+original/flipped_piranha
+  rotate: false
+  xy: 378, 179
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 3
+original/flipped_piranha
+  rotate: false
+  xy: 420, 179
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 4
+original/flipped_piranha
+  rotate: false
+  xy: 125, 5
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 5
+original/flipped_piranha
+  rotate: false
+  xy: 185, 48
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 6
+original/flipped_piranha
+  rotate: false
+  xy: 300, 75
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 7
+original/fondale
+  rotate: false
+  xy: 5, 240
+  size: 461, 259
+  orig: 461, 259
+  offset: 0, 0
+  index: -1
+original/highscore_background
+  rotate: false
+  xy: 5, 109
+  size: 218, 126
+  orig: 218, 126
+  offset: 0, 0
+  index: -1
+original/net
+  rotate: false
+  xy: 228, 43
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+original/piranha
+  rotate: false
+  xy: 300, 14
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 0
+original/piranha
+  rotate: false
+  xy: 342, 75
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 1
+original/piranha
+  rotate: false
+  xy: 342, 14
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 2
+original/piranha
+  rotate: false
+  xy: 462, 179
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 3
+original/piranha
+  rotate: false
+  xy: 384, 118
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 4
+original/piranha
+  rotate: false
+  xy: 384, 57
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 5
+original/piranha
+  rotate: false
+  xy: 426, 118
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 6
+original/piranha
+  rotate: false
+  xy: 426, 57
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: 7
+
+atlas_small4.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+space/fish
+  rotate: false
+  xy: 5, 65
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 0
+space/fish
+  rotate: false
+  xy: 258, 196
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 1
+space/fish
+  rotate: false
+  xy: 5, 22
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 2
+space/fish
+  rotate: false
+  xy: 67, 65
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 3
+space/fish
+  rotate: false
+  xy: 258, 153
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 4
+space/fish
+  rotate: false
+  xy: 320, 196
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 5
+space/fish
+  rotate: false
+  xy: 67, 22
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 6
+space/fish
+  rotate: false
+  xy: 129, 65
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: 7
+space/flipped_net
+  rotate: false
+  xy: 471, 309
+  size: 25, 189
+  orig: 25, 189
+  offset: 0, 0
+  index: -1
+space/flipped_piranha
+  rotate: false
+  xy: 258, 93
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 0
+space/flipped_piranha
+  rotate: false
+  xy: 471, 249
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 1
+space/flipped_piranha
+  rotate: false
+  xy: 258, 33
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 2
+space/flipped_piranha
+  rotate: false
+  xy: 297, 93
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 3
+space/flipped_piranha
+  rotate: false
+  xy: 297, 33
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 4
+space/flipped_piranha
+  rotate: false
+  xy: 382, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 5
+space/flipped_piranha
+  rotate: false
+  xy: 421, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 6
+space/flipped_piranha
+  rotate: false
+  xy: 129, 5
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 7
+space/fondale
+  rotate: false
+  xy: 5, 239
+  size: 461, 259
+  orig: 461, 259
+  offset: 0, 0
+  index: -1
+space/highscore_background
+  rotate: false
+  xy: 5, 108
+  size: 218, 126
+  orig: 218, 126
+  offset: 0, 0
+  index: -1
+space/net
+  rotate: false
+  xy: 228, 45
+  size: 25, 189
+  orig: 25, 189
+  offset: 0, 0
+  index: -1
+space/piranha
+  rotate: false
+  xy: 168, 5
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 0
+space/piranha
+  rotate: false
+  xy: 460, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 1
+space/piranha
+  rotate: false
+  xy: 336, 136
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 2
+space/piranha
+  rotate: false
+  xy: 336, 76
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 3
+space/piranha
+  rotate: false
+  xy: 375, 119
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 4
+space/piranha
+  rotate: false
+  xy: 414, 119
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 5
+space/piranha
+  rotate: false
+  xy: 453, 119
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 6
+space/piranha
+  rotate: false
+  xy: 336, 16
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 7
+
+atlas_small5.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tema/fish
+  rotate: false
+  xy: 5, 65
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 0
+tema/fish
+  rotate: false
+  xy: 258, 196
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 1
+tema/fish
+  rotate: false
+  xy: 5, 22
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 2
+tema/fish
+  rotate: false
+  xy: 66, 65
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 3
+tema/fish
+  rotate: false
+  xy: 258, 153
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 4
+tema/fish
+  rotate: false
+  xy: 319, 196
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 5
+tema/fish
+  rotate: false
+  xy: 66, 22
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 6
+tema/fish
+  rotate: false
+  xy: 127, 65
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: 7
+tema/flipped_net
+  rotate: false
+  xy: 471, 306
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+tema/flipped_piranha
+  rotate: false
+  xy: 258, 93
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 0
+tema/flipped_piranha
+  rotate: false
+  xy: 471, 246
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 1
+tema/flipped_piranha
+  rotate: false
+  xy: 258, 33
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 2
+tema/flipped_piranha
+  rotate: false
+  xy: 319, 136
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 3
+tema/flipped_piranha
+  rotate: false
+  xy: 380, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 4
+tema/flipped_piranha
+  rotate: false
+  xy: 419, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 5
+tema/flipped_piranha
+  rotate: false
+  xy: 127, 5
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 6
+tema/flipped_piranha
+  rotate: false
+  xy: 188, 48
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 7
+tema/fondale
+  rotate: false
+  xy: 5, 239
+  size: 461, 259
+  orig: 461, 259
+  offset: 0, 0
+  index: -1
+tema/highscore_background
+  rotate: false
+  xy: 5, 108
+  size: 218, 126
+  orig: 218, 126
+  offset: 0, 0
+  index: -1
+tema/net
+  rotate: false
+  xy: 228, 42
+  size: 25, 192
+  orig: 25, 192
+  offset: 0, 0
+  index: -1
+tema/piranha
+  rotate: false
+  xy: 297, 76
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 0
+tema/piranha
+  rotate: false
+  xy: 297, 16
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 1
+tema/piranha
+  rotate: false
+  xy: 336, 76
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 2
+tema/piranha
+  rotate: false
+  xy: 336, 16
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 3
+tema/piranha
+  rotate: false
+  xy: 458, 179
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 4
+tema/piranha
+  rotate: false
+  xy: 375, 119
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 5
+tema/piranha
+  rotate: false
+  xy: 375, 59
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 6
+tema/piranha
+  rotate: false
+  xy: 414, 119
+  size: 34, 55
+  orig: 34, 55
+  offset: 0, 0
+  index: 7
