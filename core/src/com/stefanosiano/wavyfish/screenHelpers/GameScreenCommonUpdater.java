@@ -285,7 +285,7 @@ public class GameScreenCommonUpdater {
 	}
 	
 	protected void loadInterstitial(){
-		if(time > 5) //loading after 25 secs may slow the phone, so i load it after 5 sec (just to be "sure" that it's not a mistake)
+		if(time > 0) //loading after 25 secs may slow the phone, so i load it after 5 sec (just to be "sure" that it's not a mistake)
 			if(!adLoaded){
 				adShown = false;
 				adsController.loadInterstitialAd();
@@ -295,7 +295,7 @@ public class GameScreenCommonUpdater {
 	
 	protected void showInterstitial(){
 		//adTime must be 10+ of loading (admob) (let's put 15 sec)
-		if(time > 40)
+		if(time > 5)
 			if(!adShown){
 				adsController.showInterstitialAd();
 				adShown = true;

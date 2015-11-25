@@ -4,6 +4,7 @@ import com.crashlytics.android.Crashlytics;
 import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
+import com.mopub.common.MoPub;
 import java.io.File;
 
 import android.app.AlertDialog;
@@ -19,6 +20,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.mopub.mobileads.MoPubErrorCode;
+import com.mopub.mobileads.MoPubInterstitial;
 import com.stefanosiano.common.utils.SimpleCallback;
 import com.stefanosiano.wavyfish.android.AnalyticsHelper.TrackerName;
 import com.stefanosiano.wavyfish.android.PermissionAskerHelper.OnPermissionRequested;
@@ -29,10 +32,12 @@ import com.stefanosiano.wavyfish.utilities.Enums.EnumPermissions;
 
 import io.fabric.sdk.android.Fabric;
 
-public class AndroidLauncher extends AndroidApplication implements CommonApiController, OnDolbyAudioProcessingEventListener {
+public class AndroidLauncher extends AndroidApplication implements CommonApiController, OnDolbyAudioProcessingEventListener, MoPubInterstitial.InterstitialAdListener {
 	public static boolean TESTMODE = false;
 	
 	private AdsUtil adsUtil;
+	private MoPubInterstitial mInterstitial;
+	private String mopubID = "04142d059c024d68a2caef5692f616ae";
 	private ItemSharer itemSharer;
 	private AnalyticsHelper analyticsHelper;
 	private SimpleCallback permissionCallback;
@@ -50,7 +55,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		
 		
 		if(!TESTMODE){
-			Fabric.with(this, new Crashlytics());
+			Fabric.with(this, new Crashlytics(), new MoPub());
 		}
 		
 		dolbyAudioProcessing = null;
@@ -64,8 +69,10 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		config.useWakelock = false;
 		config.useAccelerometer = false;
 		config.useCompass = false;
-		
-		adsUtil = new AdsUtil(this);
+
+		mInterstitial = new MoPubInterstitial(this, mopubID);
+		mInterstitial.setInterstitialAdListener(this);
+		adsUtil = new AdsUtil(this, mInterstitial);
 		itemSharer = new ItemSharer(this);
 		analyticsHelper = new AnalyticsHelper();
 		permissionCallback = null;
@@ -116,6 +123,10 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		if (mInterstitial != null) {
+			mInterstitial.destroy();
+			mInterstitial = null;
+		}
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH){
 	        if(dolbyAudioProcessing != null)
 	            dolbyAudioProcessing.release();
@@ -126,10 +137,14 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
 		PermissionAskerHelper.permissionsRequested(this, EnumPermissions.shareScore, requestCode, permissions, grantResults, new OnPermissionRequested() {
 			@Override
-			public void onPermissionDenied() {if(permissionCallback != null) permissionCallback.onActionCompleted(false);}
-			
+			public void onPermissionDenied() {
+				if (permissionCallback != null) permissionCallback.onActionCompleted(false);
+			}
+
 			@Override
-			public void onPermissionAccepted() {if(permissionCallback != null) permissionCallback.onActionCompleted(true);}
+			public void onPermissionAccepted() {
+				if (permissionCallback != null) permissionCallback.onActionCompleted(true);
+			}
 		});
 	}
 
@@ -246,4 +261,21 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
     public void onDolbyAudioProcessingClientDisconnected() {
         Log.w(TAG, "onDolbyAudioProcessingClientDisconnected()");
     }
+
+
+
+	// InterstitialAdListener methods
+	@Override
+	public void onInterstitialLoaded(MoPubInterstitial interstitial) {
+		adsUtil.onInterstitialLoaded(interstitial);
+	}
+
+	@Override
+	public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {adsUtil.onInterstitialFailed(interstitial, errorCode);}
+	@Override
+	public void onInterstitialShown(MoPubInterstitial interstitial) {adsUtil.onInterstitialShown(interstitial);}
+	@Override
+	public void onInterstitialClicked(MoPubInterstitial interstitial) {adsUtil.onInterstitialClicked(interstitial);}
+	@Override
+	public void onInterstitialDismissed(MoPubInterstitial interstitial) {adsUtil.onInterstitialDismissed(interstitial);}
 }

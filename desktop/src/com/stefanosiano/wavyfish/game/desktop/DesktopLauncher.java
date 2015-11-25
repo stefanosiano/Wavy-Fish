@@ -2,8 +2,8 @@ package com.stefanosiano.wavyfish.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-//import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.stefanosiano.wavyfish.game.WavyFishGame;
+import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

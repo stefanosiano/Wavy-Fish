@@ -47,6 +47,22 @@
     <meta-data
             android:name="io.fabric.ApiKey"
             android:value="010669e32795632fc069db1e0e14904e6e6b738f" />
-    </application>
+    <activity
+        android:name="com.mopub.mobileads.MoPubActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize" />
+    <activity
+        android:name="com.mopub.mobileads.MraidActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize" />
+    <activity
+        android:name="com.mopub.common.MoPubBrowser"
+        android:configChanges="keyboardHidden|orientation|screenSize" />
+    <activity
+        android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize" />
+    <activity android:name="com.chartboost.sdk.CBImpressionActivity"
+        android:excludeFromRecents="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+        android:configChanges="keyboardHidden|orientation|screenSize"/>
+</application>
 
 </manifest>
