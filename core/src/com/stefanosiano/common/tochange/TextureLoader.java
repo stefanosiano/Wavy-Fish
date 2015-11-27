@@ -230,7 +230,7 @@ public class TextureLoader {
 
 		System.out.println("width" + width);
 		System.out.println("height" + height);
-		if(width < 1000 && height < 550){
+		if(width < 1280 && height < 720){
 			atlas = new TextureAtlas(Gdx.files.internal("data/atlas_small/atlas_small.atlas"));
 		}
 		else{

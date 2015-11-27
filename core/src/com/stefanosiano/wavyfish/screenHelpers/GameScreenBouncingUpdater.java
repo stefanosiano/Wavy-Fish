@@ -22,7 +22,6 @@ public class GameScreenBouncingUpdater extends GameScreenUpdater{
 	@Override
 	protected void updateRunning(float delta) {
 		time += delta;
-		loadInterstitial();
 		background.update(delta);
 		background2.update(delta);
 		lifeBar.update(delta);

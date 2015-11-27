@@ -67,7 +67,8 @@ public class AdsUtil {
   	}
 
 	private void load(){
-		mInterstitial.load();
+		if(!mInterstitial.isReady())
+			mInterstitial.load();
 	}
 
 
