@@ -72,13 +72,15 @@ project(":android") {
         compile 'com.google.android.gms:play-services-analytics:8.3.0'
         compile 'com.android.support:support-v4:23.1.1'
         compile 'com.android.support:appcompat-v7:23.1.1'
+        compile 'com.android.support:multidex:1.0.1'
+        compile 'com.facebook.android:audience-network-sdk:4.7.0'
 
         // Crashlytics Kit
         compile('com.crashlytics.sdk.android:crashlytics:2.5.3@aar') {
             transitive = true
         }
         // MoPub Kit
-        compile('com.mopub.sdk.android:mopub:4.0.0@aar') {
+        compile('com.mopub:mopub-sdk:4.0.0@aar') {
             transitive = true
         }
     }

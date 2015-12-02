@@ -9,11 +9,13 @@ import java.io.File;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.badlogic.gdx.Gdx;
@@ -22,6 +24,7 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
+import com.startapp.android.publish.StartAppSDK;
 import com.stefanosiano.common.utils.SimpleCallback;
 import com.stefanosiano.wavyfish.android.AnalyticsHelper.TrackerName;
 import com.stefanosiano.wavyfish.android.PermissionAskerHelper.OnPermissionRequested;
@@ -48,14 +51,20 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	private AlertDialog.Builder cheatDialog;
     
     private final String TAG = "WavyFish Application";
-	
-	@Override
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+    @Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		
 		if(!TESTMODE){
-			Fabric.with(this, new Crashlytics(), new MoPub());
+			Fabric.with(this, new Crashlytics());
 		}
 		
 		dolbyAudioProcessing = null;
@@ -70,6 +79,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		config.useAccelerometer = false;
 		config.useCompass = false;
 
+        StartAppSDK.init(this, "211059130", false);
 		mInterstitial = new MoPubInterstitial(this, mopubID);
 		mInterstitial.setInterstitialAdListener(this);
 		adsUtil = new AdsUtil(this, mInterstitial);
