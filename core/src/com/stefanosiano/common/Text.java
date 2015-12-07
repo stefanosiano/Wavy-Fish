@@ -197,6 +197,11 @@ public class Text {
 		this.originalY = y;
 		this.width = layout.width;
 	}
+
+
+    public void updateOnlyText(String text){
+        this.text = text;
+    }
 	
 	/**
 	 * updates the text, preserving all the other parameters

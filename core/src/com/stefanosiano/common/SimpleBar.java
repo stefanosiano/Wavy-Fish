@@ -60,6 +60,8 @@ public class SimpleBar extends SimpleGameObject {
 
 	public void setValue(float value) {
 		this.value = value;
+        renderingValue = value - offset;
+        valueWidth = renderingValue / maxValue * width;
 	}
 
 	public float getValue() {
