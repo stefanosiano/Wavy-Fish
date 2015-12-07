@@ -35,7 +35,7 @@ public interface Enums {
 	}
 	
 	public enum GameState{
-		info, menu, menu2, tutorial, ready, running, lost, highScore, pause, resuming, noButtons, earnMoreLives, newTutorialFinishing;
+		info, menu, menu2, tutorial, ready, running, won, lost, startWinning, finishWinning, highScore, highScoreWon, pause, resuming, noButtons, earnMoreLives, newTutorialFinishing;
 	}
 	
 	public enum InfoState{

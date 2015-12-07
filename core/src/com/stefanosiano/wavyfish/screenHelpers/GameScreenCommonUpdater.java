@@ -3,10 +3,13 @@ package com.stefanosiano.wavyfish.screenHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Color;
+import com.stefanosiano.common.FadingBackground;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.antiCheatSystem.ACS;
 import com.stefanosiano.common.antiCheatSystem.SecureValue;
 import com.stefanosiano.common.tochange.GameButtonContainer;
+import com.stefanosiano.common.tochange.ScreenConfig;
 import com.stefanosiano.wavyfish.experience.Experience;
 import com.stefanosiano.wavyfish.game.CommonApiController;
 import com.stefanosiano.wavyfish.gameObjects.Background;
@@ -45,7 +48,7 @@ public class GameScreenCommonUpdater {
 	protected List<Obstacle> obstacles;
 	protected GameScreen gameScreen;
 	protected GameState gameState;
-	protected boolean highScoreStartedUpdating, highScoreFinishedUpdating, won;
+	protected boolean highScoreStartedUpdating, highScoreFinishedUpdating, startWin, won;
 	
 	//to send the time that the user played the game
 	protected float analyticsTime;
@@ -55,6 +58,7 @@ public class GameScreenCommonUpdater {
 	private boolean adLoaded;
 	private boolean adShown;
 	protected float time;
+    protected FadingBackground fadingBackground;
 	
 	//secure data
 	private ACS acs;
@@ -78,6 +82,7 @@ public class GameScreenCommonUpdater {
 		this.obstaclesText = new Text(TextureLoader.fontYellow, 1f, -1f, false);
 		this.scoreValue = score.getScoreValue();
 		this.multiplier = score.getMultiplier();
+        this.fadingBackground = GameObjectContainer.fadingBackground;
 		
 		Runnable onCheat = new Runnable() {
 			boolean shown = false;
@@ -105,6 +110,7 @@ public class GameScreenCommonUpdater {
     	this.adShown = false;
 		this.highScoreStartedUpdating = false;
 		this.highScoreFinishedUpdating = false;
+        this.startWin = false;
 		this.won = false;
 
 		this.obstacles = new ArrayList<Obstacle>();
@@ -207,30 +213,50 @@ public class GameScreenCommonUpdater {
 		}
 
 		if(passedWalls >= numberOfWallsToFinish)
-			win();
+			startWinning();
 	}
+
+    protected void startWinning() {
+        if(Settings.SOUND_ENABLED)
+            SoundLoader.victory.play();
+        SoundLoader.stopMusics();
+
+        GameButtonContainer.setButtons(GameState.noButtons);
+        gameScreen.setState(GameState.startWinning);
+        fadingBackground.setValues(Color.WHITE, 0, 0, 1600, 900);
+        fadingBackground.startFading(0, 1, 1.5f, new Runnable() {
+            @Override
+            public void run() {
+                win();
+            }
+        });
+    }
 
 	protected void win() {
 		won = true;
-		fish.die();
-		GameObjectContainer.stopAll();
-		if(Settings.SOUND_ENABLED)
-			SoundLoader.victory.play();
-		this.highScoreStartedUpdating = false;
-		this.highScoreFinishedUpdating = false;
-		
-		saveHighScore(SavedItems.highScore);
-
-		int tmp;
-		try{tmp = Integer.parseInt(DataSaver.load(SavedItems.highScore + ""));}catch(Exception e){tmp = 0;}
-		this.highScoreContainer.initialize(score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()), 
-				Experience.getPreviousLevelExperience(Experience.getExperience()), tmp);
-		AnalyticsSender.sendPlayGameWithOptions(gameScreen.getGame(), Settings.difficulty, Settings.gameMode, Settings.gameControl, analyticsTime);
-		GameButtonContainer.setButtons(GameState.noButtons);
-		gameScreen.setState(GameState.highScore);
-		Experience.calculateNewValues(score.getScoreValue());
-		highScoreContainer.setNewValues(Experience.getExperience());
+        GameObjectContainer.stopAll();
+        GameButtonContainer.setButtons(GameState.noButtons);
+        gameScreen.setState(GameState.finishWinning);
+        fadingBackground.setValues(Color.WHITE, 0, 0, 1600, 900);
+        fadingBackground.startFading(1, 0, 1.5f, null);
 	}
+
+    protected void finishedWin() {
+        this.highScoreStartedUpdating = false;
+        this.highScoreFinishedUpdating = false;
+
+        saveHighScore(SavedItems.highScore);
+
+        int tmp;
+        try{tmp = Integer.parseInt(DataSaver.load(SavedItems.highScore + ""));}catch(Exception e){tmp = 0;}
+        this.highScoreContainer.initialize(score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()),
+                Experience.getPreviousLevelExperience(Experience.getExperience()), tmp);
+        AnalyticsSender.sendPlayGameWithOptions(gameScreen.getGame(), Settings.difficulty, Settings.gameMode, Settings.gameControl, analyticsTime);
+        GameButtonContainer.setButtons(GameState.noButtons);
+        gameScreen.setState(GameState.highScoreWon);
+        Experience.calculateNewValues(score.getScoreValue());
+        highScoreContainer.setNewValues(Experience.getExperience());
+    }
 
 	protected void wallFinishedPassed() {
 		fishCollided = false;

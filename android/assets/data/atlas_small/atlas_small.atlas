@@ -208,266 +208,273 @@ filter: Linear,Linear
 repeat: none
 menu/alone
   rotate: false
-  xy: 882, 893
+  xy: 270, 364
   size: 121, 121
   orig: 121, 121
   offset: 0, 0
   index: -1
 menu/back
   rotate: false
-  xy: 846, 488
+  xy: 923, 222
   size: 79, 32
   orig: 79, 32
   offset: 0, 0
   index: -1
 menu/black_star
   rotate: false
-  xy: 10, 220
+  xy: 882, 880
   size: 116, 124
   orig: 116, 124
   offset: 0, 0
   index: -1
 menu/button1
   rotate: false
-  xy: 491, 422
+  xy: 401, 402
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button2
   rotate: false
-  xy: 220, 325
+  xy: 401, 322
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button3
   rotate: false
-  xy: 491, 343
+  xy: 396, 163
   size: 258, 69
   orig: 258, 69
   offset: 0, 0
   index: -1
 menu/button4
   rotate: false
-  xy: 488, 263
+  xy: 396, 242
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button5
   rotate: false
-  xy: 136, 245
+  xy: 669, 344
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button_disabled
   rotate: false
-  xy: 136, 165
+  xy: 669, 264
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/cloud_tutor
   rotate: false
-  xy: 480, 502
+  xy: 10, 28
   size: 256, 180
   orig: 256, 180
   offset: 0, 0
   index: -1
+menu/cup
+  rotate: false
+  xy: 10, 637
+  size: 402, 367
+  orig: 402, 367
+  offset: 0, 0
+  index: -1
 menu/experience_back
   rotate: false
-  xy: 136, 336
+  xy: 10, 10
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 menu/experience_border
   rotate: false
-  xy: 984, 875
+  xy: 669, 464
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 menu/experience_front
   rotate: false
-  xy: 404, 226
+  xy: 923, 180
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 menu/fish_tutor
   rotate: false
-  xy: 10, 354
-  size: 200, 400
-  orig: 200, 400
+  xy: 752, 424
+  size: 160, 320
+  orig: 160, 320
   offset: 0, 0
   index: -1
 menu/fullscreen
   rotate: false
-  xy: 182, 10
+  xy: 882, 792
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/fullscreen_off
   rotate: false
-  xy: 269, 10
+  xy: 836, 176
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/life_bar_left
   rotate: false
-  xy: 404, 268
+  xy: 693, 507
   size: 35, 47
   orig: 35, 47
   offset: 0, 0
   index: -1
 menu/life_bar_mid
   rotate: false
-  xy: 308, 108
+  xy: 836, 119
   size: 94, 47
   orig: 94, 47
   offset: 0, 0
   index: -1
 menu/life_bar_right
   rotate: false
-  xy: 846, 431
+  xy: 969, 823
   size: 35, 47
   orig: 35, 47
   offset: 0, 0
   index: -1
 menu/logo
   rotate: false
-  xy: 10, 764
+  xy: 422, 754
   size: 450, 250
   orig: 450, 250
   offset: 0, 0
   index: -1
 menu/menu
   rotate: false
-  xy: 810, 794
+  xy: 276, 142
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/mode_selected
   rotate: false
-  xy: 220, 405
+  xy: 422, 482
   size: 261, 72
   orig: 261, 72
   offset: 0, 0
   index: -1
 menu/more_lives
   rotate: false
-  xy: 810, 706
+  xy: 276, 54
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/music_off
   rotate: false
-  xy: 897, 805
+  xy: 363, 75
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/music_on
   rotate: false
-  xy: 897, 717
+  xy: 450, 75
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/panel
   rotate: false
-  xy: 220, 487
+  xy: 10, 218
   size: 250, 267
   orig: 250, 267
   offset: 0, 0
   index: -1
 menu/red_border
   rotate: false
-  xy: 480, 692
+  xy: 422, 564
   size: 320, 180
   orig: 320, 180
   offset: 0, 0
   index: -1
 menu/resume
   rotate: false
-  xy: 746, 604
+  xy: 537, 75
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/retry
   rotate: false
-  xy: 746, 516
+  xy: 937, 704
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/settings
   rotate: false
-  xy: 759, 428
+  xy: 937, 616
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/share_score
   rotate: false
-  xy: 759, 340
+  xy: 937, 528
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/share_text
   rotate: false
-  xy: 756, 252
+  xy: 937, 440
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/speaker_off
   rotate: false
-  xy: 833, 618
+  xy: 937, 352
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/speaker_on
   rotate: false
-  xy: 833, 530
+  xy: 937, 264
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/star
   rotate: false
-  xy: 10, 86
+  xy: 270, 230
   size: 116, 124
   orig: 116, 124
   offset: 0, 0
   index: -1
 menu/swipe_background
   rotate: false
-  xy: 136, 98
+  xy: 664, 197
   size: 162, 57
   orig: 162, 57
   offset: 0, 0
   index: -1
 menu/swipe_background_info
   rotate: false
-  xy: 10, 19
+  xy: 664, 130
   size: 162, 57
   orig: 162, 57
   offset: 0, 0
   index: -1
 menu/wavy_fish
   rotate: false
-  xy: 470, 882
+  xy: 10, 495
   size: 402, 132
   orig: 402, 132
   offset: 0, 0

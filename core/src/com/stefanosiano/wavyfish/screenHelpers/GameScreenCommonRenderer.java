@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.stefanosiano.common.FadingBackground;
 import com.stefanosiano.common.SimpleRenderer;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.buttons.SimpleButton;
@@ -46,6 +47,7 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
     private List<Obstacle> obstacles;
     private List<SimpleButton> activeButtons;
     private LifeBar2 lifeBar;
+    private FadingBackground fadingBackground;
     
     private FloatValue floatCollisionValue;
     private TweenManager tweenCollisionManager;
@@ -75,6 +77,7 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 		this.drawCollision = false;
 		this.batcherCollision = new SpriteBatch();
         this.texts = GameObjectContainer.texts;
+        this.fadingBackground = GameObjectContainer.fadingBackground;
         this.difficultyText = new Text(TextureLoader.fontOrange, 1f, -1f, false);
         	
         difficultyText.setCenteredHorizzontally(Settings.difficulty + "", 800, 20);
@@ -134,9 +137,21 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 	    	case highScore:
 	            drawHighScore(delta);
 	    		break;
+            case won:
+                drawWon(delta);
+                break;
 	    	case lost:
 	            drawLost(delta);
 	    		break;
+            case startWinning:
+                drawWinning(delta);
+                break;
+            case finishWinning:
+                drawFinishWinning(delta);
+                break;
+            case highScoreWon:
+                drawHighScoreWon(delta);
+                break;
     		default:
     			break;
         }
@@ -216,33 +231,79 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 		//drawCollisions();
 	}
 
-	protected void drawHighScore(float delta){
-		drawWallAndFish(0, delta);
-		drawLives(delta);
-		drawDifficulty(delta);
-		drawHighScoreContainer(delta);
-		drawButtons(delta);
-		drawTexts(delta);
-		if(drawCollision)
-			drawFishCollided(delta);
-	}
+    protected void drawHighScore(float delta){
+        drawWallAndFish(0, delta);
+        drawLives(delta);
+        drawDifficulty(delta);
+        drawHighScoreContainer(delta);
+        drawButtons(delta);
+        drawTexts(delta);
+        if(drawCollision)
+            drawFishCollided(delta);
+    }
 
-	protected void drawLost(float delta){
+    protected void drawHighScoreWon(float delta){
+        drawCup();
+        drawLives(delta);
+        drawDifficulty(delta);
+        drawHighScoreContainer(delta);
+        drawButtons(delta);
+        drawTexts(delta);
+        if(drawCollision)
+            drawFishCollided(delta);
+    }
+
+    protected void drawLost(float delta){
         drawWalls(0);
-		drawLives(delta);
-		drawFish(0, delta);
-		drawScore(delta);
-		drawPanelLost();
-		drawTexts(delta);
-		drawButtons(delta);
-		if(drawCollision)
-			drawFishCollided(delta);
-	}
+        drawLives(delta);
+        drawFish(0, delta);
+        drawScore(delta);
+        drawPanelLost();
+        drawTexts(delta);
+        drawButtons(delta);
+        if(drawCollision)
+            drawFishCollided(delta);
+    }
+
+    protected void drawWon(float delta){
+        drawCup();
+        drawLives(delta);
+        drawScore(delta);
+        drawPanelLost();
+        drawTexts(delta);
+        drawButtons(delta);
+        if(drawCollision)
+            drawFishCollided(delta);
+    }
+
+    protected void drawWinning(float delta){
+        drawWallAndFish(runTime, delta);
+        drawLives(delta);
+        drawScore(delta);
+        drawButtons(delta);
+        drawDifficulty(delta);
+        if(drawCollision)
+            drawFishCollided(delta);
+        drawTexts(delta);
+        drawFadingBackground(delta);
+        //drawCollisions();
+    }
+
+    protected void drawFinishWinning(float delta){
+        drawCup();
+        drawFadingBackground(delta);
+        //drawCollisions();
+    }
 	
 	protected void drawWallAndFish(float runTime, float delta){
         drawWalls(runTime);
         drawFish(runTime, delta);
 	}
+
+    protected void drawCup(){
+        batcher.enableBlending();
+        batcher.draw(TextureLoader.cup, 350, 50, 900, 800);
+    }
 	
 	protected void drawBackground(float delta){
         batcher.disableBlending();
@@ -304,6 +365,12 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 		batcher.enableBlending();
 		highScoreContainer.draw(batcher, delta);
 	}
+
+    protected void drawFadingBackground(float delta){
+        batcher.end();
+        fadingBackground.draw(shapeRenderer);
+        batcher.begin();
+    }
 
 
 	protected void drawCollisions(){

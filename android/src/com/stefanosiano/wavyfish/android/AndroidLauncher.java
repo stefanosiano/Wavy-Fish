@@ -4,6 +4,7 @@ import com.crashlytics.android.Crashlytics;
 import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
+import com.facebook.ads.AdSettings;
 import com.mopub.common.MoPub;
 import java.io.File;
 
@@ -66,6 +67,9 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		if(!TESTMODE){
 			Fabric.with(this, new Crashlytics());
 		}
+        else{
+            AdSettings.addTestDevice("1d73ae69405a2e4366fd5d5073a81b14");
+        }
 		
 		dolbyAudioProcessing = null;
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH){

@@ -16,22 +16,20 @@ public class TextureLoader {
 	private static TextureAtlas atlas;
 	public static TextureRegion 
 		//info
-		infoLevel, back, infoClassic, infoFlappy, infoWavy, infoCredits, swipeSignInfo, swipeSignInfoFlipped, 
+		back, swipeSignInfo, swipeSignInfoFlipped,
 		//menu 1
 		menu, credits, speakerOn, speakerOff, fullScreenOn, fullScreenOff, musicOn, musicOff, swipeBackground, swipeFlippedBackground, options, shareText,
 		moreLives,
 		//menu 2
-		buttonSelected, panel, buttonYellow, buttonGreen, buttonCyan, buttonAzure, buttonRed, 
-		//menu 3
-		arrowLefts, arrowRight,   
+		buttonSelected, panel, buttonYellow, buttonGreen, buttonCyan, buttonAzure, buttonRed,
 		//game
 		background, background2, net, net2, resume, restart, star, blackStar, highScoreBackground, experienceBarBackground, experienceBarFront,
 		fish0, fish1, fish2, fish3, fish4, fish5, fish6, fish7, piranha0, piranha1, piranha2, piranha3, piranha4, piranha5, piranha6, piranha7, 
 		piranhaFlipped0, piranhaFlipped1, piranhaFlipped2, piranhaFlipped3, piranhaFlipped4, piranhaFlipped5, piranhaFlipped6, piranhaFlipped7,
 		redScreen, experienceLeft, experienceRight, experienceTop, experienceBottom,
-		subFish0, subFish1, subFish2, subFish3, subFish4, subFish5, subFish6, subFish7, lifeBarLeft, lifeBarMid, lifeBarRight, shareScore,
+		lifeBarLeft, lifeBarMid, lifeBarRight, shareScore, cup,
 		//others
-		buttonDisabled, splashLogo, wavyFish, tutMenu1, tutMenu2, tutClassic, tutFlappy, tutWavy, fishTutor, cloudTutor, shroud;
+		buttonDisabled, splashLogo, wavyFish, fishTutor, cloudTutor, shroud;
 	
 	public static BitmapFont fontYellow, fontBlue, fontWhite, fontRed, fontOrange;
 	
@@ -45,6 +43,7 @@ public class TextureLoader {
 		buttonDisabled = loadTexture(path + "button_disabled");
 		wavyFish = loadTexture(path + "wavy_fish");
 		shroud = loadTexture(path + "alone");
+        cup = loadTexture(path + "cup");
 		
 		
 		//TUTORIAL items creation

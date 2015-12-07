@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.stefanosiano.common.FadingBackground;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.wavyfish.utilities.Enums.Difficulty;
 
@@ -123,6 +125,8 @@ public class GameObjectContainer {
 	private static float highScoreContainerWordsScaleY;
 	private static float highScoreContainerUnlockedWordX, highScoreContainerUnlockedWordY;
 	private static int highScoreContainerStarNumber;
+
+    public static FadingBackground fadingBackground;
 	
 
 	
@@ -481,7 +485,8 @@ public class GameObjectContainer {
 	}
 	
 	public static void initialize(){
-		texts = new ArrayList<Text>();
+        fadingBackground = new FadingBackground(Color.BLACK, 0, 0, 0, 0);
+        texts = new ArrayList<Text>();
 	}
 	
 	public static void dispose(){

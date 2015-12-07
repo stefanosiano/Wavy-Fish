@@ -2,6 +2,7 @@ package com.stefanosiano.wavyfish.screenHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -25,7 +26,7 @@ import com.stefanosiano.wavyfish.utilities.Enums.Screens;
 
 public class GameScreenUpdater extends GameScreenCommonUpdater {
 	protected List<ButtonNames> names;
-	private float resumeTime, highScoreTime;
+	private float resumeTime, highScoreTime, finishingTime;
 	private Music music;
 	private boolean shareButtonShown;
 	
@@ -34,7 +35,8 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 		this.names = new ArrayList<ButtonNames>();
 		this.resumeTime = 0;
 		this.highScoreTime = 0;
-		this.analyticsTime = 0;
+        this.analyticsTime = 0;
+        this.finishingTime = 0;
 		this.shareButtonShown = false;
 		GameObjectContainer.clearTexts();
 		text.setScale(1f, -1f);
@@ -66,6 +68,8 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 	protected void reset(){
 		super.reset();
 		this.shareButtonShown = false;
+        if(Settings.SOUND_ENABLED && !music.isPlaying())
+            SoundLoader.playMusic(music);
 	}
 	
 	public void update(float delta){
@@ -78,9 +82,11 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 			case running:
 				updateRunning(delta);
 				break;
+            case highScoreWon:
 			case highScore:
 				updateHighScore(delta);
 				break;
+            case won:
 			case lost:
 				updateLost(delta);
 				break;
@@ -90,6 +96,12 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 			case resuming:
 				updateResuming(delta);
 				break;
+            case startWinning:
+                updateWinning(delta);
+                break;
+            case finishWinning:
+                updateFinishWinning(delta);
+                break;
 			default:
 				break;
 		}
@@ -205,7 +217,10 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 					
 					GameObjectContainer.addText(text);
 					GameButtonContainer.setButtons(GameState.lost);
-					gameScreen.setState(GameState.lost);
+                    if(won)
+                        gameScreen.setState(GameState.won);
+                    else
+                        gameScreen.setState(GameState.lost);
 					break;
 				case buttonShareScore:
 					final Pixmap pixmap = ScreenshotFactory.getScreenshot();
@@ -251,20 +266,44 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 					GameButtonContainer.disableAllButtons();
 					SoundLoader.stopMusics();
 					Settings.timeForAds = time;
-					gameScreen.fadeOut(new Runnable(){
-						@Override
-						public void run() {
-							gameScreen.getGame().changeScreen(Screens.menu);
-							gameScreen.dispose();
-							GameObjectContainer.restart();
-						}
-					}, 0.5f);
+					gameScreen.fadeOut(new Runnable() {
+                        @Override
+                        public void run() {
+                            gameScreen.getGame().changeScreen(Screens.menu);
+                            gameScreen.dispose();
+                            GameObjectContainer.restart();
+                        }
+                    }, 0.5f);
 					break;
 				default:
 					break;
 			}
 		}
 	}
+
+    private void updateWinning(float delta) {
+        time += delta;
+        background.update(delta);
+        background2.update(delta);
+        lifeBar.update(delta);
+        fadingBackground.update(delta);
+        names = GameButtonContainer.getBtnPressed();
+
+        for(Obstacle ob : obstacles)
+            ob.update(delta);
+    }
+
+    private void updateFinishWinning(float delta) {
+        time += delta;
+        fadingBackground.update(delta);
+        names = GameButtonContainer.getBtnPressed();
+
+        finishingTime += delta;
+        if(finishingTime >= 3f){
+            finishingTime = 0;
+            finishedWin();
+        }
+    }
 
 	private void updatePause(float delta) {
 		time += delta;

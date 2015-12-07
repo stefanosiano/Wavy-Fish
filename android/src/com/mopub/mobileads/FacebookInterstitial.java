@@ -34,7 +34,6 @@ public class FacebookInterstitial extends CustomEventInterstitial implements Int
             onError(mFacebookInterstitial, AdError.INTERNAL_ERROR);
             return;
         }
-        AdSettings.addTestDevice("1d73ae69405a2e4366fd5d5073a81b14");
         mInterstitialListener = customEventInterstitialListener;
 
         final String placementId;

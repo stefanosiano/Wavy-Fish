@@ -9,12 +9,12 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Wavy Fish";
-        config.width = 620;
-        config.height = 580;
+        config.width = 640;
+        config.height = 360;
 
-        //TexturePacker.process("C:\\Users\\Stefano\\workspace\\Wavy Fish Data\\data_small", "C:\\Users\\Stefano\\workspace\\Wavy Fish-android\\assets\\data\\atlas_small", "atlas_small");
-        //TexturePacker.process("C:\\Users\\Stefano\\workspace\\Wavy Fish Data\\data_large", "C:\\Users\\Stefano\\workspace\\Wavy Fish-android\\assets\\data\\atlas_large", "atlas_large");
-        
+        //TexturePacker.process("C:\\Users\\Stefano\\Desktop\\immagini giochi\\Wavy Fish Data\\data_small", "C:\\Users\\Stefano\\AndroidStudioProjects\\Wavy Fish\\android\\assets\\data\\atlas_small", "atlas_small");
+        //TexturePacker.process("C:\\Users\\Stefano\\Desktop\\immagini giochi\\Wavy Fish Data\\data_large", "C:\\Users\\Stefano\\AndroidStudioProjects\\Wavy Fish\\android\\assets\\data\\atlas_large", "atlas_large");
+
         new LwjglApplication(new WavyFishGame(new DesktopApiController()), config);
 	}
 }

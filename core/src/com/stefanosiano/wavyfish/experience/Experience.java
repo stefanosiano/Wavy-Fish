@@ -19,7 +19,7 @@ public class Experience {
 		try{Integer.parseInt(lives);}catch(Exception e){lives = SavedItems.lives.getDefault();}
 		try{Integer.parseInt(level);}catch(Exception e){level = SavedItems.level.getDefault();}
 		try{Integer.parseInt(experience);}catch(Exception e){experience = SavedItems.experience.getDefault();}
-		
+
 		calculateNewValues(0);
 	}
 	
