@@ -101,7 +101,6 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		cheatDialog.setMessage(R.string.cheatDialogMessage);
 		cheatDialog.setTitle(R.string.cheatDialogTitle);
 		cheatDialog.setCancelable(false);
-		
 		cheatDialog.setNeutralButton(R.string.ok, new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
