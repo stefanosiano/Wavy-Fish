@@ -12,7 +12,7 @@ public interface Obstacle {
 	public boolean finishPassed(int fishX);
 	public void draw(SpriteBatch batcher, float runtime);
 	public void stop();
-	public void speedDownTo(float speedX, float speedY, int increment);
+	public void speedDownTo(float speedX, float speedY);
 	public boolean overlaps(Circle fishCircle);
 	public void drawCollision(ShapeRenderer shapeRenderer);
 	public float getX();

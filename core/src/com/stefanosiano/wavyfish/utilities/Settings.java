@@ -32,7 +32,9 @@ public class Settings {
 	/**
 	 * used to know if the user got his life after sharing the game on facebook, g+, or twitter
 	 */
-	public static boolean FIRST_SHARE = false;
+    public static boolean FIRST_SHARE = false;
+    public static int REWARDEDVIDEOSWATCHED = 0;
+    public static int rewardedVideosToWatch = 1;
 	
 	
 	public static void stretch(){
@@ -67,7 +69,7 @@ public class Settings {
 		NEW_TUT_FLAPPY = DataSaver.load(SavedItems.showNewTutFlappy + "").equalsIgnoreCase("true");
 		NEW_TUT_WAVY = DataSaver.load(SavedItems.showNewTutWavy + "").equalsIgnoreCase("true");
 		NEW_TUT_BOUNCING = DataSaver.load(SavedItems.showNewTutBouncing + "").equalsIgnoreCase("true");
-		
+
 		/*
 		TUT_MENU1 = true;
 		TUT_MENU2 = true;
@@ -79,7 +81,7 @@ public class Settings {
 		try{imageTypeIndex = Integer.parseInt(DataSaver.load(SavedItems.imageTypeIndex + ""));}catch(Exception e){imageTypeIndex = Integer.parseInt(SavedItems.imageTypeIndex.getDefault());}
 		try{screenshotCounter = Integer.parseInt(DataSaver.load(SavedItems.screenshotCounter + ""));}catch(Exception e){screenshotCounter = Integer.parseInt(SavedItems.screenshotCounter.getDefault());}
 		FIRST_SHARE = DataSaver.load(SavedItems.firstShare + "").equalsIgnoreCase("true");
-		
+
 		totalPlayTime = 0;
 		timeForAds = 0;
 		imageType = imageTypes[imageTypeIndex];

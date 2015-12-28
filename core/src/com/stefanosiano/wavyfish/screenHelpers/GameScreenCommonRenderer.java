@@ -55,16 +55,12 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 	private SpriteBatch batcherCollision;
 	private Color c;
 	protected Text difficultyText;
-	
-	//tutorial variables
-	private ArrayList<Text> tutorialTexts;
-	private boolean showTutorial;
     
     public GameScreenCommonRenderer(){
     	super();
         initialize();
     }
-    
+
     public void initialize(){
         this.fish = GameObjectContainer.fish;
         this.background = GameObjectContainer.background;
@@ -79,12 +75,8 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
         this.texts = GameObjectContainer.texts;
         this.fadingBackground = GameObjectContainer.fadingBackground;
         this.difficultyText = new Text(TextureLoader.fontOrange, 1f, -1f, false);
-        	
-        difficultyText.setCenteredHorizzontally(Settings.difficulty + "", 800, 20);
-        batcherCollision.setProjectionMatrix(cam.combined);
 
-        tutorialTexts = null;
-    	showTutorial = false;
+        batcherCollision.setProjectionMatrix(cam.combined);
 
     	if(obstacles == null)
     		obstacles = new ArrayList<Obstacle>();
@@ -105,6 +97,23 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 					this.obstacles.add(wallCouple);
 		}
 		GameObjectContainer.createObstacles(obstacles);
+    }
+
+    public void setDifficultyText(){
+        switch (Settings.difficulty){
+            case easy:
+                difficultyText.setCenteredHorizzontally(screen.getGame().getString("easy"), 800, 20);
+                break;
+            case medium:
+                difficultyText.setCenteredHorizzontally(screen.getGame().getString("medium"), 800, 20);
+                break;
+            case hard:
+                difficultyText.setCenteredHorizzontally(screen.getGame().getString("hard"), 800, 20);
+                break;
+            case crazy:
+                difficultyText.setCenteredHorizzontally(screen.getGame().getString("crazy"), 800, 20);
+                break;
+        }
     }
     
     public void stateChanged(){
@@ -158,24 +167,6 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
         batcher.end();
 	}
 
-	
-	private void drawTutorial(float delta){
-	    drawBackground(delta);
-        batcher.end();
-		Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(0, 0, 0, 0.4f);
-        shapeRenderer.rect(0, 0, virtualWidth, virtualHeight);
-        shapeRenderer.end();
-        batcher.begin();
-        batcher.enableBlending();
-        batcher.draw(TextureLoader.fishTutor, 0, 0, 450, 900);
-        batcher.draw(TextureLoader.cloudTutor, 450, 50, 1100, 800);
-        for(Text t : tutorialTexts)
-        	t.draw(batcher, delta);
-	}
-
 	protected void drawMenu(float delta){
 		drawWallAndFish(0, delta);
 		drawButtons(delta);
@@ -204,6 +195,7 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 	}
 
 	protected void drawPause(float delta){
+        drawFadingBackground(delta);
 		drawWallAndFish(0, delta);
 		drawLives(delta);
 		drawScore(delta);
@@ -217,6 +209,7 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 	}
 
 	protected void drawResume(float delta){
+        drawFadingBackground(delta);
 		drawWallAndFish(0, delta);
 		drawLives(delta);
 		drawScore(delta);
@@ -225,7 +218,7 @@ public class GameScreenCommonRenderer extends SimpleRenderer{
 		drawDifficulty(delta);
 		drawTexts(delta);
 		
-		drawReverseCount(delta, "Resuming in ");
+		drawReverseCount(delta, screen.getGame().getString("resuming_in") + " ");
 		if(drawCollision)
 			drawFishCollided(delta);
 		//drawCollisions();

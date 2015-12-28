@@ -78,13 +78,13 @@ public class Piranha extends SimpleGameObject implements Obstacle {
         	if(stop)
         		return;
 
-			newPositionX = position.x + xGap * piranhaNumber;
+            Piranha.increment += incrementStep;
+			newPositionX = position.x + (xGap + increment) * piranhaNumber;
 			if(postponeFurther){
 				newPositionX *= 2;
 				postponeFurther = false;
 			}
         	position.x = newPositionX;
-			Piranha.increment += incrementStep;
         	position.y = r.nextInt(screenHeight);
 			this.passed = false;
 			this.finishPassed = false;
@@ -187,13 +187,12 @@ public class Piranha extends SimpleGameObject implements Obstacle {
 	}
 	
 	@Override
-	public void speedDownTo(float speedX, float speedY, int increment){
+	public void speedDownTo(float speedX, float speedY){
 		velocity.x = speedX;
 		if(velocity.y < 0)
 			velocity.y = -speedY;
 		else
 			velocity.y = speedY;
-		//Piranha.increment = increment;
 	}
 	
 	@Override

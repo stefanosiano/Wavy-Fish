@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Timer;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.buttons.SimpleButton;
 import com.stefanosiano.common.tochange.GameButtonContainer;
@@ -46,11 +47,11 @@ public class MenuScreenUpdater {
 		this.swipeSign = GameObjectContainer.swipeSign;
 		this.menuExperienceBar = GameObjectContainer.menuExperienceBar;
 		this.textHigherLevel = new Text(TextureLoader.fontWhite, 1f, -1f, false);
-		this.textHigherLevel.setCenteredHorizzontally("You need higher level", 800, 680);
+		this.textHigherLevel.setCenteredHorizzontally(menuScreen.getGame().getString("higher_lvl"), 800, 680);
 		this.currentExperienceText = new Text(TextureLoader.fontWhite, 0.8f, -0.6f, false);
-		this.currentExperienceText.set("Experience: " + Experience.getExperience() + "/" + Experience.getNextLevelExperience(Experience.getExperience()), 200, 790);
+		this.currentExperienceText.set(menuScreen.getGame().getString("experience") + Experience.getExperience() + "/" + Experience.getNextLevelExperience(Experience.getExperience()), 200, 790);
 		this.currentLevelText = new Text(TextureLoader.fontWhite, 0.8f, -0.6f, false);
-		this.currentLevelText.setToLeftOf("LVL: " + Experience.getLevel(), 1400, 790);
+		this.currentLevelText.setToLeftOf(menuScreen.getGame().getString("lvl") + Experience.getLevel(), 1400, 790);
 		GameObjectContainer.clearTexts();
 		GameObjectContainer.addText(textHigherLevel);
 		GameObjectContainer.addText(currentExperienceText);
@@ -58,15 +59,11 @@ public class MenuScreenUpdater {
 		changeText();
 		SoundLoader.playMusic(SoundLoader.musicIntro);
 		this.objectDisabler.disableMenuFish(Settings.imageType);
+        TextureLoader.changeTextures();
 		Initializer.updateTextures();
 		getGestures = true;
 		if(!Settings.TUT_MENU1){
 			disableOptionsAtStart();
-			if(!Settings.FIRST_SHARE){
-				SimpleButton b = GameButtonContainer.findActiveButton(ButtonNames.moreLivesShine);
-				b.startBlink(1f);
-				b.startRotate(2);
-			}
 		}
 	}
 	
@@ -117,11 +114,6 @@ public class MenuScreenUpdater {
 					Settings.tutorialShown(SavedItems.showTutMenu1);
 					GameButtonContainer.setButtons(GameState.menu);
 					disableOptionsAtStart();
-					if(!Settings.FIRST_SHARE){
-						SimpleButton b = GameButtonContainer.findActiveButton(ButtonNames.moreLivesShine);
-						b.startBlink(1.5f);
-						b.startRotate(2);;
-					}
 					break;
 				default:
 					break;
@@ -159,6 +151,10 @@ public class MenuScreenUpdater {
 					}, 0.4f);
 					break;
 				case hardwareBack:
+                    if(menuScreen.isShowingFish()){
+                        endShowEarnMoreLives();
+                        break;
+                    }
 					getGestures = false;
 					GameButtonContainer.disableAllButtons();
 					menuScreen.fadeOut(new Runnable() {
@@ -172,13 +168,13 @@ public class MenuScreenUpdater {
 					getGestures = false;
 					GameButtonContainer.disableAllButtons();
 					menuScreen.fadeOut(new Runnable() {
-						@Override
-						public void run() {
-							GameButtonContainer.setButtons(GameState.menu2);
-							menuScreen.getGame().changeScreen(Screens.menu2);
-							menuScreen.dispose();
-						}
-					}, 0.4f);
+                        @Override
+                        public void run() {
+                            GameButtonContainer.setButtons(GameState.menu2);
+                            menuScreen.getGame().changeScreen(Screens.menu2);
+                            menuScreen.dispose();
+                        }
+                    }, 0.4f);
 					break;
 				case buttonOptions:
 					enableOptions(!optionsEnabled);
@@ -186,43 +182,56 @@ public class MenuScreenUpdater {
 				case buttonEarnMoreLives:
 					GameButtonContainer.setButtons(GameState.earnMoreLives);
 					menuScreen.showEarnMoreLives(true);
+                    if(!Settings.FIRST_SHARE){
+                        GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(ButtonNames.startRewardedVideo));
+                    }
 					break;
 				case buttonShareText:
 					menuScreen.getGame().getCommonApiController().showShareProgressBar();
-					menuScreen.getGame().getCommonApiController().shareText("Try wavy fish! \nAndroid: https://play.google.com/store/apps/details?id=com.stefanosiano.wavyfish.android",
-							"Share this app with your friends!", new ShareCallback(){
-						@Override
-						public void onShareCancelled() {
-							AnalyticsSender.sendGeneralEvent(menuScreen.getGame(), "Share Cancelled", "", 1);
-						}
+                    Timer.schedule(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            menuScreen.getGame().getCommonApiController().shareText(menuScreen.getGame().getString("share_text") + "\nAndroid: https://play.google.com/store/apps/details?id=com.stefanosiano.wavyfish.android",
+                                    "Share this app with your friends!", new ShareCallback() {
+                                        @Override
+                                        public void onShareCancelled() {
+                                            AnalyticsSender.sendGeneralEvent(menuScreen.getGame(), "Share Cancelled", "", 1);
+                                        }
 
-						@Override
-						public void onShareClicked(String appPackage, ShareType type) {
-							AnalyticsSender.sendShareClicked(menuScreen.getGame(), type, appPackage);
-							switch(appPackage){
-								case "facebook.katana":
-								case "google.apps.plus":
-								case "twitter":
-									Settings.sharedFirstTime();
-									//used to calculate the number of lives exactly
-									Experience.calculateNewValues(0);
-									GameButtonContainer.setButtons(GameState.menu);
-									break;
-							}
-						}
-						
-					});
+                                        @Override
+                                        public void onShareClicked(String appPackage, ShareType type) {
+                                            AnalyticsSender.sendShareClicked(menuScreen.getGame(), type, appPackage);
+                                            switch (appPackage) {
+                                                case "facebook.katana":
+                                                case "google.apps.plus":
+                                                case "twitter":
+                                                    Settings.sharedFirstTime();
+                                                    //used to calculate the number of lives exactly
+                                                    Experience.calculateNewValues(0);
+                                                    GameButtonContainer.setButtons(GameState.menu);
+                                                    break;
+                                            }
+                                        }
+                                    });
+                        }
+                    }, 0.1f);
 					break;
 				case buttonBackground:
-					GameButtonContainer.setButtons(GameState.menu);
-					menuScreen.showEarnMoreLives(false);
-					this.objectDisabler.disableMenuFish(Settings.imageType);
+                    endShowEarnMoreLives();
 					break;
+                case startRewardedVideo:
+                    menuScreen.getGame().getCommonApiController().showRewardedVideoAd();
+                    break;
 				default:
 					break;
 			}
 		}
 	}
+    private void endShowEarnMoreLives(){
+        GameButtonContainer.setButtons(GameState.menu);
+        menuScreen.showEarnMoreLives(false);
+        this.objectDisabler.disableMenuFish(Settings.imageType);
+    }
 
 	public void onSwipeLeft(){
 		if(getGestures){
@@ -254,18 +263,22 @@ public class MenuScreenUpdater {
 			GameButtonContainer.findActiveButton(ButtonNames.buttonMusic).setupFadeOutTweens(0.5f);
 			GameButtonContainer.findActiveButton(ButtonNames.buttonSoundEnabled).setupFadeOutTweens(0.5f);
 			GameButtonContainer.findActiveButton(ButtonNames.buttonShareText).setupFadeOutTweens(new Runnable() {
-				@Override
-				public void run() {GameButtonContainer.setEnabledButton(ButtonNames.buttonOptions, true);}
-			}, 0.5f);
+                @Override
+                public void run() {
+                    GameButtonContainer.setEnabledButton(ButtonNames.buttonOptions, true);
+                }
+            }, 0.5f);
 		}
 		else{
 			GameButtonContainer.findActiveButton(ButtonNames.buttonFullScreen).setupFadeInTweens(0.5f);
 			GameButtonContainer.findActiveButton(ButtonNames.buttonMusic).setupFadeInTweens(0.5f);
 			GameButtonContainer.findActiveButton(ButtonNames.buttonSoundEnabled).setupFadeInTweens(0.5f);
 			GameButtonContainer.findActiveButton(ButtonNames.buttonShareText).setupFadeInTweens(new Runnable() {
-				@Override
-				public void run() {GameButtonContainer.setEnabledButton(ButtonNames.buttonOptions, true);}
-			}, 0.5f);
+                @Override
+                public void run() {
+                    GameButtonContainer.setEnabledButton(ButtonNames.buttonOptions, true);
+                }
+            }, 0.5f);
 		}
 	}
 	
@@ -279,6 +292,25 @@ public class MenuScreenUpdater {
 		GameButtonContainer.setEnabledButton(ButtonNames.buttonSoundEnabled, false);
 		GameButtonContainer.findActiveButton(ButtonNames.buttonShareText).setupFadeOutTweens(0);
 		GameButtonContainer.setEnabledButton(ButtonNames.buttonShareText, false);
+
+        if(!Settings.FIRST_SHARE){
+            SimpleButton b = GameButtonContainer.findActiveButton(ButtonNames.moreLivesShine);
+            b.startBlink(1f);
+            b.startRotate(2);
+        }
+        else{
+            /*
+            System.out.println("rewarded loaded" + menuScreen.getGame().getCommonApiController().isRewardedVideoLoaded());
+            if(Settings.REWARDEDVIDEOSWATCHED < Settings.rewardedVideosToWatch && menuScreen.getGame().getCommonApiController().isRewardedVideoLoaded()){
+                SimpleButton b = GameButtonContainer.findActiveButton(ButtonNames.moreLivesShine);
+                b.startBlink(1f);
+                b.startRotate(2);
+            }
+            else {*/
+                GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(ButtonNames.moreLivesShine));
+                GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(ButtonNames.buttonEarnMoreLives));
+            //}
+        }
 	}
 	
 	private void changeText(){
@@ -289,21 +321,21 @@ public class MenuScreenUpdater {
 			case 1:
 			case 2:
 				if(imageType.equals(Enums.ImageType.horror)){
-					textHigherLevel.updateTextCenteredHorizzontally("You need level 3 to unlock this fish");
+					textHigherLevel.updateTextCenteredHorizzontally(menuScreen.getGame().getString("need_lvl", 3));
 					break;
 				}
 			case 3:
 			case 4:
 			case 5:
 				if(imageType.equals(Enums.ImageType.tema)){
-					textHigherLevel.updateTextCenteredHorizzontally("You need level 6 to unlock this fish");
+                    textHigherLevel.updateTextCenteredHorizzontally(menuScreen.getGame().getString("need_lvl", 6));
 					break;
 				}
 			case 6:
 			case 7:
 			case 8:
 				if(imageType.equals(Enums.ImageType.space)){
-					textHigherLevel.updateTextCenteredHorizzontally("You need level 9 to unlock this fish");
+                    textHigherLevel.updateTextCenteredHorizzontally(menuScreen.getGame().getString("need_lvl", 9));
 					break;
 				}
 			case 9:

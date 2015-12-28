@@ -1,6 +1,9 @@
 package com.stefanosiano.wavyfish.screenHelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.tochange.GameButtonContainer;
 import com.stefanosiano.common.tochange.ScreenConfig;
@@ -19,10 +22,13 @@ import com.stefanosiano.wavyfish.utilities.Settings;
 public class TutorialGameScreenUpdater extends GameScreenUpdater {
 	private boolean clickedButtonFishUp, clickedButtonFishDown, clickedButtonFlappy, clickedButtonWavy, startButtonShowing;
 	private float touchY, timeToStart;
-	private Text instruction1, instruction2, readyToGo;
+	private Text instruction1, readyToGo;
+    private I18NBundle tutorialStrings;
 
 	public TutorialGameScreenUpdater(GameScreen gameScreen, int speedUpStep, int speedDownStep, int numberOfWallsToFinish, CommonApiController adsController) {
 		super(gameScreen, speedUpStep, speedDownStep, numberOfWallsToFinish, adsController);
+        FileHandle baseFileHandle = Gdx.files.internal("data/tutorial_strings");
+        tutorialStrings = I18NBundle.createBundle(baseFileHandle);
 		GameObjectContainer.clearTexts();
 		
 		clickedButtonFishUp = false;
@@ -32,38 +38,32 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 		startButtonShowing = false;
 		timeToStart = 0;
 		setValues();
-		instruction1 = new Text(TextureLoader.fontWhite, 0.8f, -0.8f, false);
-		instruction2 = new Text(TextureLoader.fontWhite, 0.8f, -0.8f, false);
+		instruction1 = new Text(TextureLoader.fontWhite, 0.8f, -0.8f, true);
 		readyToGo = new Text(TextureLoader.fontWhite, 0.8f, -0.8f, false);
-		readyToGo.setCenteredHorizzontally("You are now ready to start the game!", 800, 830);
+		readyToGo.setCenteredHorizzontally(tutorialStrings.format("start"), 800, 830);
 
-		float textY = 415;
-		float textY2 = 485;
+        float textY = 390;
+        float textX = 310;
+        float textW = 980;
 		switch (Settings.gameControl){
 			case classic:
-				this.instruction1.setCentered("Tap the upper part of the", 800, textY);
-				this.instruction2.setCentered("screen to move up your fish", 800, textY2);
+				this.instruction1.set(tutorialStrings.format("classic1"), textX, textY, textW, Align.center);
 				break;
 			case flappy:
-				this.instruction1.setCentered("Tap anywhere on the", 800, textY);
-				this.instruction2.setCentered("screen to jump", 800, textY2);
+                this.instruction1.set(tutorialStrings.format("flappy"), textX, textY, textW, Align.center);
 				break;
 			case wavy:
-				this.instruction1.setCentered("Move your finger on the screen", 800, textY);
-				this.instruction2.setCentered("and the fish will follow you", 800, textY2);
+                this.instruction1.set(tutorialStrings.format("wavy"), textX, textY, textW, Align.center);
 				break;
 			case bouncing:
-				this.instruction1.setCentered("Tap anywhere on the screen", 800, textY);
-				this.instruction2.setCentered("to change the fish direction", 800, textY2);
+                this.instruction1.set(tutorialStrings.format("bouncy"), textX, textY, textW, Align.center);
 				fish.startBounce();
 				break;
 			default:
-				this.instruction1.setCentered("Tap the upper part of the", 800, textY);
-				this.instruction2.setCentered("screen to move up your fish", 800, textY2);
-				break;
+                this.instruction1.set(tutorialStrings.format("classic1"), textX, textY, textW, Align.center);
+                break;
 		}
 		GameObjectContainer.addText(instruction1);
-		GameObjectContainer.addText(instruction2);
 	}
 
 	
@@ -107,8 +107,7 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 				case buttonFishUp:
 					if(!clickedButtonFishUp){
 						clickedButtonFishUp = true;
-						this.instruction1.updateTextCentered("Tap the lower part of the");
-						this.instruction2.updateTextCentered("screen to move down your fish");
+						this.instruction1.updateOnlyText(tutorialStrings.format("classic2"));
 					}
 					fish.goUp(delta);
 					break;
@@ -117,8 +116,7 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 						fish.goDown(delta);
 						if(!clickedButtonFishDown){
 							gameScreen.stopShowingTextBackground();
-							this.instruction1.updateTextCentered("");
-							this.instruction2.updateTextCentered("");
+							this.instruction1.updateOnlyText("");
 							GameObjectContainer.clearTexts();
 							GameObjectContainer.addText(readyToGo);
 							clickedButtonFishDown = true;
@@ -153,8 +151,7 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 						SoundLoader.flap.play();
 					if(!clickedButtonFlappy){
 						gameScreen.stopShowingTextBackground();
-						this.instruction1.updateTextCentered("");
-						this.instruction2.updateTextCentered("");
+						this.instruction1.updateOnlyText("");
 						GameObjectContainer.clearTexts();
 						GameObjectContainer.addText(readyToGo);
 						clickedButtonFlappy = true;
@@ -188,8 +185,7 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 					fish.changeBounceDirection();
 					if(!clickedButtonFlappy){
 						gameScreen.stopShowingTextBackground();
-						this.instruction1.updateTextCentered("");
-						this.instruction2.updateTextCentered("");
+						this.instruction1.updateOnlyText("");
 						GameObjectContainer.clearTexts();
 						GameObjectContainer.addText(readyToGo);
 						clickedButtonFlappy = true;
@@ -243,8 +239,7 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 		
 		if(!startButtonShowing && timeToStart > 2 && clickedButtonWavy){
 			gameScreen.stopShowingTextBackground();
-			this.instruction1.updateTextCentered("");
-			this.instruction2.updateTextCentered("");
+			this.instruction1.updateOnlyText("");
 			GameObjectContainer.clearTexts();
 			GameObjectContainer.addText(readyToGo);
 			startButtonShowing = true;

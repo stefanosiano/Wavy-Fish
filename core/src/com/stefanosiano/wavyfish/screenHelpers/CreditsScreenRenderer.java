@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.stefanosiano.common.SimpleRenderer;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.buttons.SimpleButton;
@@ -20,11 +23,16 @@ public class CreditsScreenRenderer extends SimpleRenderer{
     private InfoState state;
     private SwipeSign swipeSign;
     private ArrayList<Text> classicInfoTexts, flappyInfoTexts, wavyInfoTexts, bouncyInfoTexts, creditsTexts, levelTexts;
+    private I18NBundle info_strings;
     
     public CreditsScreenRenderer(){
     	super();
 		this.activeButtons = GameButtonContainer.activeButtons;
 		this.swipeSign = GameObjectContainer.swipeSignCredits;
+
+        FileHandle baseFileHandle = Gdx.files.internal("data/info_strings");
+        info_strings = I18NBundle.createBundle(baseFileHandle);
+
 		createClassicInfoTexts();
 		createFlappyTutorialTexts();
 		createWavyTutorialTexts();
@@ -112,145 +120,103 @@ public class CreditsScreenRenderer extends SimpleRenderer{
     
     private void createClassicInfoTexts(){
     	classicInfoTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
-		int textYGap = 20;
-		int textStartY = 90;
-		float textScaleX = 0.95f;
-		float textScaleY = -0.95f;
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 90;
+        float textScaleX = 0.95f;
+        float textScaleY = -0.95f;
 		
-		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		
-		t1.setCenteredHorizzontally("Classic mode", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Tap the upper part of the", textCenterX, textStartY  + (- t1.getHeight() + textYGap) + 50);
-		t3.setCenteredHorizzontally("screen to move up the fish", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 50);
-		t4.setCenteredHorizzontally("Tap the lower part of the", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 100);
-		t5.setCenteredHorizzontally("screen to move it down", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 100);
-		t6.setCenteredHorizzontally("You can also hold your", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 150);
-		t7.setCenteredHorizzontally("finger on the screen!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 150);
+		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, true);
+		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+
+		t1.set(info_strings.format("classic_mode"), textStartX, textStartY, textWidth, Align.center);
+		t2.set(info_strings.format("classic_mode1"), textStartX, textStartY + (-t1.getHeight()) + 50, textWidth, Align.center);
+		t3.set(info_strings.format("classic_mode2"), textStartX, textStartY + (-t1.getHeight()) * 3 + 150, textWidth, Align.center);
+		t4.set(info_strings.format("classic_mode3"), textStartX, textStartY + (-t1.getHeight()) * 5 + 250, textWidth, Align.center);
 		
 		classicInfoTexts.add(t1);
 		classicInfoTexts.add(t2);
 		classicInfoTexts.add(t3);
 		classicInfoTexts.add(t4);
-		classicInfoTexts.add(t5);
-		classicInfoTexts.add(t6);
-		classicInfoTexts.add(t7);
     }
     
     private void createFlappyTutorialTexts(){
 		flappyInfoTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
-		int textYGap = 20;
-		int textStartY = 90;
-		float textScaleX = 0.95f;
-		float textScaleY = -0.95f;
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 90;
+        float textScaleX = 0.95f;
+        float textScaleY = -0.95f;
 		
-		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, true);
+		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
 		
-		t1.setCenteredHorizzontally("Flappy mode", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Tap anywhere to make", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 1 + 40);
-		t3.setCenteredHorizzontally("the fish 'jump'!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 40);
-		t4.setCenteredHorizzontally("It doesn't matter if", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 80);
-		t5.setCenteredHorizzontally("the fish touches the", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 80);
-		t6.setCenteredHorizzontally("bottom of the screen:", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 80);
-		t7.setCenteredHorizzontally("Just avoid the obstacles!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 120);
-				
+		t1.set(info_strings.format("flappy_mode"), textStartX, textStartY, textWidth, Align.center);
+		t2.set(info_strings.format("flappy_mode1"), textStartX, textStartY + (-t1.getHeight()) * 1 + 70, textWidth, Align.center);
+		t3.set(info_strings.format("flappy_mode2"), textStartX, textStartY + (-t1.getHeight()) * 3 + 200, textWidth, Align.center);
+
 		flappyInfoTexts.add(t1);
 		flappyInfoTexts.add(t2);
 		flappyInfoTexts.add(t3);
-		flappyInfoTexts.add(t4);
-		flappyInfoTexts.add(t5);
-		flappyInfoTexts.add(t6);
-		flappyInfoTexts.add(t7);
     }
     
     private void createWavyTutorialTexts(){
     	wavyInfoTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
-		int textYGap = 20;
-		int textStartY = 90;
-		float textScaleX = 0.95f;
-		float textScaleY = -0.95f;
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 90;
+        float textScaleX = 0.95f;
+        float textScaleY = -0.95f;
 		
-		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, true);
+		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
 		
-		t1.setCenteredHorizzontally("Wavy mode", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Touch the screen and", textCenterX, textStartY - t1.getHeight() + textYGap + 40);
-		t3.setCenteredHorizzontally("don't move your", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 40);
-		t4.setCenteredHorizzontally("finger from it!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 40);
-		t5.setCenteredHorizzontally("Your fish will follow", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 100);
-		t6.setCenteredHorizzontally("your finger and then", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 100);
-		t7.setCenteredHorizzontally("will start to wave!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 100);
-		
+		t1.set(info_strings.format("wavy_mode"), textStartX, textStartY, textWidth, Align.center);
+		t2.set(info_strings.format("wavy_mode1"), textStartX, textStartY - t1.getHeight() + 100, textWidth, Align.center);
+		t3.set(info_strings.format("wavy_mode2"), textStartX, textStartY + (-t1.getHeight()) * 4 + 180, textWidth, Align.center);
+
 		wavyInfoTexts.add(t1);
 		wavyInfoTexts.add(t2);
 		wavyInfoTexts.add(t3);
-		wavyInfoTexts.add(t4);
-		wavyInfoTexts.add(t5);
-		wavyInfoTexts.add(t6);
-		wavyInfoTexts.add(t7);
     }
     
     private void createBouncyTutorialTexts(){
     	bouncyInfoTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
-		int textYGap = 20;
-		int textStartY = 90;
-		float textScaleX = 0.95f;
-		float textScaleY = -0.95f;
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 90;
+        float textScaleX = 0.95f;
+        float textScaleY = -0.95f;
 		
-		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+		Text t1 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, true);
+		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
 		
-		t1.setCenteredHorizzontally("Bouncy mode", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Tap the screen and", textCenterX, textStartY - t1.getHeight() + textYGap + 40);
-		t3.setCenteredHorizzontally("change the fish", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 40);
-		t4.setCenteredHorizzontally("direction!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 40);
-		t5.setCenteredHorizzontally("When the fish reaches", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 100);
-		t6.setCenteredHorizzontally("the end of the", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 100);
-		t7.setCenteredHorizzontally("screen will bounce!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 100);
+		t1.set(info_strings.format("bouncy_mode"), textStartX, textStartY, textWidth, Align.center);
+		t2.set(info_strings.format("bouncy_mode1"), textStartX, textStartY - t1.getHeight() + 100, textWidth, Align.center);
+		t3.set(info_strings.format("bouncy_mode2"), textStartX, textStartY + (-t1.getHeight()) * 4 + 180, textWidth, Align.center);
 		
 		bouncyInfoTexts.add(t1);
 		bouncyInfoTexts.add(t2);
 		bouncyInfoTexts.add(t3);
-		bouncyInfoTexts.add(t4);
-		bouncyInfoTexts.add(t5);
-		bouncyInfoTexts.add(t6);
-		bouncyInfoTexts.add(t7);
     }
     
     private void createLevelsTexts(){
 		levelTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
 		int textYGap = 30;
 		int textStartY = 120;
 		float textScaleX = 0.9f;
 		float textScaleY = -0.9f;
-		
-		Text t1 = new Text(TextureLoader.fontYellow, 1, -1, false);
+
+        int textStartX = 550;
+        int textWidth = 1000;
+
+		Text t1 = new Text(TextureLoader.fontYellow, 1, -1, true);
 		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
@@ -261,22 +227,24 @@ public class CreditsScreenRenderer extends SimpleRenderer{
 		Text t9 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t10 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t11 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		
-		t1.setCenteredHorizzontally("Levels and achievements", textCenterX, textStartY);
-		textCenterX = 570;
-		
-		t2.set("1) Start", textCenterX, textStartY - t1.getHeight() + textYGap + 70);
-		t3.set("2) Medium", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 70);
-		t4.set("3) New Fish", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 70);
-		t5.set("4) Extra life", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 70);
-		t6.set("5) Hard", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 70);
-		
-		textCenterX = 1070;
-		t7.set("6) New Fish", textCenterX, textStartY - t1.getHeight() + textYGap + 70);
-		t8.set("7) Extra life", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 70);
-		t9.set("8) Crazy", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 70);
-		t10.set("9) New Fish", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 70);
-		t11.set("10) Extra life", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 70);
+
+        t1.set(info_strings.format("lvls"), textStartX, textStartY, textWidth, Align.center);
+
+        textWidth = 475;
+        textStartX = 565;
+
+		t2.set(info_strings.format("lvls1"), textStartX, textStartY - t1.getHeight() + textYGap + 70, textWidth, Align.left);
+		t3.set(info_strings.format("lvls2"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 70, textWidth, Align.left);
+		t4.set(info_strings.format("lvls3"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 70, textWidth, Align.left);
+		t5.set(info_strings.format("lvls4"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 70, textWidth, Align.left);
+		t6.set(info_strings.format("lvls5"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 70, textWidth, Align.left);
+
+        textStartX = 1060;
+		t7.set(info_strings.format("lvls6"), textStartX, textStartY - t1.getHeight() + textYGap + 70, textWidth, Align.left);
+		t8.set(info_strings.format("lvls7"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 70, textWidth, Align.left);
+		t9.set(info_strings.format("lvls8"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 70, textWidth, Align.left);
+		t10.set(info_strings.format("lvls9"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 70, textWidth, Align.left);
+		t11.set(info_strings.format("lvls10"), textStartX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 70, textWidth, Align.left);
 		
 		
 		levelTexts.add(t1);
@@ -308,12 +276,12 @@ public class CreditsScreenRenderer extends SimpleRenderer{
 		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t7 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
 		
-		t1.setCenteredHorizzontally("Credits", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Developed by", textCenterX, textStartY - t1.getHeight() + textYGap + 40);
+		t1.setCenteredHorizzontally(info_strings.format("credits"), textCenterX, textStartY);
+		t2.setCenteredHorizzontally(info_strings.format("credits1"), textCenterX, textStartY - t1.getHeight() + textYGap + 40);
 		t3.setCenteredHorizzontally("Stefano Siano", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 40);
-		t4.setCenteredHorizzontally("Graphics by", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 80);
+		t4.setCenteredHorizzontally(info_strings.format("credits2"), textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 80);
 		t5.setCenteredHorizzontally("Andrea Ditex", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 80);
-		t6.setCenteredHorizzontally("Powered by", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 120);
+		t6.setCenteredHorizzontally(info_strings.format("credits3"), textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 120);
 		t7.setCenteredHorizzontally("LibGDX", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 120);
 		
 		creditsTexts.add(t1);

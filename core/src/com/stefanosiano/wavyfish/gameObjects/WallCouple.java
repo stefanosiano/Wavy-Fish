@@ -56,7 +56,7 @@ public class WallCouple implements Obstacle {
 			WallCouple.increment += incrementStep;
 			int newHeight = minHeight + r.nextInt(maxHeight);
 
-			newPositionX = wallNumber * xGap + WallCouple.increment;
+            newPositionX = wallNumber * (xGap + WallCouple.increment);
 			if(postponeFurther){
 				newPositionX += xGap + WallCouple.increment;
 				postponeFurther = false;
@@ -143,10 +143,9 @@ public class WallCouple implements Obstacle {
 	}
 	
 	@Override
-	public void speedDownTo(float speedX, float speedY, int increment){
+	public void speedDownTo(float speedX, float speedY){
 		wall1.getVelocity().x = speedX;
 		wall2.getVelocity().x = speedX;
-		//WallCouple.increment = increment;
 	}
 	
 	@Override

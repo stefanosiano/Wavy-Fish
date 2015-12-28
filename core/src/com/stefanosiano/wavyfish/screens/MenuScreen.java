@@ -10,17 +10,20 @@ import com.stefanosiano.wavyfish.utilities.Enums.GameState;
 
 public class MenuScreen extends SimpleScreen{
 	private MenuScreenUpdater updater;
+    private boolean showingFish;
 
 	public MenuScreen(WavyFishGame game){
 		super(game, new MenuScreenRenderer());
 		setRendererScreen(this);
 		if(Settings.TUT_MENU1){
+            ((MenuScreenRenderer)renderer).createTutorialTexts();
 	    	GameButtonContainer.setButtons(GameState.tutorial);
 		}
 		else
 			GameButtonContainer.setButtons(GameState.menu);
 
 		this.updater = new MenuScreenUpdater(this);
+        showingFish = false;
 		fadeIn(new Runnable() {
 			@Override
 			public void run() {updater.startUpdate();}
@@ -30,9 +33,14 @@ public class MenuScreen extends SimpleScreen{
 	
 	public void showEarnMoreLives(boolean showFish){
 		((MenuScreenRenderer) renderer).showFishMoreLives(showFish);
+        showingFish = showFish;
 	}
-	
-	@Override
+
+    public boolean isShowingFish() {
+        return showingFish;
+    }
+
+    @Override
 	public void render(float delta) {
 		updater.update(delta);
 		renderer.renderAll(delta);

@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.Align;
 import com.stefanosiano.common.SimpleRenderer;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.buttons.SimpleButton;
@@ -40,9 +41,6 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
     	panelW = button.getWidth();
     	panelX2 = panelX + panelW + 120;
     	panelX3 = panelX2 + panelW + 120;
-    	
-		if(Settings.TUT_MENU2)
-			createTutorialTexts();
     }
     
     public void setSelectedDifficulty(ButtonNames name){
@@ -150,35 +148,32 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
         	t.draw(batcher, delta);
 	}
     
-    private void createTutorialTexts(){
+    public void createTutorialTexts(){
 		tutorialTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
 		int textYGap = 15;
 		int textStartY = 100;
 		float textScaleX = 0.85f;
 		float textScaleY = -0.85f;
+        int textStartX = 540;
+        int textWidth = 1000;
 		
-		Text t1 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+		Text t1 = new Text(TextureLoader.fontOrange, textScaleX, textScaleY, false);
 		Text t2 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
 		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t4 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
 		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 		Text t6 = new Text(TextureLoader.fontYellow, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t8 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t9 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
 		
 		
-		t1.setCenteredHorizzontally("Now choose the game options!", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("Difficulty", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 1 + 40);
-		t3.setCenteredHorizzontally("Change the speed of the fish!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 40);
-		t4.setCenteredHorizzontally("Controls", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 80);
-		t5.setCenteredHorizzontally("Change how you move the fish!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 80);
-		t6.setCenteredHorizzontally("Modes", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 120);
-		t7.setCenteredHorizzontally("Choose one of these modes and", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 120);
-		t8.setCenteredHorizzontally("discover new challenges!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 7 + 120);
-		t9.setCenteredHorizzontally("Other modes will come soon!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 8 + 120);
-		
+		t1.set(screen.getGame().getString("tut2_1"), textStartX, textStartY, textWidth, Align.center);
+		t2.set(screen.getGame().getString("difficulty"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 1 + 40, textWidth, Align.center);
+		t3.set(screen.getGame().getString("tut2_2"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 2 + 40, textWidth, Align.center);
+		t4.set(screen.getGame().getString("controls"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 3 + 80, textWidth, Align.center);
+		t5.set(screen.getGame().getString("tut2_3"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 4 + 80, textWidth, Align.center);
+		t6.set(screen.getGame().getString("modes"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 5 + 120, textWidth, Align.center);
+        t7.set(screen.getGame().getString("tut2_4"), textStartX, textStartY + (-t1.getHeight() + textYGap) * 6 + 120, textWidth, Align.center);
+
 		tutorialTexts.add(t1);
 		tutorialTexts.add(t2);
 		tutorialTexts.add(t3);
@@ -186,8 +181,5 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
 		tutorialTexts.add(t5);
 		tutorialTexts.add(t6);
 		tutorialTexts.add(t7);
-		
-		tutorialTexts.add(t8);
-		tutorialTexts.add(t9);
     }
 }

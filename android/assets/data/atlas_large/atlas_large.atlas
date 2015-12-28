@@ -6,137 +6,165 @@ filter: Linear,Linear
 repeat: none
 horror/fish
   rotate: false
-  xy: 10, 128
+  xy: 455, 378
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 0
 horror/fish
   rotate: false
-  xy: 455, 390
+  xy: 455, 294
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 1
 horror/fish
   rotate: false
-  xy: 10, 44
+  xy: 571, 378
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 2
 horror/fish
   rotate: false
-  xy: 126, 128
+  xy: 455, 210
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 3
 horror/fish
   rotate: false
-  xy: 455, 306
+  xy: 571, 294
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 4
 horror/fish
   rotate: false
-  xy: 571, 390
+  xy: 687, 378
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 5
 horror/fish
   rotate: false
-  xy: 126, 44
+  xy: 571, 210
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 6
 horror/fish
   rotate: false
-  xy: 242, 128
+  xy: 687, 294
   size: 106, 74
   orig: 106, 74
   offset: 0, 0
   index: 7
 horror/fondale
   rotate: false
-  xy: 10, 474
+  xy: 10, 462
   size: 922, 518
   orig: 922, 518
   offset: 0, 0
   index: -1
 horror/highscore_background
   rotate: false
-  xy: 10, 212
+  xy: 10, 200
   size: 435, 252
   orig: 435, 252
   offset: 0, 0
   index: -1
+horror/life_bar_left
+  rotate: false
+  xy: 444, 25
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+horror/life_bar_mid
+  rotate: false
+  xy: 340, 25
+  size: 94, 47
+  orig: 94, 47
+  offset: 0, 0
+  index: -1
+horror/life_bar_right
+  rotate: false
+  xy: 496, 153
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
 horror/net
   rotate: false
-  xy: 942, 608
+  xy: 942, 596
   size: 50, 384
   orig: 50, 384
   offset: 0, 0
   index: -1
 horror/piranha
   rotate: false
-  xy: 942, 490
+  xy: 340, 82
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 0
 horror/piranha
   rotate: false
-  xy: 942, 490
+  xy: 340, 82
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 7
 horror/piranha
   rotate: false
-  xy: 455, 188
+  xy: 803, 344
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 1
 horror/piranha
   rotate: false
-  xy: 571, 272
+  xy: 881, 344
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 2
 horror/piranha
   rotate: false
-  xy: 687, 356
+  xy: 942, 478
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 3
 horror/piranha
   rotate: false
-  xy: 765, 356
+  xy: 687, 176
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 4
 horror/piranha
   rotate: false
-  xy: 843, 356
+  xy: 765, 176
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 5
 horror/piranha
   rotate: false
-  xy: 242, 10
+  xy: 418, 82
   size: 68, 108
   orig: 68, 108
   offset: 0, 0
   index: 6
+horror/red_border
+  rotate: false
+  xy: 10, 10
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1
 
 atlas_large2.png
 size: 1024,1024
@@ -145,273 +173,245 @@ filter: Linear,Linear
 repeat: none
 menu/alone
   rotate: false
-  xy: 270, 364
+  xy: 10, 91
   size: 121, 121
   orig: 121, 121
   offset: 0, 0
   index: -1
 menu/back
   rotate: false
-  xy: 923, 222
+  xy: 10, 49
   size: 79, 32
   orig: 79, 32
   offset: 0, 0
   index: -1
 menu/black_star
   rotate: false
-  xy: 882, 880
+  xy: 882, 884
   size: 116, 124
   orig: 116, 124
   offset: 0, 0
   index: -1
 menu/button1
   rotate: false
-  xy: 401, 402
+  xy: 688, 596
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button2
   rotate: false
-  xy: 401, 322
+  xy: 688, 516
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button3
   rotate: false
-  xy: 396, 163
+  xy: 267, 10
   size: 258, 69
   orig: 258, 69
   offset: 0, 0
   index: -1
 menu/button4
   rotate: false
-  xy: 396, 242
+  xy: 267, 89
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button5
   rotate: false
-  xy: 669, 344
+  xy: 440, 421
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/button_disabled
   rotate: false
-  xy: 669, 264
+  xy: 440, 341
   size: 258, 70
   orig: 258, 70
   offset: 0, 0
   index: -1
 menu/cloud_tutor
   rotate: false
-  xy: 10, 28
+  xy: 422, 568
   size: 256, 180
   orig: 256, 180
   offset: 0, 0
   index: -1
 menu/cup
   rotate: false
-  xy: 10, 637
+  xy: 10, 641
   size: 402, 367
   orig: 402, 367
   offset: 0, 0
   index: -1
 menu/experience_back
   rotate: false
-  xy: 10, 10
+  xy: 594, 550
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 menu/experience_border
   rotate: false
-  xy: 669, 464
+  xy: 882, 778
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 menu/experience_front
   rotate: false
-  xy: 923, 180
+  xy: 99, 49
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 menu/fish_tutor
   rotate: false
-  xy: 752, 424
+  xy: 270, 169
   size: 160, 320
   orig: 160, 320
   offset: 0, 0
   index: -1
 menu/fullscreen
   rotate: false
-  xy: 882, 792
+  xy: 882, 796
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/fullscreen_off
   rotate: false
-  xy: 836, 176
+  xy: 440, 186
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
-menu/life_bar_left
-  rotate: false
-  xy: 693, 507
-  size: 35, 47
-  orig: 35, 47
-  offset: 0, 0
-  index: -1
-menu/life_bar_mid
-  rotate: false
-  xy: 836, 119
-  size: 94, 47
-  orig: 94, 47
-  offset: 0, 0
-  index: -1
-menu/life_bar_right
-  rotate: false
-  xy: 969, 823
-  size: 35, 47
-  orig: 35, 47
-  offset: 0, 0
-  index: -1
 menu/logo
   rotate: false
-  xy: 422, 754
+  xy: 422, 758
   size: 450, 250
   orig: 450, 250
   offset: 0, 0
   index: -1
 menu/menu
   rotate: false
-  xy: 276, 142
+  xy: 527, 186
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/mode_selected
   rotate: false
-  xy: 422, 482
+  xy: 688, 676
   size: 261, 72
   orig: 261, 72
   offset: 0, 0
   index: -1
 menu/more_lives
   rotate: false
-  xy: 276, 54
+  xy: 708, 428
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/music_off
   rotate: false
-  xy: 363, 75
+  xy: 795, 428
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/music_on
   rotate: false
-  xy: 450, 75
+  xy: 708, 340
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/panel
   rotate: false
-  xy: 10, 218
+  xy: 10, 222
   size: 250, 267
   orig: 250, 267
   offset: 0, 0
   index: -1
-menu/red_border
-  rotate: false
-  xy: 422, 564
-  size: 320, 180
-  orig: 320, 180
-  offset: 0, 0
-  index: -1
 menu/resume
   rotate: false
-  xy: 537, 75
+  xy: 795, 340
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/retry
   rotate: false
-  xy: 937, 704
+  xy: 882, 428
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/settings
   rotate: false
-  xy: 937, 616
+  xy: 882, 340
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/share_score
   rotate: false
-  xy: 937, 528
+  xy: 535, 98
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/share_text
   rotate: false
-  xy: 937, 440
+  xy: 535, 10
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/speaker_off
   rotate: false
-  xy: 937, 352
+  xy: 614, 253
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/speaker_on
   rotate: false
-  xy: 937, 264
+  xy: 701, 252
   size: 77, 78
   orig: 77, 78
   offset: 0, 0
   index: -1
 menu/star
   rotate: false
-  xy: 270, 230
+  xy: 141, 88
   size: 116, 124
   orig: 116, 124
   offset: 0, 0
   index: -1
 menu/swipe_background
   rotate: false
-  xy: 664, 197
+  xy: 422, 501
   size: 162, 57
   orig: 162, 57
   offset: 0, 0
   index: -1
 menu/swipe_background_info
   rotate: false
-  xy: 664, 130
+  xy: 440, 274
   size: 162, 57
   orig: 162, 57
   offset: 0, 0
   index: -1
 menu/wavy_fish
   rotate: false
-  xy: 10, 495
+  xy: 10, 499
   size: 402, 132
   orig: 402, 132
   offset: 0, 0
@@ -424,137 +424,165 @@ filter: Linear,Linear
 repeat: none
 original/fish
   rotate: false
-  xy: 10, 131
+  xy: 455, 377
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 0
 original/fish
   rotate: false
-  xy: 455, 393
+  xy: 455, 292
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 1
 original/fish
   rotate: false
-  xy: 10, 46
+  xy: 575, 377
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 2
 original/fish
   rotate: false
-  xy: 130, 131
+  xy: 455, 207
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 3
 original/fish
   rotate: false
-  xy: 455, 308
+  xy: 575, 292
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 4
 original/fish
   rotate: false
-  xy: 575, 393
+  xy: 695, 377
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 5
 original/fish
   rotate: false
-  xy: 130, 46
+  xy: 575, 207
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 6
 original/fish
   rotate: false
-  xy: 250, 131
+  xy: 695, 292
   size: 110, 75
   orig: 110, 75
   offset: 0, 0
   index: 7
 original/fondale
   rotate: false
-  xy: 10, 478
+  xy: 10, 462
   size: 922, 518
   orig: 922, 518
   offset: 0, 0
   index: -1
 original/highscore_background
   rotate: false
-  xy: 10, 216
+  xy: 10, 200
   size: 435, 252
   orig: 435, 252
   offset: 0, 0
   index: -1
+original/life_bar_left
+  rotate: false
+  xy: 942, 539
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+original/life_bar_mid
+  rotate: false
+  xy: 340, 22
+  size: 94, 47
+  orig: 94, 47
+  offset: 0, 0
+  index: -1
+original/life_bar_right
+  rotate: false
+  xy: 589, 150
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
 original/net
   rotate: false
-  xy: 942, 612
+  xy: 942, 596
   size: 50, 384
   orig: 50, 384
   offset: 0, 0
   index: -1
 original/piranha
   rotate: false
-  xy: 455, 187
+  xy: 340, 79
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 0
 original/piranha
   rotate: false
-  xy: 575, 272
+  xy: 815, 341
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 1
 original/piranha
   rotate: false
-  xy: 695, 357
+  xy: 695, 171
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 2
 original/piranha
   rotate: false
-  xy: 778, 357
+  xy: 898, 341
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 3
 original/piranha
   rotate: false
-  xy: 861, 357
+  xy: 778, 171
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 4
 original/piranha
   rotate: false
-  xy: 250, 10
+  xy: 861, 220
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 5
 original/piranha
   rotate: false
-  xy: 370, 95
+  xy: 423, 79
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 6
 original/piranha
   rotate: false
-  xy: 453, 66
+  xy: 506, 86
   size: 73, 111
   orig: 73, 111
   offset: 0, 0
   index: 7
+original/red_border
+  rotate: false
+  xy: 10, 10
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1
 
 atlas_large4.png
 size: 1024,1024
@@ -563,137 +591,165 @@ filter: Linear,Linear
 repeat: none
 space/fish
   rotate: false
-  xy: 10, 130
+  xy: 455, 376
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 0
 space/fish
   rotate: false
-  xy: 455, 392
+  xy: 455, 290
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 1
 space/fish
   rotate: false
-  xy: 10, 44
+  xy: 578, 376
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 2
 space/fish
   rotate: false
-  xy: 133, 130
+  xy: 455, 204
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 3
 space/fish
   rotate: false
-  xy: 455, 306
+  xy: 578, 290
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 4
 space/fish
   rotate: false
-  xy: 578, 392
+  xy: 701, 376
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 5
 space/fish
   rotate: false
-  xy: 133, 44
+  xy: 578, 204
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 6
 space/fish
   rotate: false
-  xy: 256, 130
+  xy: 701, 290
   size: 113, 76
   orig: 113, 76
   offset: 0, 0
   index: 7
 space/fondale
   rotate: false
-  xy: 10, 478
+  xy: 10, 462
   size: 922, 518
   orig: 922, 518
   offset: 0, 0
   index: -1
 space/highscore_background
   rotate: false
-  xy: 10, 216
+  xy: 10, 200
   size: 435, 252
   orig: 435, 252
   offset: 0, 0
   index: -1
+space/life_bar_left
+  rotate: false
+  xy: 574, 147
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+space/life_bar_mid
+  rotate: false
+  xy: 340, 23
+  size: 94, 47
+  orig: 94, 47
+  offset: 0, 0
+  index: -1
+space/life_bar_right
+  rotate: false
+  xy: 444, 23
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
 space/net
   rotate: false
-  xy: 942, 619
+  xy: 942, 603
   size: 50, 377
   orig: 50, 377
   offset: 0, 0
   index: -1
 space/piranha
   rotate: false
-  xy: 942, 499
+  xy: 340, 80
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 0
 space/piranha
   rotate: false
-  xy: 455, 186
+  xy: 824, 342
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 1
 space/piranha
   rotate: false
-  xy: 533, 186
+  xy: 942, 483
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 2
 space/piranha
   rotate: false
-  xy: 701, 358
+  xy: 701, 170
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 3
 space/piranha
   rotate: false
-  xy: 779, 358
+  xy: 779, 170
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 4
 space/piranha
   rotate: false
-  xy: 857, 358
+  xy: 902, 342
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 5
 space/piranha
   rotate: false
-  xy: 256, 10
+  xy: 418, 80
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 6
 space/piranha
   rotate: false
-  xy: 334, 10
+  xy: 496, 84
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 7
+space/red_border
+  rotate: false
+  xy: 10, 10
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1
 
 atlas_large5.png
 size: 1024,1024
@@ -702,134 +758,162 @@ filter: Linear,Linear
 repeat: none
 tema/fish
   rotate: false
-  xy: 10, 130
+  xy: 455, 377
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 0
 tema/fish
   rotate: false
-  xy: 455, 392
+  xy: 455, 292
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 1
 tema/fish
   rotate: false
-  xy: 10, 45
+  xy: 577, 377
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 2
 tema/fish
   rotate: false
-  xy: 132, 130
+  xy: 455, 207
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 3
 tema/fish
   rotate: false
-  xy: 455, 307
+  xy: 577, 292
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 4
 tema/fish
   rotate: false
-  xy: 577, 392
+  xy: 699, 377
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 5
 tema/fish
   rotate: false
-  xy: 132, 45
+  xy: 577, 207
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 6
 tema/fish
   rotate: false
-  xy: 254, 130
+  xy: 699, 292
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: 7
 tema/fondale
   rotate: false
-  xy: 10, 477
+  xy: 10, 462
   size: 922, 518
   orig: 922, 518
   offset: 0, 0
   index: -1
 tema/highscore_background
   rotate: false
-  xy: 10, 215
+  xy: 10, 200
   size: 435, 252
   orig: 435, 252
   offset: 0, 0
   index: -1
+tema/life_bar_left
+  rotate: false
+  xy: 574, 150
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+tema/life_bar_mid
+  rotate: false
+  xy: 340, 23
+  size: 94, 47
+  orig: 94, 47
+  offset: 0, 0
+  index: -1
+tema/life_bar_right
+  rotate: false
+  xy: 444, 23
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
 tema/net
   rotate: false
-  xy: 942, 611
+  xy: 942, 596
   size: 50, 384
   orig: 50, 384
   offset: 0, 0
   index: -1
 tema/piranha
   rotate: false
-  xy: 942, 491
+  xy: 340, 80
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 0
 tema/piranha
   rotate: false
-  xy: 455, 187
+  xy: 821, 342
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 1
 tema/piranha
   rotate: false
-  xy: 533, 187
+  xy: 942, 476
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 2
 tema/piranha
   rotate: false
-  xy: 699, 357
+  xy: 699, 172
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 3
 tema/piranha
   rotate: false
-  xy: 777, 357
+  xy: 777, 172
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 4
 tema/piranha
   rotate: false
-  xy: 855, 357
+  xy: 899, 342
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 5
 tema/piranha
   rotate: false
-  xy: 254, 10
+  xy: 418, 80
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 6
 tema/piranha
   rotate: false
-  xy: 332, 10
+  xy: 496, 87
   size: 68, 110
   orig: 68, 110
   offset: 0, 0
   index: 7
+tema/red_border
+  rotate: false
+  xy: 10, 10
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1

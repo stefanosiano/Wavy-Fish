@@ -60,4 +60,20 @@ public class DesktopApiController implements CommonApiController {
 	public void showOnCheat() {
 		System.out.println("on cheat gneeee");
 	}
+
+    @Override
+    public void loadRewardedVideoAd() {
+        System.out.println("loadRewardedVideoAd gneeee");
+    }
+
+    @Override
+    public void showRewardedVideoAd() {
+        System.out.println("showRewardedVideoAd gneeee");
+    }
+
+    @Override
+    public boolean isRewardedVideoLoaded() {
+        System.out.println("isRewardedVideoLoaded gneeee");
+        return true;
+    }
 }

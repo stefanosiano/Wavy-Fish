@@ -171,8 +171,8 @@ public class Fish extends SimpleGameObject {
 	    this.flapVelocity = vel;
 		this.originalFlapAcceleration = acc;
 		this.originalFlapVelocity = vel;
-		this.flapAccStep = acc / 20;
-		this.flapVelStep = vel / 25;
+		this.flapAccStep = acc / 17;
+		this.flapVelStep = vel / 22;
 	}
 	
 

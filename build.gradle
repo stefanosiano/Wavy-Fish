@@ -80,7 +80,7 @@ project(":android") {
             transitive = true
         }
         // MoPub Kit
-        compile('com.mopub:mopub-sdk:4.0.0@aar') {
+        compile('com.mopub:mopub-sdk:4.3.0@aar') {
             transitive = true
         }
     }

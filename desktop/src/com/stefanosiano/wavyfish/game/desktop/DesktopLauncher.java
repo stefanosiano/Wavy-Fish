@@ -12,8 +12,11 @@ public class DesktopLauncher {
         config.width = 640;
         config.height = 360;
 
-        //TexturePacker.process("C:\\Users\\Stefano\\Desktop\\immagini giochi\\Wavy Fish Data\\data_small", "C:\\Users\\Stefano\\AndroidStudioProjects\\Wavy Fish\\android\\assets\\data\\atlas_small", "atlas_small");
-        //TexturePacker.process("C:\\Users\\Stefano\\Desktop\\immagini giochi\\Wavy Fish Data\\data_large", "C:\\Users\\Stefano\\AndroidStudioProjects\\Wavy Fish\\android\\assets\\data\\atlas_large", "atlas_large");
+        String pathIn = "C:\\Users\\Stefano\\Desktop\\immagini giochi\\";
+        String pathOut = "C:\\Users\\Stefano\\AndroidStudioProjects\\Wavy Fish\\android\\assets\\data\\";
+        //TexturePacker.process(pathIn + "Wavy Fish Data\\data_small", pathOut + "atlas_small", "atlas_small");
+        //TexturePacker.process(pathIn + "Wavy Fish Data\\data_large", pathOut + "atlas_large", "atlas_large");
+        //TexturePacker.process(pathIn + "Wavy Fish Fonts", pathOut + "atlas_fonts", "atlas_fonts");
 
         new LwjglApplication(new WavyFishGame(new DesktopApiController()), config);
 	}

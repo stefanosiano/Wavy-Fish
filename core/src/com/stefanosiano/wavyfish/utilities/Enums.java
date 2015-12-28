@@ -4,7 +4,7 @@ public interface Enums {
 	public enum ButtonNames{
 		//menu 1
 		buttonStartChoose, buttonCredits, buttonSoundEnabled, buttonFullScreen, buttonMusic, buttonOptions, buttonShareText, buttonBackgroundTutorial,
-		buttonEarnMoreLives, moreLivesShine,
+		buttonEarnMoreLives, moreLivesShine, startRewardedVideo,
 		//menu 2
 		buttonContinue, 
 		buttonEasy, buttonMedium, buttonHard, buttonCrazy,  

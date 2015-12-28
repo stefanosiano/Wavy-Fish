@@ -40,7 +40,7 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 		this.shareButtonShown = false;
 		GameObjectContainer.clearTexts();
 		text.setScale(1f, -1f);
-		text.setCentered("Tap the screen to start", 800, 450);
+		text.setCentered(gameScreen.getGame().getString("tap_start"), 800, 450);
 		GameObjectContainer.addText(text);
 		GameObjectContainer.addText(obstaclesText);
 		
@@ -153,7 +153,7 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 			fish.update(delta);
 		
 		//Called everytime if the fish collides
-		if(GameObjectContainer.fishCollide()){
+		if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
 		}
 		
@@ -208,11 +208,11 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 					GameObjectContainer.clearTexts();
 					if(won){
 						text.setScale(1.2f, -1.1f);
-						text.setCenteredHorizzontally("You win!", 800, 320);
+						text.setCenteredHorizzontally(gameScreen.getGame().getString("you_win"), 800, 320);
 					}
 					else{
 						text.setScale(1.2f, -1.1f);
-						text.setCenteredHorizzontally("You lost", 800, 320);
+						text.setCenteredHorizzontally(gameScreen.getGame().getString("you_lost"), 800, 320);
 					}
 					
 					GameObjectContainer.addText(text);
@@ -231,7 +231,7 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 							if(result){
 								String path = ScreenshotFactory.saveScreenshot(pixmap, true);
 								if(path != null && !path.equals("")){
-									gameScreen.getGame().getCommonApiController().shareImage("Can you do better than me?", "Share your score!", path, null);
+									gameScreen.getGame().getCommonApiController().shareImage(gameScreen.getGame().getString("share_image"), "Share your score!", path, null);
 									AnalyticsSender.sendShare(gameScreen.getGame(), ShareType.score, null);			
 								}
 							}
@@ -255,7 +255,7 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 					reset();
 					GameObjectContainer.clearTexts();
 					text.setScale(1f, -1f);
-					text.setCentered("Tap the screen to start", 800, 450);
+					text.setCentered(gameScreen.getGame().getString("tap_start"), 800, 450);
 					GameObjectContainer.addText(text);
 					GameObjectContainer.addText(obstaclesText);
 					GameButtonContainer.setButtons(GameState.ready);

@@ -18,4 +18,8 @@ public interface CommonApiController {
 	public void askPermission(EnumPermissions permission, SimpleCallback callback);
 
 	public void showOnCheat ();
+
+    public void loadRewardedVideoAd();
+    public void showRewardedVideoAd();
+    public boolean isRewardedVideoLoaded();
 }

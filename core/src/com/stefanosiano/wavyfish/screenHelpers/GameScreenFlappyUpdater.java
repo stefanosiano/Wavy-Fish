@@ -42,8 +42,8 @@ public class GameScreenFlappyUpdater extends GameScreenUpdater{
 			}
 		}
 		fish.updateFlappy(delta);
-		
-		if(GameObjectContainer.fishCollide()){
+
+        if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
 		}
 		

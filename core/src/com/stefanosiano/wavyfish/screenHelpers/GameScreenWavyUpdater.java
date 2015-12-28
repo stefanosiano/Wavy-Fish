@@ -44,8 +44,8 @@ public class GameScreenWavyUpdater extends GameScreenUpdater{
 		touchY =  touchY / ScreenConfig.SCALEY;
 		
 		fish.updateWavy(delta, touchY);
-		
-		if(GameObjectContainer.fishCollide()){
+
+        if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
 		}
 		

@@ -43,8 +43,8 @@ public class GameScreenBouncingUpdater extends GameScreenUpdater{
 			}
 		}
 		fish.updateBounce(delta);
-		
-		if(GameObjectContainer.fishCollide()){
+
+        if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
 		}
 		

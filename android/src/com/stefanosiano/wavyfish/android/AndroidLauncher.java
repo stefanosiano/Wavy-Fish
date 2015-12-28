@@ -5,6 +5,8 @@ import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
 import com.facebook.ads.AdSettings;
+import com.google.ads.AdRequest;
+import com.jirbo.adcolony.AdColony;
 import com.mopub.common.MoPub;
 import java.io.File;
 
@@ -66,6 +68,8 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		
 		if(!TESTMODE){
 			Fabric.with(this, new Crashlytics());
+            MoPub.initializeRewardedVideo(this);
+            MoPub.onCreate(this);
 		}
         else{
             AdSettings.addTestDevice("1d73ae69405a2e4366fd5d5073a81b14");
@@ -114,6 +118,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		if(!TESTMODE){
 		    GoogleAnalytics.getInstance(getApplicationContext()).reportActivityStop(this);
 		}
+        MoPub.onStop(this);
 	}
 
 	@Override
@@ -122,21 +127,39 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		if(!TESTMODE){
 	        GoogleAnalytics.getInstance(getApplicationContext()).reportActivityStart(this);
 		}
+        MoPub.onStart(this);
 	}
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        MoPub.onRestart(this);
+    }
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
+        MoPub.onPause(this);
+        AdColony.pause();
 	}
 	
 	@Override
 	public void onResume(){
 		super.onResume();
+        MoPub.onResume(this);
+        AdColony.resume(this);
 	}
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MoPub.onBackPressed(this);
+    }
 	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+        MoPub.onDestroy(this);
 		if (mInterstitial != null) {
 			mInterstitial.destroy();
 			mInterstitial = null;
@@ -150,16 +173,16 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	@Override
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
 		PermissionAskerHelper.permissionsRequested(this, EnumPermissions.shareScore, requestCode, permissions, grantResults, new OnPermissionRequested() {
-			@Override
-			public void onPermissionDenied() {
-				if (permissionCallback != null) permissionCallback.onActionCompleted(false);
-			}
+            @Override
+            public void onPermissionDenied() {
+                if (permissionCallback != null) permissionCallback.onActionCompleted(false);
+            }
 
-			@Override
-			public void onPermissionAccepted() {
-				if (permissionCallback != null) permissionCallback.onActionCompleted(true);
-			}
-		});
+            @Override
+            public void onPermissionAccepted() {
+                if (permissionCallback != null) permissionCallback.onActionCompleted(true);
+            }
+        });
 	}
 
 	@Override
@@ -189,28 +212,51 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		if(!TESTMODE)
 			analyticsHelper.sendTiming(TrackerName.APP_TRACKER, this, screenName, category, variable, label, value);
 	}
-	
-	@Override
-  	public void loadInterstitialAd() {
-		if(!TESTMODE)
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					adsUtil.loadInterstitialAd();
-				}
-			});
-	}
-	
-	@Override
-  	public void showInterstitialAd() {
-		if(!TESTMODE)
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					adsUtil.showInterstitialAd();
-				}
-			});
-	}
+
+    @Override
+    public void loadInterstitialAd() {
+        runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adsUtil.loadInterstitialAd();
+                }
+            });
+    }
+
+    @Override
+    public void showInterstitialAd() {
+        runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adsUtil.showInterstitialAd();
+                }
+            });
+    }
+
+    @Override
+    public void loadRewardedVideoAd() {
+        runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adsUtil.loadRewardedVideo();
+                }
+            });
+    }
+
+    @Override
+    public void showRewardedVideoAd() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adsUtil.showRewardedVideo();
+            }
+        });
+    }
+
+    @Override
+    public boolean isRewardedVideoLoaded() {
+        return adsUtil.isRewardedVideoLoaded();
+    }
 
 	@Override
 	public void showShareProgressBar() {

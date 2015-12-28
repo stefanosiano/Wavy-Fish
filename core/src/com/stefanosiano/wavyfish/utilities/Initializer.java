@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.stefanosiano.common.tochange.GameButtonContainer;
 import com.stefanosiano.common.tochange.ScreenConfig;
+import com.stefanosiano.wavyfish.game.WavyFishGame;
 import com.stefanosiano.wavyfish.gameObjects.GameObjectContainer;
 import com.stefanosiano.common.tochange.TextureLoader;
 import com.stefanosiano.wavyfish.utilities.Enums.ButtonNames;
@@ -15,6 +16,7 @@ public class Initializer {
     private static int midY;
     private static int width;
     private static int height;
+    private static WavyFishGame game;
 
 	//fish variables
     private static TextureRegion fish0 = TextureLoader.fish0;
@@ -153,9 +155,9 @@ public class Initializer {
 		
 		//MENU 1
 		GameButtonContainer.addOneTouchBtn(390, 550, 400, 110, TextureLoader.buttonYellow, TextureLoader.buttonYellow, TextureLoader.buttonDisabled, ButtonNames.buttonStartChoose);
-		GameButtonContainer.setText(ButtonNames.buttonStartChoose, "PLAY", TextureLoader.fontWhite, 1.1f, -0.9f);
+		GameButtonContainer.setText(ButtonNames.buttonStartChoose, game.getString("play"), TextureLoader.fontWhite, 1.1f, -0.9f);
 		GameButtonContainer.addOneTouchBtn(810, 550, 400, 110, TextureLoader.buttonYellow, TextureLoader.buttonYellow, TextureLoader.buttonDisabled, ButtonNames.buttonCredits);
-		GameButtonContainer.setText(ButtonNames.buttonCredits, "INFO", TextureLoader.fontWhite, 1.1f, -0.9f);
+		GameButtonContainer.setText(ButtonNames.buttonCredits, game.getString("info"), TextureLoader.fontWhite, 1.1f, -0.9f);
 
 		GameButtonContainer.addOneTouchBtn(1450, 30, 140, 140, TextureLoader.options, TextureLoader.options, TextureLoader.buttonDisabled, ButtonNames.buttonOptions);
 		GameButtonContainer.addMenuOptionBtn(1460, 180, 120, 120, TextureLoader.musicOn, TextureLoader.musicOn, null, TextureLoader.musicOff, TextureLoader.musicOff, ButtonNames.buttonMusic, Settings.MUSIC_ENABLED);
@@ -163,7 +165,8 @@ public class Initializer {
 		GameButtonContainer.addOneTouchBtn(1460, 440, 120, 120, TextureLoader.shareText, TextureLoader.shareText, TextureLoader.buttonDisabled, ButtonNames.buttonShareText);
 		GameButtonContainer.addOneTouchBtn(710, 350, 200, 200, TextureLoader.moreLives, TextureLoader.moreLives, null, ButtonNames.buttonEarnMoreLives);
 		GameButtonContainer.addOneTouchBtn(680, 320, 235, 235, TextureLoader.shroud, TextureLoader.shroud, null, ButtonNames.moreLivesShine);
-		
+        GameButtonContainer.addOneTouchBtn(775, 550, 550, 120, TextureLoader.buttonAzure, TextureLoader.buttonAzure, null, ButtonNames.startRewardedVideo);
+
 		
 		//if aspect ratio is already the one i want, i don't want to show the fullscreen button
 		if(ScreenConfig.ASPECTRATIO == ScreenConfig.HWASPECTRATIO)
@@ -173,7 +176,7 @@ public class Initializer {
 		
 		//MENU 2
 		GameButtonContainer.addOneTouchBtn(525, 50, 550, 120, TextureLoader.buttonYellow, TextureLoader.buttonYellow, TextureLoader.buttonDisabled, ButtonNames.buttonContinue);
-		GameButtonContainer.setText(ButtonNames.buttonContinue, "START GAME", TextureLoader.fontWhite, 0.9f, -0.85f);
+		GameButtonContainer.setText(ButtonNames.buttonContinue, game.getString("startgame"), TextureLoader.fontWhite, 0.9f, -0.85f);
 		
 		x = 250;
 		y = 380;
@@ -185,31 +188,31 @@ public class Initializer {
 		float optionScaleY = -0.6f;
 		
 		GameButtonContainer.addOneTouchBtn(x, y, w, h, TextureLoader.buttonGreen, TextureLoader.buttonGreen, TextureLoader.buttonDisabled, ButtonNames.buttonEasy);
-		GameButtonContainer.setText(ButtonNames.buttonEasy, "EASY", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonEasy, game.getString("easy"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+100, w, h, TextureLoader.buttonGreen, TextureLoader.buttonGreen, TextureLoader.buttonDisabled, ButtonNames.buttonMedium);
-		GameButtonContainer.setText(ButtonNames.buttonMedium, "MEDIUM", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonMedium, game.getString("medium"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+200, w, h, TextureLoader.buttonGreen, TextureLoader.buttonGreen, TextureLoader.buttonDisabled, ButtonNames.buttonHard);
-		GameButtonContainer.setText(ButtonNames.buttonHard, "HARD", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonHard, game.getString("hard"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+300, w, h, TextureLoader.buttonGreen, TextureLoader.buttonGreen, TextureLoader.buttonDisabled, ButtonNames.buttonCrazy);
-		GameButtonContainer.setText(ButtonNames.buttonCrazy, "CRAZY", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonCrazy, game.getString("crazy"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 
 		x = (width - w)/2;
 		GameButtonContainer.addOneTouchBtn(x, y, w, h, TextureLoader.buttonAzure, TextureLoader.buttonAzure, null, ButtonNames.buttonWavyControl);
-		GameButtonContainer.setText(ButtonNames.buttonWavyControl, "WAVY", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonWavyControl, game.getString("wavy"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+100, w, h, TextureLoader.buttonAzure, TextureLoader.buttonAzure, null, ButtonNames.buttonFlappyControl);
-		GameButtonContainer.setText(ButtonNames.buttonFlappyControl, "FLAPPY", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonFlappyControl, game.getString("flappy"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+200, w, h, TextureLoader.buttonAzure, TextureLoader.buttonAzure, null, ButtonNames.buttonBouncingControl);
-		GameButtonContainer.setText(ButtonNames.buttonBouncingControl, "BOUNCY", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonBouncingControl, game.getString("bouncy"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+300, w, h, TextureLoader.buttonAzure, TextureLoader.buttonAzure, null, ButtonNames.buttonClassicControl);
-		GameButtonContainer.setText(ButtonNames.buttonClassicControl, "CLASSIC", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonClassicControl, game.getString("classic"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		
 		x = (width + w)/2 + 120;
 		GameButtonContainer.addOneTouchBtn(x, y, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonNormalMode);
-		GameButtonContainer.setText(ButtonNames.buttonNormalMode, "NORMAL", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonNormalMode, game.getString("normal"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+100, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonBlinkingkMode);
-		GameButtonContainer.setText(ButtonNames.buttonBlinkingkMode, "BLINKING", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonBlinkingkMode, game.getString("blinking"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		GameButtonContainer.addOneTouchBtn(x, y+200, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonPiranhaMode);
-		GameButtonContainer.setText(ButtonNames.buttonPiranhaMode, "PIRANHA", TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.setText(ButtonNames.buttonPiranhaMode, game.getString("piranha"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		
 		//GAMESCREEN
 		GameButtonContainer.addContinuousTouchBtn(0, 0, width, midY, null, null, null, ButtonNames.buttonFishUp);
@@ -277,10 +280,11 @@ public class Initializer {
 				hscContinueWordX, hscContinueWordY, hscUnlockedWordX, hscUnlockedWordY, TextureLoader.fontWhite, hscWordsScaleX, hscWordsScaleY, 5);
 	}
 	
-	public static void initValues(){
+	public static void initValues(WavyFishGame game){
 		midY = ScreenConfig.MIDPOINTY;
     	width = ScreenConfig.VIRTUALWIDTH;
     	height = ScreenConfig.VIRTUALHEIGHT;
+        Initializer.game = game;
 
 		//fish variables
 		fish0 = TextureLoader.fish0;
@@ -295,7 +299,7 @@ public class Initializer {
 	    fishFrameDuration = 0.1f;
 	    fishX = 100;
 	    fishY = midY - 47;
-	    fishWidth = 200;
+	    fishWidth = 150;
 	    fishHeight = 94;
 	    fishMinY = 100;
 	    fishMaxY = 700;
@@ -327,7 +331,7 @@ public class Initializer {
 		wallMinHeight = 150;
 		//wallMaxHeight represents how much the wall can increase his height: the max height of the wall is min + max = 530
 		wallMaxHeight = 380;
-		incrementStep = 1;
+		incrementStep = 2;
 		wallMaxSpeed = -3000;
 		
 		//score variables
@@ -454,7 +458,7 @@ public class Initializer {
     	piranhaCircleRadius = 40;
     	piranhaXGap = 650;
     	piranhaNumber = 3;
-    	piranhaIncrementStep = 1;
+    	piranhaIncrementStep = 2;
 	}
     	
 	
@@ -485,22 +489,8 @@ public class Initializer {
     	piranhaFlipped5 = TextureLoader.piranhaFlipped5;
     	piranhaFlipped6 = TextureLoader.piranhaFlipped6;
     	piranhaFlipped7 = TextureLoader.piranhaFlipped7;
-        
-		ImageType imageType = Settings.imageType;
-		switch(imageType){
-			case original:
-				fishWidth = 150;
-				break;
-			case horror:
-				fishWidth = 150;
-				break;
-			case tema:
-				fishWidth = 150;
-				break;
-			default:
-				fishWidth = 150;
-				break;
-		}
+
+        fishWidth = 150;
 		GameObjectContainer.fish.setWidth(fishWidth);
 		GameObjectContainer.fish.setCircleXGap(fishCircleXGap);
 		
@@ -511,75 +501,44 @@ public class Initializer {
 		switch (Settings.difficulty){
 			case easy:
 				fishFrameDuration = 0.1f;
-				piranhaSpeedY = 1000;
 		    	piranhaSpeedX = -500;
-				bgSpeedX = -250;
-				wallSpeedX = -500;
-				fishCurrentAcceleration = 1500;
 			    fishMaxSpeed = 425;
-
-			    
-			    fishMaxSpeedSpeedUpFactor = 45;
-			    fishSpeedUpFactor = 85f;
-				wallSpeedUpFactor = -31;
-		    	piranhaSpeedUpFactorX = -31;
-		    	piranhaSpeedUpFactorY = 15;
-				bgSpeedUpFactor = -15;
+				wallSpeedUpFactor = -26;
 				break;
+
 			case medium:
 				fishFrameDuration = 0.09f;
-				piranhaSpeedY = 1100;
-		    	piranhaSpeedX = -600;
-				bgSpeedX = -300;
-				wallSpeedX = -600;
-				fishCurrentAcceleration = 1800;
-			    fishMaxSpeed = 475;
-				
-
-			    fishMaxSpeedSpeedUpFactor = 50;
-			    fishSpeedUpFactor = 100f;
-				wallSpeedUpFactor = -34;
-		    	piranhaSpeedUpFactorX = -34;
-		    	piranhaSpeedUpFactorY = 17;
-				bgSpeedUpFactor = -17;
+		    	piranhaSpeedX = -560;
+			    fishMaxSpeed = 470;
+				wallSpeedUpFactor = -29f;
 				break;
+
 			case hard:
-				fishFrameDuration = 0.075f;
-				piranhaSpeedY = 1200;
-		    	piranhaSpeedX = -700;
-				bgSpeedX = -350;
-				wallSpeedX = -700;
-				fishCurrentAcceleration = 2200;
-			    fishMaxSpeed = 525;
-				
-
-			    fishMaxSpeedSpeedUpFactor = 55;
-			    fishSpeedUpFactor = 115f;
-				wallSpeedUpFactor = -37;
-		    	piranhaSpeedUpFactorX = -37;
-		    	piranhaSpeedUpFactorY = 18;
-				bgSpeedUpFactor = -18;
+				fishFrameDuration = 0.08f;
+		    	piranhaSpeedX = -620;
+			    fishMaxSpeed = 515;
+				wallSpeedUpFactor = -32;
 				break;
+
 			case crazy:
-				fishFrameDuration = 0.065f;
-				piranhaSpeedY = 1300;
-		    	piranhaSpeedX = -800;
-				bgSpeedX = -400;
-				wallSpeedX = -800;
-				fishCurrentAcceleration = 2600;
-			    fishMaxSpeed = 600;
-
-			    
-			    fishMaxSpeedSpeedUpFactor = 60;
-			    fishSpeedUpFactor = 130f;
-				wallSpeedUpFactor = -40;
-		    	piranhaSpeedUpFactorX = -40;
-		    	piranhaSpeedUpFactorY = 20;
-				bgSpeedUpFactor = -20;
+				fishFrameDuration = 0.07f;
+		    	piranhaSpeedX = -700;
+			    fishMaxSpeed = 560;
+				wallSpeedUpFactor = -35;
 				break;
+
 			default:
 				break;
 		}
+        bgSpeedX = Math.round(piranhaSpeedX / 2);
+        wallSpeedX = Math.round(piranhaSpeedX);
+        piranhaSpeedY = -piranhaSpeedX * 2;
+        fishCurrentAcceleration = Math.round(-piranhaSpeedX * 3.2f);
+        fishSpeedUpFactor = -wallSpeedUpFactor * 2.4f;
+        piranhaSpeedUpFactorX = wallSpeedUpFactor;
+        piranhaSpeedUpFactorY = -wallSpeedUpFactor / 2;
+        bgSpeedUpFactor = wallSpeedUpFactor / 2;
+        fishMaxSpeedSpeedUpFactor = -wallSpeedUpFactor * 1.3f;
 		createGameObjects();
 	}
 }

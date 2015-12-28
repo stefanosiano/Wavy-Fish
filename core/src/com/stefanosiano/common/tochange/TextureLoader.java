@@ -13,7 +13,7 @@ public class TextureLoader {
 	private static String path;
 	public static Texture texture;
 	private static TextureRegion textureRegion;
-	private static TextureAtlas atlas;
+	private static TextureAtlas atlas, fontAtlas;
 	public static TextureRegion 
 		//info
 		back, swipeSignInfo, swipeSignInfoFlipped,
@@ -31,7 +31,7 @@ public class TextureLoader {
 		//others
 		buttonDisabled, splashLogo, wavyFish, fishTutor, cloudTutor, shroud;
 	
-	public static BitmapFont fontYellow, fontBlue, fontWhite, fontRed, fontOrange;
+	public static BitmapFont fontYellow, fontBlue, fontWhite, fontOrange;
 	
 	public static void load() {
 		createAtlas();
@@ -99,10 +99,6 @@ public class TextureLoader {
 		resume = loadTexture(path + "resume");
 	    star = loadTexture(path + "star");
 	    blackStar = loadTexture(path + "black_star");
-	    redScreen = loadTexture(path + "red_border");
-	    lifeBarLeft = loadTexture(path + "life_bar_left");
-	    lifeBarMid = loadTexture(path + "life_bar_mid");
-	    lifeBarRight = loadTexture(path + "life_bar_right");
 	    experienceBarBackground = loadTexture(path + "experience_back");
 	    experienceBarFront = loadTexture(path + "experience_front");
 	    
@@ -115,16 +111,14 @@ public class TextureLoader {
 	    //text items creation
 		path = "data/fonts/";
 		
-        fontYellow = new BitmapFont(Gdx.files.internal(path + "font_yello/yellow.fnt"));//, atlas.findRegion(path + "font_yello/yellow.fnt"));
-        fontBlue= new BitmapFont(Gdx.files.internal(path + "font_blue/blue.fnt"));//, atlas.findRegion(path + "font_blue/blue.fnt"));
-        fontWhite = new BitmapFont(Gdx.files.internal(path + "font_white/shadow2.fnt"));//, atlas.findRegion(path + "font_white/shadow2.fnt"));
-        fontRed = new BitmapFont(Gdx.files.internal(path + "font_red/red.fnt"));//, atlas.findRegion(path + "font_red/red.fnt"));
-        fontOrange = new BitmapFont(Gdx.files.internal(path + "font_orange/orange.fnt"));//, atlas.findRegion(path + "font_orange/orange.fnt"));
+        fontYellow = new BitmapFont(Gdx.files.internal(path + "font_yello/yellow.fnt"), fontAtlas.findRegion("yellow"));
+        fontBlue= new BitmapFont(Gdx.files.internal(path + "font_blue/blue.fnt"), fontAtlas.findRegion("blue"));
+        fontWhite = new BitmapFont(Gdx.files.internal(path + "font_white/shadow2.fnt"), fontAtlas.findRegion("shadow2"));
+        fontOrange = new BitmapFont(Gdx.files.internal(path + "font_orange/orange.fnt"), fontAtlas.findRegion("orange"));
         
         fontYellow.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
         fontBlue.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
         fontWhite.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        fontRed.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
         fontOrange.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
         
         loadImageTypeDependentTextures();
@@ -138,7 +132,6 @@ public class TextureLoader {
 		net2 = new TextureRegion(net);
 		net2.flip(false, true);
 		new TextureRegion(net2).flip(false, true);
-		//net2 = loadTexture(path + "flipped_net");
 		
 		background = loadTexture(path + "fondale");
 		background2 = loadTexture(path + "fondale");
@@ -163,7 +156,6 @@ public class TextureLoader {
 		piranha6 = loadTexture(path + "piranha", 6);
 		piranha7 = loadTexture(path + "piranha", 7);
 
-		//piranhaFlipped0 = loadTexture(path + "flipped_piranha", 0);
 		piranhaFlipped0 = new TextureRegion(piranha0);
 		piranhaFlipped0.flip(false, true);
 		new TextureRegion(piranhaFlipped0).flip(false, true);
@@ -188,14 +180,11 @@ public class TextureLoader {
 		piranhaFlipped7 = new TextureRegion(piranha7);
 		piranhaFlipped7.flip(false, true);
 		new TextureRegion(piranhaFlipped7).flip(false, true);
-		/*
-		piranhaFlipped1 = loadTexture(path + "flipped_piranha", 1);
-		piranhaFlipped2 = loadTexture(path + "flipped_piranha", 2);
-		piranhaFlipped3 = loadTexture(path + "flipped_piranha", 3);
-		piranhaFlipped4 = loadTexture(path + "flipped_piranha", 4);
-		piranhaFlipped5 = loadTexture(path + "flipped_piranha", 5);
-		piranhaFlipped6 = loadTexture(path + "flipped_piranha", 6);
-		piranhaFlipped7 = loadTexture(path + "flipped_piranha", 7);*/
+
+        redScreen = loadTexture(path + "red_border");
+        lifeBarLeft = loadTexture(path + "life_bar_left");
+        lifeBarMid = loadTexture(path + "life_bar_mid");
+        lifeBarRight = loadTexture(path + "life_bar_right");
 	}
 	
 	public static void changeTextures(){
@@ -237,5 +226,13 @@ public class TextureLoader {
 		}
 		for(AtlasRegion region : atlas.getRegions())
 			region.flip(false, true);
+        fontAtlas = new TextureAtlas(Gdx.files.internal("data/atlas_fonts/atlas_fonts.atlas"));
 	}
+
+    public static TextureRegion loadSplahRegion(){
+        TextureRegion textureRegion = new TextureRegion(new Texture("data/splash.png"));
+        textureRegion.flip(false, true);
+        textureRegion.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        return textureRegion;
+    }
 }

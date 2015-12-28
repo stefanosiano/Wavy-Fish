@@ -99,7 +99,7 @@ public class GameScreenBlinkingRenderer extends GameScreenCommonRenderer {
 	}
 	
 	@Override
-	public void initialize(){
+    public void initialize(){
 		super.initialize();
 		duration = originalDuration;
 		speedDownTimes = 0;

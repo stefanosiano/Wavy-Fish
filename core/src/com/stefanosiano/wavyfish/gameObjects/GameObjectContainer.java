@@ -381,15 +381,13 @@ public class GameObjectContainer {
 	}
 	
 	public static void removeObstacle(int passedWalls, int numberOfWallsToFinish, int speedDownStep){
-		if(passedWalls > numberOfWallsToFinish - obstacleNumber){
-
+        System.out.println(passedWalls + " " + numberOfWallsToFinish + " " + obstacleNumber);
+		if(passedWalls >= numberOfWallsToFinish - obstacleNumber){
 			collisionOb = obstacles.get(collisionObstacleIndex);
 			collisionOb.stopComing();
 		}
 		else{
-			if(passedWalls < numberOfWallsToFinish - obstacleNumber){
-				postponeObstacle(passedWalls, speedDownStep);
-			}
+            postponeObstacle(passedWalls, speedDownStep);
 		}
 	}
 
@@ -474,13 +472,13 @@ public class GameObjectContainer {
 		fish.speedDownTo(fishCurrentAcceleration, fishFrameDuration);
 		background.setSpeed(bgSpeedX, 0);
 		background2.setSpeed(bgSpeedX, 0);
-		
+
 		for(WallCouple wall : walls){
-			wall.speedDownTo(wallSpeedX, 0, 0);
+			wall.speedDownTo(wallSpeedX, 0);
 		}
 		
 		for(Piranha piranha : piranhas){
-			piranha.speedDownTo(piranhaSpeedX, piranhaSpeedY, 0);
+			piranha.speedDownTo(piranhaSpeedX, piranhaSpeedY);
 		}
 	}
 	

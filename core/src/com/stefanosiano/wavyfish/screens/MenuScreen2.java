@@ -27,6 +27,8 @@ public class MenuScreen2 extends SimpleScreen{
 			setSelectedControl(ButtonNames.buttonWavyControl);
 			setSelectedMode(ButtonNames.buttonNormalMode);
 		}
+        else
+            ((MenuScreenRenderer2) this.renderer).createTutorialTexts();
 		fadeIn(0.4f);
 	}
 	

@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.Align;
 import com.stefanosiano.common.SimpleRenderer;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.common.buttons.SimpleButton;
@@ -40,8 +41,6 @@ public class MenuScreenRenderer extends SimpleRenderer{
 		this.menuExperienceBar = GameObjectContainer.menuExperienceBar;
 		piranha = GameObjectContainer.piranhas.get(0);
 		this.showFishMoreLives = false;
-		if(Settings.TUT_MENU1)
-			createTutorialTexts();
     }
     
     public void restart(){
@@ -60,8 +59,10 @@ public class MenuScreenRenderer extends SimpleRenderer{
 	        drawTutMenu1(delta);
 		}
 		else{
-			if(showFishMoreLives)
-		        drawFishMoreLives(delta);
+			if(showFishMoreLives) {
+                drawFishMoreLives(delta);
+                drawButtons(delta);
+            }
 			else{
 			    drawBackground();
 			    
@@ -80,7 +81,10 @@ public class MenuScreenRenderer extends SimpleRenderer{
 
 	public void showFishMoreLives(boolean showFish){
 		showFishMoreLives = showFish;
-		createEarnMoreLivesTexts();
+        if(!Settings.FIRST_SHARE)
+		    createExtraLifeFirstShareTexts();
+        else
+            createExtraLifeWatchRewardedVideo();
 	}
 
 	private void drawButtons(float delta){
@@ -204,82 +208,71 @@ public class MenuScreenRenderer extends SimpleRenderer{
         	t.draw(batcher, delta);
 	}
     
-    private void createTutorialTexts(){
+    public void createTutorialTexts(){
 		tutorialTexts = new ArrayList<Text>();
-		int textCenterX = 1040;
-		int textYGap = 10;
+		int textStartX = 550;
+        int textWidth = 1000;
 		int textStartY = 80;
 		float textScaleX = 0.9f;
 		float textScaleY = -0.9f;
-		
-		Text t1 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t8 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t9 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
 
-		t1.setCenteredHorizzontally("Hi! Let me explain you some", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("things, just for this time.", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 1);
-		t3.setCenteredHorizzontally("On top right there are the", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 50);
-		t4.setCenteredHorizzontally("options for music, sounds,", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 50);
-		t5.setCenteredHorizzontally("fullscreen and sharing!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 50);
-		t6.setCenteredHorizzontally("Each new level unlocks", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 100);
-		t7.setCenteredHorizzontally("new fish, new difficulties", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 100);
-		t8.setCenteredHorizzontally("and new lives!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 7 + 100);
-		t9.setCenteredHorizzontally("Swipe to select other fish!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 8 + 150);
+		Text t1 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+
+        t1.set(screen.getGame().getString("tut1_1"), textStartX, textStartY, textWidth, Align.center);
+        t2.set(screen.getGame().getString("tut1_2"), textStartX, textStartY + (-t1.getHeight()) + 200, textWidth, Align.center);
+        t3.set(screen.getGame().getString("tut1_3"), textStartX, textStartY + (-t1.getHeight()) * 6 + 260, textWidth, Align.center);
 		
 		tutorialTexts.add(t1);
 		tutorialTexts.add(t2);
 		tutorialTexts.add(t3);
-		tutorialTexts.add(t4);
-		tutorialTexts.add(t5);
-		tutorialTexts.add(t6);
-		tutorialTexts.add(t7);
-		tutorialTexts.add(t8);
-		tutorialTexts.add(t9);
     }
-	
-	private void createEarnMoreLivesTexts() {
-		if(earnMoreLivesTexts == null)
-			earnMoreLivesTexts = new ArrayList<Text>();
-		else
-			earnMoreLivesTexts.clear();
-		
-		int textCenterX = 1040;
-		int textYGap = 15;
-		int textStartY = 80;
-		float textScaleX = 0.9f;
-		float textScaleY = -0.9f;
 
-		Text t1 = new Text(TextureLoader.fontYellow, 1, -1, false);
-		Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t4 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t5 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t6 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t7 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
-		Text t8 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, false);
+    private void createExtraLifeFirstShareTexts() {
+        if(earnMoreLivesTexts == null)
+            earnMoreLivesTexts = new ArrayList<Text>();
+        else
+            earnMoreLivesTexts.clear();
 
-		t1.setCenteredHorizzontally("Get an extra life!", textCenterX, textStartY);
-		t2.setCenteredHorizzontally("You can get an extra life", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 1 + 60);
-		t3.setCenteredHorizzontally("by simply sharing me on", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 2 + 60);
-		t4.setCenteredHorizzontally("Facebook, Twitter or Google+", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 3 + 60);
-		t5.setCenteredHorizzontally("To share me, just click on", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 4 + 120);
-		t6.setCenteredHorizzontally("the options on the top-right", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 5 + 120);
-		t7.setCenteredHorizzontally("corner and then select", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 6 + 120);
-		t8.setCenteredHorizzontally("the share button!", textCenterX, textStartY  + (- t1.getHeight() + textYGap) * 7 + 120);
-		
-		earnMoreLivesTexts.add(t1);
-		earnMoreLivesTexts.add(t2);
-		earnMoreLivesTexts.add(t3);
-		earnMoreLivesTexts.add(t4);
-		earnMoreLivesTexts.add(t5);
-		earnMoreLivesTexts.add(t6);
-		earnMoreLivesTexts.add(t7);
-		earnMoreLivesTexts.add(t8);
-	}
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 80;
+        float textScaleX = 0.9f;
+        float textScaleY = -0.9f;
+
+        Text t1 = new Text(TextureLoader.fontYellow, 1, -1, false);
+        Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+        Text t3 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+
+        t1.set(screen.getGame().getString("get_extra_life"), textStartX, textStartY, textWidth, Align.center);
+        t2.set(screen.getGame().getString("extra_life_1"), textStartX, textStartY + (-t1.getHeight()) * 1 + 70, textWidth, Align.center);
+        t3.set(screen.getGame().getString("extra_life_2"), textStartX, textStartY + (-t1.getHeight()) * 4 + 200, textWidth, Align.center);
+
+        earnMoreLivesTexts.add(t1);
+        earnMoreLivesTexts.add(t2);
+        earnMoreLivesTexts.add(t3);
+    }
+
+    private void createExtraLifeWatchRewardedVideo() {
+        if(earnMoreLivesTexts == null)
+            earnMoreLivesTexts = new ArrayList<Text>();
+        else
+            earnMoreLivesTexts.clear();
+
+        int textStartX = 550;
+        int textWidth = 1000;
+        int textStartY = 80;
+        float textScaleX = 0.9f;
+        float textScaleY = -0.9f;
+
+        Text t1 = new Text(TextureLoader.fontYellow, 1, -1, false);
+        Text t2 = new Text(TextureLoader.fontBlue, textScaleX, textScaleY, true);
+
+        t1.set(screen.getGame().getString("get_extra_life"), textStartX, textStartY, textWidth, Align.center);
+        t2.set(screen.getGame().getString("extra_life_2"), textStartX, textStartY + (-t1.getHeight()) * 1 + 70, textWidth, Align.center);
+
+        earnMoreLivesTexts.add(t1);
+        earnMoreLivesTexts.add(t2);
+    }
 }

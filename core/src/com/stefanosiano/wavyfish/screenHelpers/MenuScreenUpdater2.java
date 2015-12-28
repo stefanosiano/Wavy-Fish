@@ -41,12 +41,12 @@ public class MenuScreenUpdater2 {
 
     	float scaleX = 0.75f;
     	float scaleY = -0.65f;
-		this.textDifficulty = new Text(TextureLoader.fontWhite, scaleX, scaleY, false);
-		this.textControl = new Text(TextureLoader.fontWhite, scaleX, scaleY, false);
-		this.textMode = new Text(TextureLoader.fontWhite, scaleX, scaleY, false);
-		this.textDifficulty.setCenteredHorizzontally("Difficulty", panelX, textY);
-		this.textControl.setCenteredHorizzontally("Controls", panelX2, textY);
-		this.textMode.setCenteredHorizzontally("Modes", panelX3, textY);
+		this.textDifficulty = new Text(TextureLoader.fontYellow, scaleX, scaleY, false);
+		this.textControl = new Text(TextureLoader.fontYellow, scaleX, scaleY, false);
+		this.textMode = new Text(TextureLoader.fontYellow, scaleX, scaleY, false);
+		this.textDifficulty.setCenteredHorizzontally(menuScreen2.getGame().getString("difficulty"), panelX, textY);
+		this.textControl.setCenteredHorizzontally(menuScreen2.getGame().getString("controls"), panelX2, textY);
+		this.textMode.setCenteredHorizzontally(menuScreen2.getGame().getString("modes"), panelX3, textY);
 		GameObjectContainer.clearTexts();
 		GameObjectContainer.addText(textDifficulty);
 		GameObjectContainer.addText(textControl);

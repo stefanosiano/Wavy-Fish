@@ -66,11 +66,9 @@ public class GameButtonContainer {
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonStartChoose)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonOptions)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonShareText)));
-				if(!Settings.FIRST_SHARE){
-					activeButtons.add(buttons.get(findButton(Enums.ButtonNames.moreLivesShine)));
-					activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonEarnMoreLives)));
-					buttons.get(findButton(Enums.ButtonNames.moreLivesShine)).setEnabled(false);
-				}
+                activeButtons.add(buttons.get(findButton(Enums.ButtonNames.moreLivesShine)));
+				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonEarnMoreLives)));
+				buttons.get(findButton(Enums.ButtonNames.moreLivesShine)).setEnabled(false);
 				break;
 	
 			case menu2:
@@ -131,6 +129,7 @@ public class GameButtonContainer {
 				
 			case earnMoreLives:
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonBackground)));
+                activeButtons.add(buttons.get(findButton(Enums.ButtonNames.startRewardedVideo)));
 				break;
 				
 			case noButtons:

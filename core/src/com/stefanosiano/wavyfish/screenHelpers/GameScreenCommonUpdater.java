@@ -37,7 +37,7 @@ public class GameScreenCommonUpdater {
 	protected LifeBar2 lifeBar;
 	private int lives, scoreValue;
 	private float multiplier, oldMultiplier;
-	private boolean fishCollided;
+    protected boolean fishCollided;
 	private GameState pausedGameState;
 	protected Text text;
 	protected Text obstaclesText;
@@ -144,8 +144,8 @@ public class GameScreenCommonUpdater {
 
 	protected void speedDown(int x) {
 		GameObjectContainer.speedDownToStart();
-		//normally i get 15 speedUp (45/3)
-		x = 7 * x;
+		//normally i get 10 speedUp (30/3)
+		x = 5 * x;
 		for(int i = 0; i < x; i++)
 			GameObjectContainer.speedUp();
 	}
@@ -177,7 +177,7 @@ public class GameScreenCommonUpdater {
 
 				int tmp;
 				try{tmp = Integer.parseInt(DataSaver.load(SavedItems.highScore + ""));}catch(Exception e){tmp = 0;}
-				this.highScoreContainer.initialize(score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()), 
+				this.highScoreContainer.initialize(gameScreen.getGame(), score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()),
 						Experience.getPreviousLevelExperience(Experience.getExperience()), tmp);
 				AnalyticsSender.sendPlayGameWithOptions(gameScreen.getGame(), Settings.difficulty, Settings.gameMode, Settings.gameControl, analyticsTime);
 				GameButtonContainer.setButtons(GameState.noButtons);
@@ -193,14 +193,7 @@ public class GameScreenCommonUpdater {
 		this.sObstacles.set(passedWalls, passedWalls + 1);
 		passedWalls++;
 		obstaclesText.updateTextCenteredHorizzontally(passedWalls + "/" + numberOfWallsToFinish);
-		GameObjectContainer.removeObstacle(passedWalls, numberOfWallsToFinish, speedDownStep);
-		if(passedWalls % speedUpStep == 0){
-			GameObjectContainer.speedUp();
-		}
-		if(passedWalls % speedDownStep == 0){
-			speedDown(passedWalls / speedDownStep);
-		}
-		
+
 		if(!fishCollided){
 			oldScoreValue = score.getScoreValue();
 			oldMultiplier = score.getMultiplier();
@@ -215,6 +208,17 @@ public class GameScreenCommonUpdater {
 		if(passedWalls >= numberOfWallsToFinish)
 			startWinning();
 	}
+
+    protected void wallFinishedPassed() {
+        GameObjectContainer.removeObstacle(passedWalls, numberOfWallsToFinish, speedDownStep);
+        if(passedWalls % speedUpStep == 0){
+            GameObjectContainer.speedUp();
+        }
+        if(passedWalls % speedDownStep == 0){
+            speedDown(passedWalls / speedDownStep);
+        }
+        fishCollided = false;
+    }
 
     protected void startWinning() {
         if(Settings.SOUND_ENABLED)
@@ -249,7 +253,7 @@ public class GameScreenCommonUpdater {
 
         int tmp;
         try{tmp = Integer.parseInt(DataSaver.load(SavedItems.highScore + ""));}catch(Exception e){tmp = 0;}
-        this.highScoreContainer.initialize(score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()),
+        this.highScoreContainer.initialize(gameScreen.getGame(), score, Experience.getLevel(), Experience.getExperience(), Experience.getNextLevelExperience(Experience.getExperience()),
                 Experience.getPreviousLevelExperience(Experience.getExperience()), tmp);
         AnalyticsSender.sendPlayGameWithOptions(gameScreen.getGame(), Settings.difficulty, Settings.gameMode, Settings.gameControl, analyticsTime);
         GameButtonContainer.setButtons(GameState.noButtons);
@@ -257,10 +261,6 @@ public class GameScreenCommonUpdater {
         Experience.calculateNewValues(score.getScoreValue());
         highScoreContainer.setNewValues(Experience.getExperience());
     }
-
-	protected void wallFinishedPassed() {
-		fishCollided = false;
-	}
 	
 	protected void reset(){
 		int oldPassedWalls = passedWalls;
@@ -322,7 +322,7 @@ public class GameScreenCommonUpdater {
 	
 	protected void showInterstitial(){
 		//adTime must be 10+ of loading (admob) (let's put 15 sec)
-		if(time > 40)
+		if(time > 50)
 			if(!adShown){
 				adsController.showInterstitialAd();
 				adShown = true;
@@ -335,13 +335,15 @@ public class GameScreenCommonUpdater {
 	public void pause(){
 		GameObjectContainer.clearTexts();
 		text.setScale(1.2f, -1.1f);
-		text.setCenteredHorizzontally("Pause", 800, 320);
+		text.setCenteredHorizzontally(gameScreen.getGame().getString("pause"), 800, 320);
 		GameObjectContainer.addText(text);
-		GameObjectContainer.addText(obstaclesText);
+        GameObjectContainer.addText(obstaclesText);
 		pausedGameState = gameState;
-		gameScreen.prepareCount(3, TextureLoader.fontWhite, 1.2f, -1.1f, 800, 500, "Resuming in 3.00");
+		gameScreen.prepareCount(3, TextureLoader.fontWhite, 1.2f, -1.1f, 800, 500, gameScreen.getGame().getString("resuming_in") + " 3.00");
 		GameButtonContainer.setButtons(GameState.pause);
 		gameScreen.setState(GameState.pause);
+        fadingBackground.setValues(Color.BLACK, 0, 0, 1600, 900);
+        fadingBackground.startFading(0.5f, 0.5f, 0f, null);
 	}
 	
 	protected void resume(){

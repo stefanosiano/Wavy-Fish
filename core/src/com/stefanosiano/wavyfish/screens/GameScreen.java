@@ -28,7 +28,7 @@ public class GameScreen extends SimpleScreen{
 		this.renderer = null;
 		int numberOfWallsToFinish = 250;
 		int speedUpStep = 3;
-		int speedDownStep = 45;
+		int speedDownStep = 30;
 		switch (Settings.gameControl){
 			case classic:
 				if(Settings.NEW_TUT_CLASSIC){
@@ -100,6 +100,7 @@ public class GameScreen extends SimpleScreen{
 			}
 		}
 		setRendererScreen(this);
+        ((GameScreenCommonRenderer)renderer).setDifficultyText();
         
     	GameButtonContainer.setButtons(gameState);
 		fadeIn(0.4f);
@@ -141,6 +142,7 @@ public class GameScreen extends SimpleScreen{
 				case wavy:
 					GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(Enums.ButtonNames.buttonFishUp));
 					GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(Enums.ButtonNames.buttonFishDown));
+                    GameButtonContainer.activeButtons.remove(GameButtonContainer.findActiveButton(Enums.ButtonNames.buttonFlappyBackground));
 					break;
 			}
 		}
@@ -149,7 +151,8 @@ public class GameScreen extends SimpleScreen{
 	}
 	
 	public void restart(){
-		((GameScreenCommonRenderer) renderer).initialize();
+        ((GameScreenCommonRenderer) renderer).initialize();
+		((GameScreenCommonRenderer) renderer).setDifficultyText();
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ import com.stefanosiano.common.SimpleGameObject;
 import com.stefanosiano.common.Text;
 import com.stefanosiano.wavyfish.experience.Experience;
 import com.stefanosiano.common.tochange.SoundLoader;
+import com.stefanosiano.wavyfish.game.WavyFishGame;
 import com.stefanosiano.wavyfish.utilities.Settings;
 
 public class HighScoreContainer extends SimpleGameObject{
@@ -22,6 +23,8 @@ public class HighScoreContainer extends SimpleGameObject{
 	private ExperienceBar experienceBar;
 	private boolean showContinueText;
 	private int numCoinPlay;
+    private WavyFishGame game;
+    private String expString;
 
 	public HighScoreContainer(TextureRegion texture, TextureRegion star, TextureRegion blackStar, float x, float y, float width, float height, float scoreValueLeftX, float scoreValueY, 
 			float bestScoreValueLeftX, float bestScoreValueY, float levelWordX, float levelWordY, float experienceWordX, float experienceWordY, 
@@ -61,13 +64,15 @@ public class HighScoreContainer extends SimpleGameObject{
 		starX = x + (starWidth/2f);
 	}
 	
-	public void initialize(Score score, int level, int experience, int maxExperience, int previousMaxExperience, int bestScore){
+	public void initialize(WavyFishGame game, Score score, int level, int experience, int maxExperience, int previousMaxExperience, int bestScore){
+        this.game = game;
 		this.level = level;
 		this.experience = experience;
 		int scoreValue = score.getScoreValue();
 		this.numCoinPlay = 0;
+        this.expString = game.getString("experience");
 		BitmapFont pointFont = score.getFontPoints();
-		
+
 		pointFont.getData().setScale(score.getScalePointsX(), score.getScalePointsY());
 		GlyphLayout scoreLayout = new GlyphLayout(pointFont, scoreValue + "");
 		GlyphLayout bestLayout = new GlyphLayout(pointFont, bestScore + "");
@@ -77,11 +82,12 @@ public class HighScoreContainer extends SimpleGameObject{
 
 		scoreValueText.setCenteredToLeftOf(scoreValue + "", scoreValueX, scoreValueY);
 		bestScoreValueText.setCenteredToLeftOf(bestScore + "", bestScoreValueX, bestScoreValueY);
-		
-		scoreWordText.setCenteredToLeftOf("Score:", scoreValueX - (scoreLayout.width + 30), scoreValueY);
-		bestScoreWordText.setCenteredToLeftOf("Best:", bestScoreValueX - (bestLayout.width + 30), bestScoreValueY);
-		levelText.setToLeftOf("LVL: " + level, levelWordX, levelWordY);
-		experienceText.set("Experience: " + experience, experienceWordX, experienceWordY);
+
+        continueText.updateOnlyText(game.getString("tap_continue"));
+		scoreWordText.setCenteredToLeftOf(game.getString("score") + ":", scoreValueX - (scoreLayout.width + 30), scoreValueY);
+		bestScoreWordText.setCenteredToLeftOf(game.getString("best") + ":", bestScoreValueX - (bestLayout.width + 30), bestScoreValueY);
+		levelText.setToLeftOf(game.getString("lvl") + level, levelWordX, levelWordY);
+		experienceText.set(expString + experience, experienceWordX, experienceWordY);
 
 		
 		if(scoreValue < 5000) activeStars = 0;
@@ -101,7 +107,7 @@ public class HighScoreContainer extends SimpleGameObject{
 	
 	public void setNewValues(int newExperience){
 		this.newExperience = newExperience;
-		experienceBar.modifyLife(experience - this.newExperience, 1.3f);
+        experienceBar.modifyLife(experience - this.newExperience, 1.3f);
 	}
 
 	@Override
@@ -153,35 +159,35 @@ public class HighScoreContainer extends SimpleGameObject{
 		if(level < Experience.getMaxLevel())
 			level++;
 		levelText.updateTextToLeftOf("LVL: " + level);
-		
+
 
 		switch (level) {
 			case 2:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Medium Difficulty!");
+				unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("m_diff") + "!");
 				break;
 			case 3:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Horror Fish!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("n_fish") + "!");
 				break;
 			case 4:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Extra Life!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("extra_life") + "!");
 				break;
 			case 5:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Hard Difficulty!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("h_diff") + "!");
 				break;
 			case 6:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Third Fish!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("n_fish") + "!");
 				break;
 			case 7:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Extra Life!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("extra_life") + "!");
 				break;
 			case 8:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Crazy Difficulty!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("c_diff") + "!");
 				break;
 			case 9:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Fourth Fish!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("n_fish") + "!");
 				break;
 			case 10:
-				unlockedText.updateTextCenteredHorizzontally("You unlocked: Extra Life!");
+                unlockedText.updateTextCenteredHorizzontally(game.getString("you_unlocked") + " " + game.getString("extra_life") + "!");
 				break;
 			default:
 				break;
@@ -197,7 +203,7 @@ public class HighScoreContainer extends SimpleGameObject{
 			numCoinPlay = 0;
 		}
 		
-		experienceText.updateText("Experience: " + (int)experienceBar.getRealCurrentValue());
+		experienceText.updateText(expString + (int)experienceBar.getRealCurrentValue());
 
 		if(experienceBar.getRenderingValue() >= experienceBar.getMaxValue()){
 			onLevelPassed();
