@@ -1,17 +1,33 @@
 android {
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
     compileSdkVersion 23
 
     defaultConfig {
         applicationId "com.stefanosiano.wavyfish.android"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 13
-        versionName '1.1.00'
-        multiDexEnabled true
+        versionCode 14
+        versionName '1.1.01'
     }
     lintOptions{
         abortOnError false
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), file('proguard-project.txt')
+            zipAlignEnabled true
+        }
+        release {
+            debuggable false
+            jniDebuggable false
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), file('proguard-project.txt')
+            zipAlignEnabled true
+        }
     }
 
     sourceSets {
@@ -29,8 +45,9 @@ android {
     }
 
     dexOptions {
+        javaMaxHeapSize "2g"
         incremental true
-        javaMaxHeapSize "4096M"
+        preDexLibraries true
     }
 }
 

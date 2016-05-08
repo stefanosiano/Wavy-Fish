@@ -7,10 +7,11 @@ buildscript {
     }
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
-        classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath 'com.android.tools.build:gradle:2.1.0'
         classpath 'org.robovm:robovm-gradle-plugin:1.9.0'
         classpath 'com.google.gms:google-services:1.5.0-beta2'
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.0'
     }
 }
 
@@ -51,6 +52,7 @@ project(":android") {
     apply plugin: "android"
     apply plugin: 'io.fabric'
     apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'com.getkeepsafe.dexcount'
 
     repositories {
         jcenter()
@@ -58,6 +60,16 @@ project(":android") {
         mavenCentral()
     }
     configurations { natives }
+    dexcount {
+        format = "list"
+        includeClasses = false
+        includeFieldCount = true
+        includeTotalMethodCount = true
+        orderByMethodCount = true
+        verbose = false
+        maxTreeDepth = Integer.MAX_VALUE
+        teamCityIntegration = false
+    }
 
     dependencies {
         compile project(":core")
@@ -70,17 +82,16 @@ project(":android") {
         compile fileTree (dir: 'libs', include: '*.jar')
         compile 'com.google.android.gms:play-services-ads:8.3.0'
         compile 'com.google.android.gms:play-services-analytics:8.3.0'
-        compile 'com.android.support:support-v4:23.1.1'
-        compile 'com.android.support:appcompat-v7:23.1.1'
-        compile 'com.android.support:multidex:1.0.1'
+        compile 'com.android.support:support-v4:23.3.0'
+        compile 'com.android.support:appcompat-v7:23.3.0'
         compile 'com.facebook.android:audience-network-sdk:4.7.0'
 
         // Crashlytics Kit
-        compile('com.crashlytics.sdk.android:crashlytics:2.5.3@aar') {
+        compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
             transitive = true
         }
         // MoPub Kit
-        compile('com.mopub:mopub-sdk:4.3.0@aar') {
+        compile('com.mopub:mopub-sdk:4.5.0@aar') {
             transitive = true
         }
     }
