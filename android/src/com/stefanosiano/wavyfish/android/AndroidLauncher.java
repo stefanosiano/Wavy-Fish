@@ -5,7 +5,6 @@ import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
 import com.facebook.ads.AdSettings;
-import com.google.ads.AdRequest;
 import com.jirbo.adcolony.AdColony;
 import com.mopub.common.MoPub;
 import java.io.File;
@@ -18,7 +17,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.multidex.MultiDex;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.badlogic.gdx.Gdx;
@@ -27,7 +26,6 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
-import com.startapp.android.publish.StartAppSDK;
 import com.stefanosiano.common.utils.SimpleCallback;
 import com.stefanosiano.wavyfish.android.AnalyticsHelper.TrackerName;
 import com.stefanosiano.wavyfish.android.PermissionAskerHelper.OnPermissionRequested;
@@ -56,12 +54,6 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
     private final String TAG = "WavyFish Application";
 
     @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
-
-    @Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -72,7 +64,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
             MoPub.onCreate(this);
 		}
         else{
-            AdSettings.addTestDevice("1d73ae69405a2e4366fd5d5073a81b14");
+			AdSettings.addTestDevice("df97554159148841b84ae3f3303b9dfc");
         }
 		
 		dolbyAudioProcessing = null;
@@ -87,7 +79,6 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		config.useAccelerometer = false;
 		config.useCompass = false;
 
-        StartAppSDK.init(this, "211059130", false);
 		mInterstitial = new MoPubInterstitial(this, mopubID);
 		mInterstitial.setInterstitialAdListener(this);
 		adsUtil = new AdsUtil(this, mInterstitial);
@@ -170,7 +161,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	}
 	
 	@Override
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
 		PermissionAskerHelper.permissionsRequested(this, EnumPermissions.shareScore, requestCode, permissions, grantResults, new OnPermissionRequested() {
             @Override
             public void onPermissionDenied() {
