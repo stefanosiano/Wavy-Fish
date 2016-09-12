@@ -11,7 +11,6 @@ import com.google.android.gms.analytics.Tracker;
 import com.stefanosiano.wavyfish.android.R;
 
 public class AnalyticsHelper {
-    private static final String PROPERTY_ID = "UA-64851915-1";
     
    	/**
    	 * Enum used to identify the tracker that needs to be used for tracking.

@@ -10,12 +10,13 @@ import javax.crypto.spec.SecretKeySpec;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Base64Coder;
+import com.stefanosiano.wavyfish.Keys;
 import com.stefanosiano.wavyfish.utilities.Enums.SavedItems;
 
 public class DataSaver {
 	private static String version;
 	private static Preferences prefs;
-	private static final byte[] key = new byte[] {'W', 'a', 'V', 'y', 'F', 'i', 'S', 'h', 'W', 'A', 'v', 'Y', 'f', 'i', 's', '!'}; // 128 bit key
+	private static final byte[] key = Keys.DATA_KEY;
 	
 	public static void load(){
 		prefs = Gdx.app.getPreferences("WavyFish");

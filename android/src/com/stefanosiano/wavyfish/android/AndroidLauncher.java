@@ -11,7 +11,6 @@ import java.io.File;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
@@ -28,7 +27,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.stefanosiano.common.utils.SimpleCallback;
 import com.stefanosiano.wavyfish.android.AnalyticsHelper.TrackerName;
-import com.stefanosiano.wavyfish.android.PermissionAskerHelper.OnPermissionRequested;
+import com.stefanosiano.wavyfish.android.PermissionUtil.OnPermissionRequested;
 import com.stefanosiano.wavyfish.game.CommonApiController;
 import com.stefanosiano.wavyfish.game.ShareCallback;
 import com.stefanosiano.wavyfish.game.WavyFishGame;
@@ -41,7 +40,6 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	
 	private AdsUtil adsUtil;
 	private MoPubInterstitial mInterstitial;
-	private String mopubID = "04142d059c024d68a2caef5692f616ae";
 	private ItemSharer itemSharer;
 	private AnalyticsHelper analyticsHelper;
 	private SimpleCallback permissionCallback;
@@ -64,7 +62,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
             MoPub.onCreate(this);
 		}
         else{
-			AdSettings.addTestDevice("df97554159148841b84ae3f3303b9dfc");
+			AdSettings.addTestDevice(Keys.TEST_DEVICE_ID);
         }
 		
 		dolbyAudioProcessing = null;
@@ -79,7 +77,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		config.useAccelerometer = false;
 		config.useCompass = false;
 
-		mInterstitial = new MoPubInterstitial(this, mopubID);
+		mInterstitial = new MoPubInterstitial(this, Keys.MOPUB_ID);
 		mInterstitial.setInterstitialAdListener(this);
 		adsUtil = new AdsUtil(this, mInterstitial);
 		itemSharer = new ItemSharer(this);
@@ -162,7 +160,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
-		PermissionAskerHelper.permissionsRequested(this, EnumPermissions.shareScore, requestCode, permissions, grantResults, new OnPermissionRequested() {
+		PermissionUtil.permissionsRequested(this, EnumPermissions.shareScore, requestCode, permissions, grantResults, new OnPermissionRequested() {
             @Override
             public void onPermissionDenied() {
                 if (permissionCallback != null) permissionCallback.onActionCompleted(false);
@@ -177,11 +175,11 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 
 	@Override
 	public void askPermission(EnumPermissions permission, SimpleCallback callback){
-		if(PermissionAskerHelper.checkPermission(this, permission))
+		if(PermissionUtil.checkPermission(this, permission))
 			callback.onActionCompleted(true);
 		else{
 			permissionCallback = callback;
-			PermissionAskerHelper.askPermission(this, permission);
+			PermissionUtil.askPermission(this, permission);
 		}
 	}
 

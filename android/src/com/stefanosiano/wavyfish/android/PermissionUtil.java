@@ -22,7 +22,7 @@ import android.text.TextUtils;
  *
  * Class used to know when the permissions are requested, and to handle what are the permissions requested for each place
  */
-public class PermissionAskerHelper {
+public class PermissionUtil {
     private static String SYSTEM_DIALOG = " SystemDialog";
 
 

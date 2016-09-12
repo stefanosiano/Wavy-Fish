@@ -13,8 +13,6 @@ import com.mopub.mobileads.MoPubRewardedVideoListener;
 import java.util.Set;
 
 public class AdsUtil {
-	private static final String INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-7415586219687762/7423646733";
-    private static final String REWARDED_VIDEO_AD_UNIT_ID = "d13ad9479f724f539c8ede0c3f2c2ab7";
 	private InterstitialAd adMobInterstitialAd;
 	private MoPubInterstitial mInterstitial;
     private MoPubRewardedVideoListener rewardedVideoListener;
@@ -22,7 +20,7 @@ public class AdsUtil {
 	
 	public AdsUtil(Context context, MoPubInterstitial mInterstitial) {
 		adMobInterstitialAd = new InterstitialAd(context);
-		adMobInterstitialAd.setAdUnitId(INTERSTITIAL_AD_UNIT_ID);
+		adMobInterstitialAd.setAdUnitId(Keys.INTERSTITIAL_AD_UNIT_ID);
 
 		this.mInterstitial = mInterstitial;
 
@@ -67,15 +65,15 @@ public class AdsUtil {
 	}
 
     public void loadRewardedVideo() {
-        MoPub.loadRewardedVideo(REWARDED_VIDEO_AD_UNIT_ID);
+        MoPub.loadRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
     public void showRewardedVideo() {
-        MoPub.showRewardedVideo(REWARDED_VIDEO_AD_UNIT_ID);
+        MoPub.showRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
     public boolean isRewardedVideoLoaded() {
-        return MoPub.hasRewardedVideo(REWARDED_VIDEO_AD_UNIT_ID);
+        return MoPub.hasRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
 	public void showInterstitialAd() {
