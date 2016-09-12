@@ -21,6 +21,7 @@ build/
 local.properties
 keystore.properties
 Keys.*
+google-services.json
 app_tracker.xml
 
 # Mac files
