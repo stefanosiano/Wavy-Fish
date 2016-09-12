@@ -6,10 +6,7 @@ It's written in Java, and is currently working for Android, with specific featur
 
 Play store: https://play.google.com/store/apps/details?id=com.stefanosiano.wavyfish.android
 
-This is NOT just a “Flappy X” clone!
-
-How is this game different from all the others?  
-Quite simple: it offers a different kind of controls and optional modes, created by me, so you won’t find them elsewhere!
+This game offers several controls and optional modes that you won’t find elsewhere!
 
 You can change the options before every game, so you will always get the challenge level that you prefer, according to your soul state, and/or the season.  
 Overtake your older results, and let everyone know it!  
