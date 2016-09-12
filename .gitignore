@@ -20,6 +20,7 @@ build/
 # Local configuration file (sdk path, etc)
 local.properties
 keystore.properties
+fabric.properties
 Keys.*
 google-services.json
 app_tracker.xml
