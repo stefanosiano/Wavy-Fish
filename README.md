@@ -49,13 +49,13 @@ Try to pass all the 250 obstacles to win!
 
 <b>Features: </b>
 
-->Different difficulties (with different speed and score)
-->Different controls
-->Different modes
-->Different themes (obtained through gaining experience)
-->More lives (obtained through gaining experience)
-->Share your best score with your friends 
-->Dolby sound enhancement (only for supported devices)
+->Different difficulties (with different speed and score)  
+->Different controls  
+->Different modes  
+->Different themes (obtained through gaining experience)  
+->More lives (obtained through gaining experience)  
+->Share your best score with your friends   
+->Dolby sound enhancement (only for supported devices)  
 
 <b>Have fun!!! </b>
 
