@@ -136,10 +136,15 @@ public class WallCouple implements Obstacle {
 		wall2.getVelocity().x = 0;
 		WallCouple.increment = 0;
 	}
-	
+
 	@Override
 	public float getX(){
 		return wall1.getPosition().x;
+	}
+
+	@Override
+	public float getSpeedX(){
+		return wall1.getVelocity().x;
 	}
 	
 	@Override

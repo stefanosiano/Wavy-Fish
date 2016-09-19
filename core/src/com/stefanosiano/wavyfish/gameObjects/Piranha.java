@@ -181,6 +181,11 @@ public class Piranha extends SimpleGameObject implements Obstacle {
 	public float getX(){
 		return position.x;
 	}
+
+	@Override
+	public float getSpeedX(){
+		return velocity.x;
+	}
 	
 	public Circle getCircle(){
 		return circle;

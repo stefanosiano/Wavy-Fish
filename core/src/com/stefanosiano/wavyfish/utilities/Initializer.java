@@ -501,30 +501,26 @@ public class Initializer {
 		switch (Settings.difficulty){
 			case easy:
 				fishFrameDuration = 0.1f;
-		    	piranhaSpeedX = -500;
-			    fishMaxSpeed = 425;
-				wallSpeedUpFactor = -26;
+		    	piranhaSpeedX = -650;
+				wallSpeedUpFactor = -40f;
 				break;
 
 			case medium:
 				fishFrameDuration = 0.09f;
-		    	piranhaSpeedX = -560;
-			    fishMaxSpeed = 470;
-				wallSpeedUpFactor = -29f;
+		    	piranhaSpeedX = -750;
+				wallSpeedUpFactor = -45f;
 				break;
 
 			case hard:
 				fishFrameDuration = 0.08f;
-		    	piranhaSpeedX = -620;
-			    fishMaxSpeed = 515;
-				wallSpeedUpFactor = -32;
+		    	piranhaSpeedX = -850;
+				wallSpeedUpFactor = -50f;
 				break;
 
 			case crazy:
 				fishFrameDuration = 0.07f;
-		    	piranhaSpeedX = -700;
-			    fishMaxSpeed = 560;
-				wallSpeedUpFactor = -35;
+		    	piranhaSpeedX = -1000;
+				wallSpeedUpFactor = -55f;
 				break;
 
 			default:
@@ -532,6 +528,7 @@ public class Initializer {
 		}
         bgSpeedX = Math.round(piranhaSpeedX / 2);
         wallSpeedX = Math.round(piranhaSpeedX);
+		fishMaxSpeed = ((int) Math.round(-piranhaSpeedX * 0.8));
         piranhaSpeedY = -piranhaSpeedX * 2;
         fishCurrentAcceleration = Math.round(-piranhaSpeedX * 3.2f);
         fishSpeedUpFactor = -wallSpeedUpFactor * 2.4f;

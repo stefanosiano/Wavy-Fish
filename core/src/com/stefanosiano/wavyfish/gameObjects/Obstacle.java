@@ -16,6 +16,7 @@ public interface Obstacle {
 	public boolean overlaps(Circle fishCircle);
 	public void drawCollision(ShapeRenderer shapeRenderer);
 	public float getX();
+	public float getSpeedX();
 	public void stopComing();
 	public void postponeFurther();
 }

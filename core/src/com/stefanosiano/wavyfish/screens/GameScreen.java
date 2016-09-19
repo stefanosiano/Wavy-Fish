@@ -26,9 +26,9 @@ public class GameScreen extends SimpleScreen{
 		AnalyticsSender.sendPlayGame(game);
 
 		this.renderer = null;
-		int numberOfWallsToFinish = 250;
-		int speedUpStep = 3;
-		int speedDownStep = 30;
+		int numberOfWallsToFinish = 100;
+		int speedUpStep = 2;
+		int speedDownStep = 12;
 		switch (Settings.gameControl){
 			case classic:
 				if(Settings.NEW_TUT_CLASSIC){
