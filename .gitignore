@@ -24,6 +24,9 @@ fabric.properties
 Keys.*
 google-services.json
 app_tracker.xml
+com_crashlytics_export_strings.xml
+android/src/debug/AndroidManifest.xml
+android/src/release/AndroidManifest.xml
 
 # Mac files
 *.DS_Store

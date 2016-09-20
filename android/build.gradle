@@ -1,13 +1,13 @@
 android {
-    buildToolsVersion "23.0.3"
-    compileSdkVersion 23
+    buildToolsVersion "24.0.2"
+    compileSdkVersion 24
 
     defaultConfig {
         applicationId "com.stefanosiano.wavyfish.android"
         minSdkVersion 9
-        targetSdkVersion 23
-        versionCode 14
-        versionName '1.1.01'
+        targetSdkVersion 24
+        versionCode 15
+        versionName '1.2.00'
     }
     lintOptions{
         abortOnError false

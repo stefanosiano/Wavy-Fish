@@ -145,7 +145,7 @@ public class GameScreenCommonUpdater {
 	protected void speedDown(int x) {
 		GameObjectContainer.speedDownToStart();
 		//normally i get 7.5 speedUp (15/12)
-		x = Math.round(speedDownStep/speedUpStep/2) * x;
+		x = speedDownStep/speedUpStep/2 * x;
 		for(int i = 0; i < x; i++)
 			GameObjectContainer.speedUp();
 	}
@@ -213,7 +213,7 @@ public class GameScreenCommonUpdater {
         GameObjectContainer.removeObstacle(passedWalls, numberOfWallsToFinish, speedDownStep);
         if(passedWalls % speedUpStep == 0){
             GameObjectContainer.speedUp();
-			System.out.println(obstacles.get(0).getSpeedX() + "");
+			//System.out.println(obstacles.get(0).getSpeedX() + "");
         }
         if(passedWalls % speedDownStep == 0){
             speedDown(passedWalls / speedDownStep);

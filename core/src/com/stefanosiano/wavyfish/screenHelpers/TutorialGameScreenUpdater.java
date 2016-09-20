@@ -179,7 +179,6 @@ public class TutorialGameScreenUpdater extends GameScreenUpdater {
 		names = GameButtonContainer.getBtnPressed();
 		
 		for(ButtonNames name : names){
-			System.out.println(name);
 			switch(name){
 				case buttonFlappyBackground:
 					fish.changeBounceDirection();

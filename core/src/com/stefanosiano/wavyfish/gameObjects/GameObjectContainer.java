@@ -381,8 +381,7 @@ public class GameObjectContainer {
 	}
 	
 	public static void removeObstacle(int passedWalls, int numberOfWallsToFinish, int speedDownStep){
-        System.out.println(passedWalls + " " + numberOfWallsToFinish + " " + obstacleNumber);
-		if(passedWalls >= numberOfWallsToFinish - obstacleNumber){
+        if(passedWalls >= numberOfWallsToFinish - obstacleNumber){
 			collisionOb = obstacles.get(collisionObstacleIndex);
 			collisionOb.stopComing();
 		}
