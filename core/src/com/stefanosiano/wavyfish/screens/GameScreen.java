@@ -29,6 +29,10 @@ public class GameScreen extends SimpleScreen{
 		int numberOfWallsToFinish = 100;
 		int speedUpStep = 2;
 		int speedDownStep = 12;
+
+		if(Settings.gameEndless)
+			numberOfWallsToFinish = Integer.MAX_VALUE;
+
 		switch (Settings.gameControl){
 			case classic:
 				if(Settings.NEW_TUT_CLASSIC){
@@ -88,16 +92,10 @@ public class GameScreen extends SimpleScreen{
 		}
 		
 		if(renderer == null){
-			switch (Settings.gameMode){
-				case blinking:
-					this.renderer = new GameScreenBlinkingRenderer();
-					break;
-				case piranha:
-				case normal:
-				default:
-					this.renderer = new GameScreenCommonRenderer();
-					break;
-			}
+			if(Settings.gameMode.equals(Enums.GameMode.blinking))
+				this.renderer = new GameScreenBlinkingRenderer();
+			else
+				this.renderer = new GameScreenCommonRenderer();
 		}
 		setRendererScreen(this);
         ((GameScreenCommonRenderer)renderer).setDifficultyText();

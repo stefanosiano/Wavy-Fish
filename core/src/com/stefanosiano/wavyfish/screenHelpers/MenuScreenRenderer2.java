@@ -22,9 +22,11 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
     private SimpleButton buttonDifficultySelected, buttonControlSelected, buttonModeSelected;
     private int buttonDifficultyX, buttonDifficultyY, buttonDifficultyWidth, buttonDifficultyHeight;
     private int buttonControlX, buttonControlY, buttonControlWidth, buttonControlHeight;
-    private int buttonModeX, buttonModeY, buttonModeWidth, buttonModeHeight, panelX, panelY, panelW, panelX2, panelX3;
+	private int buttonModeX, buttonModeY, buttonModeWidth, buttonModeHeight, panelX, panelY, panelW, panelX2, panelX3;
     private Fish fish;
     private ArrayList<Text> texts, tutorialTexts;
+	private ButtonNames[] buttonModeNames = {ButtonNames.buttonEndlessMode, ButtonNames.buttonBlinkingkMode, ButtonNames.buttonPiranhaMode};
+	private ArrayList<ModeSelection> modeSelections;
 
     
     public MenuScreenRenderer2(){
@@ -41,6 +43,15 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
     	panelW = button.getWidth();
     	panelX2 = panelX + panelW + 120;
     	panelX3 = panelX2 + panelW + 120;
+
+
+		modeSelections = new ArrayList<>(buttonModeNames.length);
+		for(ButtonNames name : buttonModeNames){
+			this.buttonModeSelected = GameButtonContainer.findActiveButton(name);
+			if(buttonModeSelected == null)
+				continue;
+			modeSelections.add(new ModeSelection(name, buttonModeSelected.getX(), buttonModeSelected.getY(), buttonModeSelected.getWidth(), buttonModeSelected.getHeight()));
+		}
     }
     
     public void setSelectedDifficulty(ButtonNames name){
@@ -59,13 +70,13 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
     	this.buttonControlHeight = buttonControlSelected.getHeight();
     }
 
-    public void setSelectedMode(ButtonNames name){
-    	this.buttonModeSelected = GameButtonContainer.findActiveButton(name);
-    	this.buttonModeX = buttonModeSelected.getX();
-    	this.buttonModeY = buttonModeSelected.getY();
-    	this.buttonModeWidth = buttonModeSelected.getWidth();
-    	this.buttonModeHeight = buttonModeSelected.getHeight();
-    }
+	public void setSelectedMode(ButtonNames name){
+		for(ModeSelection mode : modeSelections){
+			if(mode.name.equals(name)){
+				mode.isSelected = !mode.isSelected;
+			}
+		}
+	}
     
     public void restart(){
 		this.activeButtons = GameButtonContainer.activeButtons;
@@ -103,7 +114,10 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
         batcher.enableBlending();
         batcher.draw(TextureLoader.buttonSelected, buttonDifficultyX, buttonDifficultyY, buttonDifficultyWidth, buttonDifficultyHeight);
         batcher.draw(TextureLoader.buttonSelected, buttonControlX, buttonControlY, buttonControlWidth, buttonControlHeight);
-        batcher.draw(TextureLoader.buttonSelected, buttonModeX, buttonModeY, buttonModeWidth, buttonModeHeight);
+		for(ModeSelection modeSelection : modeSelections) {
+			if(modeSelection.isSelected)
+				batcher.draw(TextureLoader.buttonSelected, modeSelection.x, modeSelection.y, modeSelection.width, modeSelection.height);
+		}
 	}
 	
 	private void drawPanels(){
@@ -182,4 +196,35 @@ public class MenuScreenRenderer2 extends SimpleRenderer{
 		tutorialTexts.add(t6);
 		tutorialTexts.add(t7);
     }
+
+	private class ModeSelection {
+		private ButtonNames name;
+		private int x, y, width, height;
+		private boolean isSelected;
+
+		public ModeSelection(ButtonNames name, int x, int y, int width, int height) {
+			this.name = name;
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			this.isSelected = false;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (o == null || getClass() != o.getClass()) return false;
+
+			ModeSelection that = (ModeSelection) o;
+
+			return name == that.name;
+
+		}
+
+		@Override
+		public int hashCode() {
+			return name != null ? name.hashCode() : 0;
+		}
+	}
 }

@@ -9,7 +9,7 @@ public interface Enums {
 		buttonContinue, 
 		buttonEasy, buttonMedium, buttonHard, buttonCrazy,  
 		buttonClassicControl, buttonFlappyControl, buttonWavyControl, buttonBouncingControl,
-		buttonNormalMode, buttonBlinkingkMode, buttonPiranhaMode,
+		buttonBlinkingkMode, buttonPiranhaMode, buttonEndlessMode,
 		//game
 		buttonFishUp, buttonFishDown, buttonBackground, buttonRestart, buttonBackToMenu, buttonResume, buttonFlappyBackground, shareScoreShine,
 		arrowUp, arrowDown, hardwareBack, buttonPauseMusic, buttonPauseSoundEnabled, buttonPauseFullScreen, buttonLostBackToMenu, buttonShareScore,
@@ -23,9 +23,9 @@ public interface Enums {
 	}
 	
 	public enum GameMode{
-		normal, blinking, piranha;
+		normal, blinking;
 	}
-	
+
 	public enum GameObstacle{
 		wall, piranha;
 	}

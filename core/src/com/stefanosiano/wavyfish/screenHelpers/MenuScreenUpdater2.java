@@ -73,7 +73,6 @@ public class MenuScreenUpdater2 {
 					GameButtonContainer.setButtons(GameState.menu2);
 					menuScreen2.setSelectedDifficulty(ButtonNames.buttonEasy);
 					menuScreen2.setSelectedControl(ButtonNames.buttonWavyControl);
-					menuScreen2.setSelectedMode(ButtonNames.buttonNormalMode);
 					break;
 				default:
 					break;
@@ -101,7 +100,7 @@ public class MenuScreenUpdater2 {
 					menuScreen2.setSelectedControl(name);
 					break;
 				case buttonBlinkingkMode:
-				case buttonNormalMode:
+				case buttonEndlessMode:
 				case buttonPiranhaMode:
 					menuScreen2.setSelectedMode(name);
 					break;

@@ -101,7 +101,10 @@ public class GameScreenCommonUpdater {
     	this.sObstacles = new SecureValue(passedWalls, acs, SecureValueName.obstaclesPassed);
     	
 		obstaclesText.setCenteredHorizzontally("", 1300, 20);
-		obstaclesText.updateTextCenteredHorizzontally(0 + "/" + numberOfWallsToFinish);
+		if(numberOfWallsToFinish == Integer.MAX_VALUE)
+			obstaclesText.updateTextCenteredHorizzontally("0");
+		else
+			obstaclesText.updateTextCenteredHorizzontally(0 + "/" + numberOfWallsToFinish);
 		GameObjectContainer.clearTexts();
     	
     	this.adsController = adsController;
@@ -192,7 +195,10 @@ public class GameScreenCommonUpdater {
 	protected void wallPassed() {
 		this.sObstacles.set(passedWalls, passedWalls + 1);
 		passedWalls++;
-		obstaclesText.updateTextCenteredHorizzontally(passedWalls + "/" + numberOfWallsToFinish);
+		if(numberOfWallsToFinish == Integer.MAX_VALUE)
+			obstaclesText.updateTextCenteredHorizzontally(passedWalls + "");
+		else
+			obstaclesText.updateTextCenteredHorizzontally(passedWalls + "/" + numberOfWallsToFinish);
 
 		if(!fishCollided){
 			oldScoreValue = score.getScoreValue();
@@ -291,7 +297,10 @@ public class GameScreenCommonUpdater {
 		this.sObstacles.set(oldPassedWalls, passedWalls);
 		
 		this.won = false;
-		obstaclesText.updateTextCenteredHorizzontally(0 + "/" + numberOfWallsToFinish);
+		if(numberOfWallsToFinish == Integer.MAX_VALUE)
+			obstaclesText.updateTextCenteredHorizzontally("0");
+		else
+			obstaclesText.updateTextCenteredHorizzontally(0 + "/" + numberOfWallsToFinish);
 		adLoaded = false;
 		loadInterstitial();
 

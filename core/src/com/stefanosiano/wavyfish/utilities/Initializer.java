@@ -207,12 +207,12 @@ public class Initializer {
 		GameButtonContainer.setText(ButtonNames.buttonClassicControl, game.getString("classic"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		
 		x = (width + w)/2 + 120;
-		GameButtonContainer.addOneTouchBtn(x, y, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonNormalMode);
-		GameButtonContainer.setText(ButtonNames.buttonNormalMode, game.getString("normal"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
-		GameButtonContainer.addOneTouchBtn(x, y+100, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonBlinkingkMode);
+		GameButtonContainer.addOneTouchBtn(x, y, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonBlinkingkMode);
 		GameButtonContainer.setText(ButtonNames.buttonBlinkingkMode, game.getString("blinking"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
-		GameButtonContainer.addOneTouchBtn(x, y+200, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonPiranhaMode);
+		GameButtonContainer.addOneTouchBtn(x, y+100, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonPiranhaMode);
 		GameButtonContainer.setText(ButtonNames.buttonPiranhaMode, game.getString("piranha"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
+		GameButtonContainer.addOneTouchBtn(x, y+200, w, h, TextureLoader.buttonRed, TextureLoader.buttonRed, null, ButtonNames.buttonEndlessMode);
+		GameButtonContainer.setText(ButtonNames.buttonEndlessMode, game.getString("endless"), TextureLoader.fontWhite, optionScaleX, optionScaleY);
 		
 		//GAMESCREEN
 		GameButtonContainer.addContinuousTouchBtn(0, 0, width, midY, null, null, null, ButtonNames.buttonFishUp);

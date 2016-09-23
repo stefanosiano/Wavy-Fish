@@ -81,7 +81,7 @@ public class GameButtonContainer {
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonFlappyControl)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonWavyControl)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonBouncingControl)));
-				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonNormalMode)));
+				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonEndlessMode)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonBlinkingkMode)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonPiranhaMode)));
 				activeButtons.add(buttons.get(findButton(Enums.ButtonNames.buttonBack)));

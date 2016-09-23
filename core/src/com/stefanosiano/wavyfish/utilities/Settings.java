@@ -28,7 +28,8 @@ public class Settings {
 	public static GameControl gameControl = GameControl.classic;
 	public static GameMode gameMode = GameMode.blinking;
 	public static GameObstacle gameObstacle = GameObstacle.wall;
-	
+	public static boolean gameEndless = false;
+
 	/**
 	 * used to know if the user got his life after sharing the game on facebook, g+, or twitter
 	 */
