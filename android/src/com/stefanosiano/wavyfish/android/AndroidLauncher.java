@@ -25,6 +25,7 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
+import com.mopub.mobileads.MoPubRewardedVideos;
 import com.stefanosiano.common.utils.SimpleCallback;
 import com.stefanosiano.wavyfish.Keys;
 import com.stefanosiano.wavyfish.android.AnalyticsHelper.TrackerName;
@@ -59,7 +60,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		
 		if(!TESTMODE){
 			Fabric.with(this, new Crashlytics());
-            MoPub.initializeRewardedVideo(this);
+            MoPubRewardedVideos.initializeRewardedVideo(this);
             MoPub.onCreate(this);
 		}
         else{

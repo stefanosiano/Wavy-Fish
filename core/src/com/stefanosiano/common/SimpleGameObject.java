@@ -15,7 +15,7 @@ public abstract class SimpleGameObject extends SimpleItem {
     protected float height;
     
     protected TextureRegion texture;
-    protected Animation animation;
+    protected Animation<TextureRegion> animation;
     
     //Tween stuffs
     
@@ -39,7 +39,7 @@ public abstract class SimpleGameObject extends SimpleItem {
 	}
 	
 	public SimpleGameObject(TextureRegion[] textures, Animation.PlayMode playMode, float frameDuration, float x, float y, float width, float height, float speedX, float speedY){
-	    this.animation = new Animation(frameDuration, textures);
+	    this.animation = new Animation<>(frameDuration, textures);
 		this.animation.setPlayMode(playMode);
 		this.texture = null;
         this.width = width;

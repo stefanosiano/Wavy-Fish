@@ -56,9 +56,9 @@ public class Piranha extends SimpleGameObject implements Obstacle {
 		else
 			speedY = -Math.abs(speedY + 100 - r.nextInt(200));
 		
-		this.normalAnimation = new Animation(frameDuration, textures);
+		this.normalAnimation = new Animation<>(frameDuration, textures);
 		this.normalAnimation.setPlayMode(playMode);
-		this.flippedAnimation = new Animation(frameDuration, flippedTextures);
+		this.flippedAnimation = new Animation<>(frameDuration, flippedTextures);
 		this.flippedAnimation.setPlayMode(playMode);
 
 		if(velocity.y < 0){

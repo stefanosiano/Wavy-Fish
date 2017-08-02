@@ -18,7 +18,8 @@ public class GameScreenBouncingUpdater extends GameScreenUpdater{
 		super.reset();
 		fish.startBounce();
 	}
-	
+
+
 	@Override
 	protected void updateRunning(float delta) {
 		time += delta;
@@ -26,10 +27,10 @@ public class GameScreenBouncingUpdater extends GameScreenUpdater{
 		background2.update(delta);
 		lifeBar.update(delta);
 		names = GameButtonContainer.getBtnPressed();
-		
+
 		for(Obstacle ob : obstacles)
 			ob.update(delta);
-		
+
 		for(ButtonNames name : names){
 			switch(name){
 				case buttonFlappyBackground:
@@ -44,17 +45,22 @@ public class GameScreenBouncingUpdater extends GameScreenUpdater{
 		}
 		fish.updateBounce(delta);
 
-        if(!fishCollided && GameObjectContainer.fishCollide()){
+		//Called everytime if the fish collides
+		if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
+			return;
 		}
-		
+
+		//Called once when half of fish pass the left border of wall
 		if(GameObjectContainer.wallPassed()){
 			wallPassed();
+			return;
 		}
-		
-		if(GameObjectContainer.wallFinishedPassed()){
+
+		//Called once when the fish pass the right border of wall
+		if(!fishPassed && GameObjectContainer.wallFinishedPassed()){
 			wallFinishedPassed();
 		}
-		
+
 	}
 }

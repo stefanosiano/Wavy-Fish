@@ -1,11 +1,11 @@
 android {
-    buildToolsVersion "24.0.2"
-    compileSdkVersion 24
+    buildToolsVersion "26.0.1"
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId "com.stefanosiano.wavyfish.android"
-        minSdkVersion 9
-        targetSdkVersion 24
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 15
         versionName '1.2.00'
     }
@@ -46,7 +46,6 @@ android {
 
     dexOptions {
         javaMaxHeapSize "2g"
-        incremental true
         preDexLibraries true
     }
 }

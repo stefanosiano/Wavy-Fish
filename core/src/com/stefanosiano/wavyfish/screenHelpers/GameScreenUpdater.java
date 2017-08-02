@@ -151,19 +151,21 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 		}
 		if(names.size() == 0)
 			fish.update(delta);
-		
+
 		//Called everytime if the fish collides
 		if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
+			return;
 		}
-		
+
 		//Called once when half of fish pass the left border of wall
 		if(GameObjectContainer.wallPassed()){
 			wallPassed();
+			return;
 		}
 		
 		//Called once when the fish pass the right border of wall
-		if(GameObjectContainer.wallFinishedPassed()){
+		if(!fishPassed && GameObjectContainer.wallFinishedPassed()){
 			wallFinishedPassed();
 		}
 		

@@ -23,10 +23,10 @@ public class GameScreenFlappyUpdater extends GameScreenUpdater{
 		background2.update(delta);
 		lifeBar.update(delta);
 		names = GameButtonContainer.getBtnPressed();
-		
-		for(Obstacle wallCouple : obstacles)
-			wallCouple.update(delta);
-		
+
+		for(Obstacle ob : obstacles)
+			ob.update(delta);
+
 		for(ButtonNames name : names){
 			switch(name){
 				case buttonFlappyBackground:
@@ -43,19 +43,25 @@ public class GameScreenFlappyUpdater extends GameScreenUpdater{
 		}
 		fish.updateFlappy(delta);
 
-        if(!fishCollided && GameObjectContainer.fishCollide()){
+		//Called everytime if the fish collides
+		if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
+			return;
 		}
-		
+
+		//Called once when half of fish pass the left border of wall
 		if(GameObjectContainer.wallPassed()){
 			wallPassed();
+			return;
 		}
-		
-		if(GameObjectContainer.wallFinishedPassed()){
+
+		//Called once when the fish pass the right border of wall
+		if(!fishPassed && GameObjectContainer.wallFinishedPassed()){
 			wallFinishedPassed();
 		}
-		
+
 	}
+
 	
 	@Override
 	protected void reset(){

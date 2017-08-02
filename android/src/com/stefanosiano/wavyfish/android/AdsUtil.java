@@ -1,6 +1,7 @@
 package com.stefanosiano.wavyfish.android;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.ads.InterstitialAd;
@@ -9,6 +10,7 @@ import com.mopub.common.MoPubReward;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
+import com.mopub.mobileads.MoPubRewardedVideos;
 import com.stefanosiano.wavyfish.Keys;
 
 import java.util.Set;
@@ -55,9 +57,14 @@ public class AdsUtil {
                 // Called when a rewarded video is completed and the user should be rewarded.
                 // You can query the reward object with boolean isSuccessful(), String getLabel(), and int getAmount().
             }
+
+            @Override
+            public void onRewardedVideoClicked(@NonNull String adUnitId) {
+
+            }
         };
 
-        MoPub.setRewardedVideoListener(rewardedVideoListener);
+        MoPubRewardedVideos.setRewardedVideoListener(rewardedVideoListener);
 	}
 	
   	public void loadInterstitialAd() {
@@ -66,15 +73,15 @@ public class AdsUtil {
 	}
 
     public void loadRewardedVideo() {
-        MoPub.loadRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
+        MoPubRewardedVideos.loadRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
     public void showRewardedVideo() {
-        MoPub.showRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
+        MoPubRewardedVideos.showRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
     public boolean isRewardedVideoLoaded() {
-        return MoPub.hasRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
+        return MoPubRewardedVideos.hasRewardedVideo(Keys.REWARDED_VIDEO_AD_UNIT_ID);
     }
 
 	public void showInterstitialAd() {

@@ -24,10 +24,10 @@ public class GameScreenWavyUpdater extends GameScreenUpdater{
 		background2.update(delta);
 		lifeBar.update(delta);
 		names = GameButtonContainer.getBtnPressed();
-		
-		for(Obstacle wallCouple : obstacles)
-			wallCouple.update(delta);
-		
+
+		for(Obstacle ob : obstacles)
+			ob.update(delta);
+
 		for(ButtonNames name : names){
 			switch(name){
 				case hardwareBack:
@@ -38,26 +38,34 @@ public class GameScreenWavyUpdater extends GameScreenUpdater{
 			}
 		}
 
+
 		touchY = Gdx.input.getY();
 
 		touchY = touchY - (int)(ScreenConfig.HWHEIGHT - ScreenConfig.RENDERINGHEIGHT) / 2;
 		touchY =  touchY / ScreenConfig.SCALEY;
-		
+
 		fish.updateWavy(delta, touchY);
 
-        if(!fishCollided && GameObjectContainer.fishCollide()){
+		//Called everytime if the fish collides
+		if(!fishCollided && GameObjectContainer.fishCollide()){
 			fishCollide();
+			return;
 		}
-		
+
+		//Called once when half of fish pass the left border of wall
 		if(GameObjectContainer.wallPassed()){
 			wallPassed();
+			return;
 		}
-		
-		if(GameObjectContainer.wallFinishedPassed()){
+
+		//Called once when the fish pass the right border of wall
+		if(!fishPassed && GameObjectContainer.wallFinishedPassed()){
 			wallFinishedPassed();
 		}
-		
+
 	}
+
+
 	protected void reset(){
 		super.reset();
 	}

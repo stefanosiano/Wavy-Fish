@@ -37,7 +37,7 @@ public class GameScreenCommonUpdater {
 	protected LifeBar2 lifeBar;
 	private int lives, scoreValue;
 	private float multiplier, oldMultiplier;
-    protected boolean fishCollided;
+    protected boolean fishCollided, fishPassed;
 	private GameState pausedGameState;
 	protected Text text;
 	protected Text obstaclesText;
@@ -77,6 +77,7 @@ public class GameScreenCommonUpdater {
     	this.lives = Experience.getLives();
     	this.gameScreen = gameScreen;
     	this.fishCollided = false;
+    	this.fishPassed = false;
 		this.text = new Text(TextureLoader.fontWhite, 1f, -1f, false);
 		this.numberOfWallsToFinish = numberOfWallsToFinish;
 		this.obstaclesText = new Text(TextureLoader.fontYellow, 1f, -1f, false);
@@ -213,6 +214,8 @@ public class GameScreenCommonUpdater {
 
 		if(passedWalls >= numberOfWallsToFinish)
 			startWinning();
+
+        fishPassed = false;
 	}
 
     protected void wallFinishedPassed() {
@@ -225,6 +228,7 @@ public class GameScreenCommonUpdater {
             speedDown(passedWalls / speedDownStep);
         }
         fishCollided = false;
+        fishPassed = true;
     }
 
     protected void startWinning() {
@@ -277,6 +281,7 @@ public class GameScreenCommonUpdater {
 		gameScreen.restart();
 
 		this.fishCollided = false;
+		this.fishPassed = false;
 		this.sLives.set(lives, Experience.getLives());
 		this.lives = Experience.getLives();
 		this.passedWalls = 0;
