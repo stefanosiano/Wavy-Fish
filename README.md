@@ -1,6 +1,6 @@
 # Wavy-Fish
 
-This is a 2D endless runner game written with LibGDX, a cross-platform framework for game creation.  
+This is a 2D endless runner game written with <a href="https://github.com/libgdx/libgdx">LibGDX</a>, a cross-platform framework for game creation.  
 It's written in Java, and is currently working for Android, with specific features (support for IOS and Windows Phone may come in the future).
 
 Play store: https://play.google.com/store/apps/details?id=com.stefanosiano.wavyfish.android
@@ -9,7 +9,7 @@ This game offers several controls and optional modes that you won’t find elsew
 
 You can change the options before every game, so you will always get the challenge level that you prefer, according to your soul state, and/or the season.  
 Overtake your older results, and let everyone know it!  
-Try to pass all the 250 obstacles to win!
+Try to pass all the 100 obstacles to win!
 
 
 <b>Controls: </b>
@@ -31,14 +31,14 @@ Try to pass all the 250 obstacles to win!
 
 <b>Modes: </b>  
 
-<b>->Normal:  </b>  
--the normal mode that you can find everywhere, with nothing special
-
 <b>->Blinking:  </b>  
 -the fish and the obstacles will blink, adding a new level of challenge!
 
 <b>->Piranha:  </b>  
 -if you are tired of avoiding static walls, try to avoid all the moving piranhas that you will find in your way!
+
+<b>->Endless:  </b>  
+-There is no limit: try to see how many obstacles you can pass and how high your score can get!
 
 <b>->More will come later </b>
 
