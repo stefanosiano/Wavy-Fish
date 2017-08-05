@@ -77,8 +77,11 @@ project(":android") {
         compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
             transitive = true
         }
+
         // MoPub Kit
-        compile('com.mopub:mopub-sdk:4.15.0@aar') {
+        // For interstitials
+        // For rewarded videos. This will automatically also include interstitials
+        compile('com.mopub:mopub-sdk-rewardedvideo:4.15.0@aar') {
             transitive = true
         }
     }

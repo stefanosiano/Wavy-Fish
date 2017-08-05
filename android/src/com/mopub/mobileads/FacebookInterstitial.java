@@ -101,6 +101,11 @@ public class FacebookInterstitial extends CustomEventInterstitial implements Int
     }
 
     @Override
+    public void onLoggingImpression(Ad ad) {
+
+    }
+
+    @Override
     public void onInterstitialDismissed(final Ad ad) {
         Log.d("MoPub", "Facebook interstitial ad dismissed.");
         mInterstitialListener.onInterstitialDismissed();

@@ -202,6 +202,7 @@ public class GameScreenCommonUpdater {
 			obstaclesText.updateTextCenteredHorizzontally(passedWalls + "/" + numberOfWallsToFinish);
 
 		if(!fishCollided){
+
 			oldScoreValue = score.getScoreValue();
 			oldMultiplier = score.getMultiplier();
 			scoreValue = score.update(100);

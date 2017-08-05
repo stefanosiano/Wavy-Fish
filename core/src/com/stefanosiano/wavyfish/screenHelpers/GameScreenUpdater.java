@@ -32,7 +32,7 @@ public class GameScreenUpdater extends GameScreenCommonUpdater {
 	
 	public GameScreenUpdater(GameScreen gameScreen, int speedUpStep, int speedDownStep, int numberOfWallsToFinish, CommonApiController adsController){
 		super(gameScreen, speedUpStep, speedDownStep, numberOfWallsToFinish, adsController);
-		this.names = new ArrayList<ButtonNames>();
+		this.names = new ArrayList<>();
 		this.resumeTime = 0;
 		this.highScoreTime = 0;
         this.analyticsTime = 0;

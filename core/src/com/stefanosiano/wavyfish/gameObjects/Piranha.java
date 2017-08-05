@@ -23,7 +23,7 @@ public class Piranha extends SimpleGameObject implements Obstacle {
 	private Random r;
 	private float circleXGap, circleYGap, circleRadius;
     private float newFrameDuration;
-    private Animation flippedAnimation, normalAnimation;
+    private Animation<TextureRegion> flippedAnimation, normalAnimation;
 	
 	public Piranha(TextureRegion[] textures, TextureRegion[] flippedTextures, Animation.PlayMode playMode, float frameDuration, float x, float y, float width, float height, float speedX, float speedY, 
 			int screenHeight, int xGap, int piranhaNumber, float speedUpFactorX, float speedUpFactorY, float speedUpFactorFrameDuration,
