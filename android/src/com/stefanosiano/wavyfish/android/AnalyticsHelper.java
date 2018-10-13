@@ -26,7 +26,7 @@ public class AnalyticsHelper {
    		*/
    	}
     
-   	HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+   	private final HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
     
    	synchronized Tracker getTracker(TrackerName trackerId, Context context) {
    		if (!mTrackers.containsKey(trackerId)) {
@@ -34,7 +34,6 @@ public class AnalyticsHelper {
    			GoogleAnalytics analytics = GoogleAnalytics.getInstance(context);
    			analytics.setLocalDispatchPeriod(600);
    			analytics.setDryRun(false);
-   			analytics.getLogger().setLogLevel(LogLevel.VERBOSE);
 
    			Tracker t;
    			

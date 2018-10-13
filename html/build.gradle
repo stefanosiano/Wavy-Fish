@@ -1,5 +1,5 @@
 apply plugin: "java"
-apply plugin: "jetty"
+//apply plugin: "jetty"
 
 gwt {
     gwtVersion='2.6.0' // Should match the gwt version used for building the gwt backend
@@ -17,7 +17,7 @@ gwt {
         disableCastChecking = true;
     }
 }
-
+/*
 task draftRun(type: JettyRunWar) {
     dependsOn draftWar
     dependsOn.remove('war')
@@ -67,4 +67,4 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 
 eclipse.project {
     name = appName + "-html"
-}
+}*/

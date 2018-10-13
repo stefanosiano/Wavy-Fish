@@ -4,7 +4,6 @@ import com.crashlytics.android.Crashlytics;
 import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
-import com.facebook.ads.AdSettings;
 import com.jirbo.adcolony.AdColony;
 import com.mopub.common.MoPub;
 import java.io.File;
@@ -23,6 +22,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.privacy.ConsentDialogListener;
+import com.mopub.common.privacy.PersonalInfoManager;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideos;
@@ -56,15 +58,15 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
     @Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
+		MoPub.initializeSdk(this, new SdkConfiguration.Builder(Keys.INTERSTITIAL_AD_UNIT_ID).build(), null);
 		
 		if(!TESTMODE){
 			Fabric.with(this, new Crashlytics());
-            MoPubRewardedVideos.initializeRewardedVideo(this);
+//            MoPubRewardedVideos.initializeRewardedVideo(this);
             MoPub.onCreate(this);
 		}
         else{
-			AdSettings.addTestDevice(Keys.TEST_DEVICE_ID);
         }
 		
 		dolbyAudioProcessing = null;
@@ -98,7 +100,13 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 				Gdx.app.exit();
 			}
 		});
-		
+
+        final PersonalInfoManager mPersonalInfoManager = MoPub.getPersonalInformationManager();
+		if( mPersonalInfoManager.shouldShowConsentDialog() )
+            mPersonalInfoManager.loadConsentDialog(new ConsentDialogListener() {
+                @Override public void onConsentDialogLoaded() { if (mPersonalInfoManager != null) mPersonalInfoManager.showConsentDialog(); }
+                @Override public void onConsentDialogLoadFailed(@NonNull MoPubErrorCode moPubErrorCode) {}
+            });
 		initialize(new WavyFishGame(this), config);
 	}
 	
