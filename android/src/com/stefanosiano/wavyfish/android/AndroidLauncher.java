@@ -52,6 +52,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	public static final int requestCodeShareImage = 2;
     private DolbyAudioProcessing dolbyAudioProcessing;
 	private AlertDialog.Builder cheatDialog;
+	private boolean isRunning = false;
     
     private final String TAG = "WavyFish Application";
 
@@ -81,7 +82,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		config.useAccelerometer = false;
 		config.useCompass = false;
 
-		mInterstitial = new MoPubInterstitial(this, Keys.MOPUB_ID);
+		mInterstitial = new MoPubInterstitial(this, Keys.INTERSTITIAL_AD_UNIT_ID);
 		mInterstitial.setInterstitialAdListener(this);
 		adsUtil = new AdsUtil(this, mInterstitial);
 		itemSharer = new ItemSharer(this);
@@ -122,6 +123,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	@Override
 	public void onStart(){
 		super.onStart();
+		isRunning = true;
 		if(!TESTMODE){
 	        GoogleAnalytics.getInstance(getApplicationContext()).reportActivityStart(this);
 		}
@@ -137,6 +139,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	@Override
 	protected void onPause() {
 		super.onPause();
+		isRunning = false;
         MoPub.onPause(this);
         AdColony.pause();
 	}
@@ -226,7 +229,8 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
         runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    adsUtil.showInterstitialAd();
+					if(isRunning)
+                    	adsUtil.showInterstitialAd();
                 }
             });
     }
@@ -246,7 +250,8 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adsUtil.showRewardedVideo();
+				if(isRunning)
+                	adsUtil.showRewardedVideo();
             }
         });
     }
@@ -301,21 +306,27 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				adsUtil.showInterstitialAd();
-				cheatDialog.show();
+				if(isRunning) {
+					adsUtil.showInterstitialAd();
+					cheatDialog.show();
+				}
 			}
 		});
 	}
 
+	@Override
     public void onDolbyAudioProcessingEnabled(boolean on) {
         Log.i(TAG, "onDolbyAudioProcessingEnabled(" + on + ")");
     }
+	@Override
     public void onDolbyAudioProcessingProfileSelected(DolbyAudioProcessing.PROFILE profile) {
         Log.i(TAG, "onDolbyAudioProcessingProfileSelected(" + profile + ")");
     }
+	@Override
     public void onDolbyAudioProcessingClientConnected() {
         Log.i(TAG, "onDolbyAudioProcessingClientConnected()");
     }
+	@Override
     public void onDolbyAudioProcessingClientDisconnected() {
         Log.w(TAG, "onDolbyAudioProcessingClientDisconnected()");
     }
