@@ -64,7 +64,6 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 		
 		if(!TESTMODE){
 			Fabric.with(this, new Crashlytics());
-//            MoPubRewardedVideos.initializeRewardedVideo(this);
             MoPub.onCreate(this);
 		}
         else{
