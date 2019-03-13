@@ -6,8 +6,8 @@ android {
         applicationId "com.stefanosiano.wavyfish.android"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 18
-        versionName '1.2.03'
+        versionCode 19
+        versionName '1.2.04'
     }
     lintOptions{
         abortOnError false
