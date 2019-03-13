@@ -4,6 +4,7 @@ import com.crashlytics.android.Crashlytics;
 import com.dolby.dap.DolbyAudioProcessing;
 import com.dolby.dap.OnDolbyAudioProcessingEventListener;
 
+import com.google.android.gms.ads.MobileAds;
 import com.jirbo.adcolony.AdColony;
 import com.mopub.common.MoPub;
 import java.io.File;
@@ -60,6 +61,7 @@ public class AndroidLauncher extends AndroidApplication implements CommonApiCont
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		MobileAds.initialize(this, Keys.ADMOB_APP_ID);
 		MoPub.initializeSdk(this, new SdkConfiguration.Builder(Keys.INTERSTITIAL_AD_UNIT_ID).build(), null);
 		
 		if(!TESTMODE){
